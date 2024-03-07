@@ -24,6 +24,9 @@ image dahlia happy = "rich girl pleased.png"
 image donna neutral = "trailer park.png"
 image donna happy = "trailer park pleased.png"
 image donna upset = "trailer park displeased.png"
+image ebony neutral = "emo girl.png"
+image ebony happy = "emo girl pleased.png"
+image ebony upset = "emo girl displeased.png"
 
 
 # The game starts here.
@@ -114,6 +117,7 @@ label ChiChi:
             show chichi happy
             c "D-Doki!! You’ll make Chi-Chi blush nya!!"
         "Do you have a facebook?":
+            show chichi neutral
             c "EHH facebook?!! LOL you sound like a boomer nya! "
         "It says your name Abigail Johnson…?":
             show chichi upset
@@ -127,6 +131,7 @@ label ChiChi:
             show chichi happy
             c "Ehh!! Y-you like anime too? Chi-Chi thought she was the only one!! Will you be the Kirito to my Asunya? "
         "Never heard of Kenshin Collision.":
+            show chichi neutral
             c "Nyo way!! It’s so popular, and it’s super fun! You should try it out sometime, it’s free to play, and Chi-Chi can guide you too!!"
         "I watch manga too!":
             show chichi upset
@@ -143,12 +148,13 @@ label ChiChi:
             c "Oh! Chi-Chi was kind of expecting more than such a bland answer, but it just means you’re open-minded I guess nya!!"
         "Someone who doesn’t nya.":
             show chichi upset
-            c "I’ll kill you nya."
+            c "...I’ll kill you nya."
     show chichi neutral
     c "Oops! Looks like time's about to run out! It was really nyice meeting nya!"
-    player_name "It was nice meeting you too. Take care!"
-    player_name "Hmm...who else should I meet?"
-    hide chichi neutral
+    player_name "It was nice meeting you too. See you around."
+    hide chichi neutral with dissolve
+    player_name "A cat girl huh...I thought those kinds of people only existed online."
+    player_name "What have I gotten myself into? And who else am I going to meet here?"
     jump selection
 
 
@@ -170,65 +176,63 @@ label Dahlia:
     player_name "So what do you like to do in your free time?"
     dh "I like taking day trips to other countries. I just got back from Austria, before that I was on a 2 week shopping spree in Milan, and today I had a movie premiere to attend in Hollywood, but my car got scratched so my driver is fixing it up."
     menu:
-        "God, I love taking my private jets around to attend my business conferences.":
+        "God, I love taking my private jets around from city to city to attend my business conferences.":
             show dahlia happy
-            dh "Oh yes, someone as well-established as you must understand the joys of travel."
+            dh "Oh yes, someone as well-established and intelligent as you must understand the joys of travel. Say, how much money do you make? Oh well, I suppose we can talk about that some other time yes?"
         "Wow, you lead quite a luxurious life.":
             "Yes, I’m sure common folk such as yourself dream of waking up and being me."
         "You’re stopped here just because of a scratch?":
             show dahlia upset
-            dh "You think someone like me can be caught driving around in a car as wrecked as that? You can NOT be serious."
+            dh "Take a good look out that window over there. You really think someone like me can be caught driving around in a car as wrecked as that? You can NOT be serious."
     show dahlia neutral
-    dh "Anyway, the food here looks abominable. I can’t eat something like this, but honestly I am getting peckish."
+    dh "Anyway, the food here looks abominable. I mean look at this steak! As if I could eat anything that's not premium Wagyu. I can’t bear to eat something like this, but I have to admit I am getting peckish."
     menu:
         "I know an establishment that serves every dish with caviar and gold. I could take you after this.":
             show dahlia happy
-            dh "Is that so? I might have to take you up on your offer."
+            dh "Is that so? I'm surprised an establishment like that exists in such a small town. I might have to take you up on your offer."
         "Yeah, I’ve definitely had better food than this.":
-            dh "Yes…Nothing groundbreaking."
+            dh "Yes…Nothing groundbreaking. Tell me, is this truly what people of your social status consider to be delicious? Thank goodness I wasn't born poor."
         "I’m going to order as much food as I can and put it on your tab.":
             show dahlia upset
-            dh "You vile little creature…! Typical behavior of common folk such as yourself."
+            dh "You vile little creature…! Typical behavior of common folk such as yourself, always scavenging around for crumbs and handouts."
     show dahlia neutral
-    player_name "Wow, the rain doesn’t seem to be letting up any time soon…"
-    dh "Yes, it’s an absolute mess out there. It is positively pouring!"
+    player_name "Oh wow, take a look outside. The rain doesn’t seem to be letting up any time soon…"
+    dh "Yes, it’s an absolute mess out there. It is positively pouring! I swear I'm going to be stuck here forever. Why couldn't I have gotten stranded in Hawaii instead?"
     menu:
         "I can lend you my Vouie Luitton umbrella and call you a diamond encrusted helicopter.":
             show dahlia happy
             dh "Oh my gosh, that would be perfect. That’s exactly what I need right now."
         "I can order you a Yoober so you can leave.":
-            dh "Ugh, I suppose, if that's the only option. But if you do, make sure you order the Yoober helicopter alright? I wouldn't be caught dead riding around in any, how would you say, conventional vehicles."
+            dh "Ugh, I suppose, if that's the only option. But if you do, make sure you order the Yoober helicopter alright? I wouldn't be caught dead riding around in any, how would you say... conventional vehicles."
         "Why don’t we walk to the nearest bus stop?":
             show dahlia upset
-            dh "Bus...stop? Walk? You think I’d soil such an expensive dress to sit with commoners? You certainly have never been with a classy woman."
+            dh "Bus...stop? Walk? You think I’d soil such an expensive dress just to sit on filthy chairs next to random strangers? You certainly have never been with a classy woman."
     show dahlia neutral
     dh "Quite some time has past since I got stranded here. I wonder if my driver is almost done fixing up the car -- I'd like to go somewhere much more refined to forget this experience ever happened."
     menu:
         "I have some dinner plans at the Ritz after this, if you’d care to join me.":
             show dahlia happy
-            dh "My, what a considerate offer. Yes, I would love to continue our conversations."
+            dh "My, what a considerate offer. Yes, I would love to continue our conversations. You certainly seem like a person with mature tastes."
         "Would you like to join me for some real food after this?":
             dh "Not sure. I'm a very busy woman you know. I have to call my daddy and discuss which car I should replace my Wolls Woyce with, considering the state it is in right now."
         "You will join me. Now!!":
             show dahlia upset
-            dh "What are you implying by that? Say something like that again and I will be calling my guards to escort you away."
+            dh "Excuse me? What are you implying by that? Say something like that again and I will be calling my guards to escort you away."
     show dahlia neutral
     dh "Oh well would you look at that, seems like time is about to run out on our date. I have very important business matters to attend to, so if you'll excuse me..."
-    hide dahlia neutral
+    hide dahlia neutral with dissolve
     player_name "Well that was certainly interesting. She clearly lives an extravagent life."
     player_name "This place seems to be full of all sorts of different people. I wonder who else I'm going to meet here..."
     jump selection
     
 
-label Chad:
-    "This is Chad"
 label Donna:
     show donna neutral with fade
     dn "Hey shweet heart, how’s ya goin?"
     player_name "Hi, it’s nice to meet you, what’s your name?"
-    dn "The name's Donna honey. Or at least it is now, my husbands wouldn’t recognize that name though, I change it after the divorces babes. My friends call me sugartits though. ;)"
+    dn "The name's Donna honey. Or at least it is now -- my husbands wouldn’t recognize that name though. I change it after the divorces babes, you know how it is. My friends call me sugartits though. *winks*"
     dn "What do you call yourself honey?"
-    player_name "Oh, well my name is [player_name], but"
+    player_name "Oh, well my name is [player_name], but..."
     menu:
         "Why do your friends call you sugartits?":
             show donna happy
@@ -241,7 +245,7 @@ label Donna:
             dn "Lastly there is my one and only son Jack-Daniel who is 10 and my baby girl Methanie at 6 years old! They are both little angels getting straight C’s in school!"
         "How many husbands have you had?":
             show donna upset
-            dn "Oh those assholes. *takes drag of cigarette* I try not to count them anymore, but for your sake I think I’m at about 7. Give or take a few boyfriends here and there." 
+            dn "Oh, those assholes. *takes drag of cigarette* I try not to count them anymore, but for your sake I think I’m at about 7. Give or take a few boyfriends here and there." 
             dn "*blows smoke in your face*"
     show donna neutral
     player_name "Oh that’s nice. Soooo... do you have any hobbies?"
@@ -272,13 +276,115 @@ label Donna:
             dn "You just can’t handle a strong sexy independent woman like me, I am far too much for you clearly. You probably think you’re better than me huh? All high and mighty cause I live in a trailer, well fuck you!! I don’t need this SHIT ANYWAYS!!!"
             dn "*blows smoke into face*"
     show donna neutral
-    player_name "YIPPIE!!"
-
-
+    dn "Alright sweetheart, Donna can't be tied down for too long you know. And don't get it twisted, this lifestyle is all my choice. See you around babes."
+    hide donna neutral with dissolve
+    player_name "Wow...Donna \"Sugartits\" sure is a lot to take in. She definitely knows a thing or two."
+    player_name "I wonder if the next person I meet will be as wild as her."
+    jump selection
 
 
 label Ebony:
-    "This is Ebony"
+    show ebony neutral with fade
+    x "H-hey…"
+    player_name "Hi. What's your name?"
+    e "Ebony…"
+    player_name "Oh, that's a pretty na-"
+    e "Ebony Dark’ness Dementia Raven Way. Some people tell me I look like Amy Lee."
+    menu:
+        "I love evanescence":
+            show ebony happy
+            e "OMG! I can’t believe you know them, they are one of my favorrrrrite bands x3 ! They’re super underground. They make music that represents how I feel inside."
+        "Who's that?":
+            e "WHAAAT? You don’t know Amy Lee? The lead singer of the band Evanescence?! RAWR!!!!!!!!!!! I hope you like hardcore music or we won’t get along…"
+        "Sorry, I don’t listen to emo music":
+            show ebony upset
+            "IT’S NOT EMO!!!! It is art. It is hardcore. You wouldn’t understand, their music is my life."
+    show ebony neutral
+    e "*scoffs*"
+    player_name "Um...do you have any hobbies?"
+    e "No. Unless you count rocking out to MCR and posting on tumblr every night as a hobby. Other than that I mostly spend my time thinking about the inevitability of death."
+    menu:
+        "Wow, I love MCR!":
+            show ebony happy
+            e "YOU LIKE MCR?!?!?!?!!! OMG RAWR X3 that’s so great…Gerard Way is such a smol bean Cx I luv him so much and he’s my vampire boyfriend."
+        "Do you do anything else?":
+            e "No. All I do is listen to bands and watch videos about my favorite bands and read fanfiction about my bands. I guess you don’t understand, but I wouldn’t expect anything less from a normie."
+        "What are you like, emo or something?":
+            show ebony upset
+            e "I’M NOT EMO!!!!! I’m a mall-goth, punk rock, ukulele screamo, grungecore, alternative, tumblr, scene girl okay? And it is not a phase, but I wouldn’t expect a normie poser like you to understand that."
+    show ebony neutral
+    e "*scoffs*"
+    player_name "So…what are you looking for?"
+    e "I don’t know. I just want a blood bond with someone. Someone not afraid to get hurt and mosh at shows with me. I want someone to heal my broken soul. xC" 
+    e "I will cut you if you cut me. And as one. We will bleed."
+    menu:
+        "Wow… that's beautiful…":
+            show ebony happy
+            e "You really think so? I spend a lot of my time writing poetry in the notes app on my phone. Never get much of a chance to share it with anybody…"
+        "Are you okay?":
+            e "As Gerard Way would say, no I’m not okay, but who really is in this broken world? Everything is always going wrong in my life, but I’m used to it by now."
+        "How is your relationship with your father?":
+            jump father_tangent
+    show ebony neutral
+    e "......."
+    menu:
+        "I like when you talk":
+            show ebony happy
+            e "*Blushes* R-really? Why? I have an awfully annoying voice and have to force myself to stay quiet so I don't go around bothering others with my voice."
+        "Why are you so quiet?":
+            show ebony upset
+            e "I'm scared of getting too close to others. Everytime I do, they always leave me. I'm essentially unlovable. No one ever cares about me and no one ever will. Love isn't real, it's just a chemical reaction"
+    show ebony neutral
+    e "I’m just super insecure *blushes*…No one ever says anything nice about me…The world is just against me. I don't even know why I’m here."
+    e " I'm unlovable. I’m always the one that loves more, I’m a liability. No one can handle me. I’m insane. I’m crazy."
+    e "Everyone just uses me like I’m a thing to be played with. When I’m a real human girl. I want love. But I can’t have it. It’s my curse."
+    menu: 
+        "You're so cute. I can fix you.":
+            show ebony happy
+            e "Rawr xD ! That means I love you in dinoswor x3"
+        "I’m sorry to hear that":
+            e "Yeah. Everyone always is..."
+        "Girl, you’re a walking red flag":
+            show ebony upset
+            e "Everyone always says that but no one ever lis-"
+label ebony_ending:
+    show ebony neutral
+    x "*TIMER RINGS*"
+    H "Alright ladies and gentleman! Time to move onto your next date!"
+    e "...It's time for me to leave now [player_name]...But you'll probably forget about me anyway..."
+    hide ebony neutral with fade
+    player_name "Geez, she has a lot of baggage. Talking to her definitely brings me back to my younger days and I'm not sure if that's a good or bad thing."
+    player_name "Alright...who's up next?"
+    jump selection
+
+label father_tangent:
+    show ebony upset
+    e "Oh. Him."
+    show ebony neutral
+    e "I killed him. Don’t tell anyone."
+    player_name "...What did you say?"
+    e "I killed him 3 months ago. No one knows it was me. The voices told me to do it. Jeff the Killer told me to."
+    e "I had to do it. He promised me an eternity with him."
+    player_name "Uh..."
+    e "NO! Don’t be scared my love. *smiles* I would never hurt someone like you…as long as you..love me..right?"
+    x "*Ebony is looking at you expectantly*"
+    menu:
+        "I do love you":
+            show ebony happy
+            e "...I see."
+            jump ebony_ending
+        "No! What?! Are you crazy?!":
+            e "I should've known you wouldn't have understood me. Now you know too much."
+            show ebony upset
+            e "Sorry to end it this way, [player_name]."
+            show ebony neutral
+            x "*Ebony stabs you*"
+            #GAME OVER screen?
+            jump start 
+
+
+label Chad:
+    "This is Chad"
 label Alice:
     "This is Alice"
 label Damien:
