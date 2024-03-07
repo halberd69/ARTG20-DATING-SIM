@@ -16,28 +16,21 @@ define e = Character ("Ebony")
 define dm = Character ("Damien")
 define an = Character ("Alien")
 image chichi neutral = "cat girl.png" 
-    #zoom 0.7 
-    #xalign 0.5
 image chichi upset = "cat girl displeased.png"
 image chichi happy = "cat girl pleased.png"
-    
+image dahlia neutral = "rich girl.png"
+image dahlia upset = "rich girl displeased.png"
+image dahlia happy = "rich girl pleased.png"
+image donna neutral = "trailer park.png"
+image donna happy = "trailer park pleased.png"
+image donna upset = "trailer park displeased.png"
+
 
 # The game starts here.
-
 label start:
 
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
-
     scene bg room
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
-
-    # show News Reporter
-
-    # These display lines of dialogue.
+    # show chichi neutral with fade
     
     n "We’re getting reports of a slight drizzle today here in our sunny Southern California town,"
     n "experts are advising EVERYONE to stay inside and avoid the sprinkle outside."
@@ -97,75 +90,193 @@ label selection:
             jump ChiChi
 
 label ChiChi:
-    show chichi neutral:
-        zoom 0.7
-        xalign 0.5
+    show chichi happy with fade
     c "OMG Hi, My name is Chi-Chi, it means \“good fortune\” in Japanyese!! You’re [player_name] right nya?"
     player_name "How do you know my name…?"
+    show chichi neutral
     c "Chi-Chi took a look at the sign up sheet and already met evernyan here, so process of elimination you knyow!! Are you here to find the other half of your OTP as well :3?"
     menu:
         "I wouldn’t be opposed to finding love.":
-            show chichi happy:
-                zoom 0.7
-                xalign 0.5
+            show chichi happy
             c "On a search for your waifu, how romantic!! Maybe Chi-Chi can be your kawaii little discord kitten nya :3c "
         "How did you just say :3 out loud?":
             c "Teehee, you’re so silly!"
         "What’s an OTP?":
-            show chichi upset:
-                zoom 0.7
-                xalign 0.5
+            show chichi upset
             c "You don’t knyow? “One True Pairing” obviously, have you been living under a rock or something nya? "
-    show chichi neutral:
-        zoom 0.7
-        xalign 0.5
-    c "Anyways, what are your socials? Chi-Chi will follow you back!! Chi-Chi’s is @Xx_koNEKOkyutie_xX with a \“k\” on Pwitter and Yinstagram nya!!"
+    show chichi neutral
+    c "Anyways, what are your socials? Chi-Chi will follow you back!! Chi-Chi’s is @Xx_koNEKOkyutie_xX with a \“k\” on Pwitter and Binstagram nya!!"
     player_name "Is this the right one?"
+    show chichi happy
     c "Nyat’s right!! KYAAA we’re like oomphies now, we’re moving so fast!"
     menu:
         "You’re my cutest oomf.":
+            show chichi happy
             c "D-Doki!! You’ll make Chi-Chi blush nya!!"
         "Do you have a facebook?":
             c "EHH facebook?!! LOL you sound like a boomer nya! "
         "It says your name Abigail Johnson…?":
+            show chichi upset
             c "My NYAME is CHI-CHI!! Chi-Chi just hasn't changed the display name ‘cause of IRLs on there too. Call Chi-Chi that again and I’ll break moots with you!!"
-    show chichi neutral:
-        zoom 0.7
-        xalign 0.5
+    show chichi neutral
     player_name "So, do you have any hobbies or interests? "
+    show chichi happy
     c "Ooh!! Chi-Chi really loves watching anime and reading manga nya!! Chi-Chi has also started her gamer girl era lately, have you heard of Kenshin Collision? The addiction is so real nyaaa!!"
     menu:
         "I love anime!":
+            show chichi happy
             c "Ehh!! Y-you like anime too? Chi-Chi thought she was the only one!! Will you be the Kirito to my Asunya? "
         "Never heard of Kenshin Collision.":
             c "Nyo way!! It’s so popular, and it’s super fun! You should try it out sometime, it’s free to play, and Chi-Chi can guide you too!!"
         "I watch manga too!":
+            show chichi upset
             c "What?? You don’t watch manga, you read manga, everynyan who’s a real fan knows that BAKA. Chi-Chi can tell you’re a fake fan just from that!"
+    show chichi neutral
     player_name " You sound passionate about your hobbies."
     c "Of course nya!! Chi-Chi always puts her 100\% into everything, that’s what makes me so cute! Girls who try their best sparkle you knyow!! That’s why Chi-Chi wants someone who always does their best too nya!! We can KIRA KIRA together!!"
     c "So! What kind of partner are you looking for nya?"
     menu: 
         "Someone as kawaii as you":
+            show chichi happy
             c "k-KYA <3!! You’re making my kokoro go DOKI so fast nya!!"
-            # jump selection
         "I don’t have a type":
             c "Oh! Chi-Chi was kind of expecting more than such a bland answer, but it just means you’re open-minded I guess nya!!"
-            # jump selection
         "Someone who doesn’t nya.":
-            c "I’ll kill you nya. "
-            # jump selection
+            show chichi upset
+            c "I’ll kill you nya."
+    show chichi neutral
     c "Oops! Looks like time's about to run out! It was really nyice meeting nya!"
     player_name "It was nice meeting you too. Take care!"
     player_name "Hmm...who else should I meet?"
+    hide chichi neutral
     jump selection
 
 
 label Dahlia:
-    "This is Dahlia"
+    show dahlia upset with fade
+    dh "Ugh, what a joke. There’s a terrible storm outside, I can’t leave because my Wolls Woyce is in shambles and my driver is repairing it, and now I’m stuck here in this dingy hotel."
+    show dahlia neutral
+    dh "I guess you’ll have to do for entertainment. My name is Dahlia."
+    menu:
+        "I’m in the same boat. The helicopter to my yacht crashed and I’m stuck here too.":
+            show dahlia happy
+            dh "Oh! Well, good to know I’m not the only one dealing with such mindless drivel."
+        "I like your necklace.":
+            dh "Thanks, I get that a lot."
+        "Oh, one of my friends has earrings that look just like that.":
+            show dahlia upset
+            dh "What did you just say? My earrings are one of a kind, custom-made, and handcrafted by a professional designer in Italy. Your friend must have the cheap knock off version of what mine is."
+    show dahlia neutral
+    player_name "So what do you like to do in your free time?"
+    dh "I like taking day trips to other countries. I just got back from Austria, before that I was on a 2 week shopping spree in Milan, and today I had a movie premiere to attend in Hollywood, but my car got scratched so my driver is fixing it up."
+    menu:
+        "God, I love taking my private jets around to attend my business conferences.":
+            show dahlia happy
+            dh "Oh yes, someone as well-established as you must understand the joys of travel."
+        "Wow, you lead quite a luxurious life.":
+            "Yes, I’m sure common folk such as yourself dream of waking up and being me."
+        "You’re stopped here just because of a scratch?":
+            show dahlia upset
+            dh "You think someone like me can be caught driving around in a car as wrecked as that? You can NOT be serious."
+    show dahlia neutral
+    dh "Anyway, the food here looks abominable. I can’t eat something like this, but honestly I am getting peckish."
+    menu:
+        "I know an establishment that serves every dish with caviar and gold. I could take you after this.":
+            show dahlia happy
+            dh "Is that so? I might have to take you up on your offer."
+        "Yeah, I’ve definitely had better food than this.":
+            dh "Yes…Nothing groundbreaking."
+        "I’m going to order as much food as I can and put it on your tab.":
+            show dahlia upset
+            dh "You vile little creature…! Typical behavior of common folk such as yourself."
+    show dahlia neutral
+    player_name "Wow, the rain doesn’t seem to be letting up any time soon…"
+    dh "Yes, it’s an absolute mess out there. It is positively pouring!"
+    menu:
+        "I can lend you my Vouie Luitton umbrella and call you a diamond encrusted helicopter.":
+            show dahlia happy
+            dh "Oh my gosh, that would be perfect. That’s exactly what I need right now."
+        "I can order you a Yoober so you can leave.":
+            dh "Ugh, I suppose, if that's the only option. But if you do, make sure you order the Yoober helicopter alright? I wouldn't be caught dead riding around in any, how would you say, conventional vehicles."
+        "Why don’t we walk to the nearest bus stop?":
+            show dahlia upset
+            dh "Bus...stop? Walk? You think I’d soil such an expensive dress to sit with commoners? You certainly have never been with a classy woman."
+    show dahlia neutral
+    dh "Quite some time has past since I got stranded here. I wonder if my driver is almost done fixing up the car -- I'd like to go somewhere much more refined to forget this experience ever happened."
+    menu:
+        "I have some dinner plans at the Ritz after this, if you’d care to join me.":
+            show dahlia happy
+            dh "My, what a considerate offer. Yes, I would love to continue our conversations."
+        "Would you like to join me for some real food after this?":
+            dh "Not sure. I'm a very busy woman you know. I have to call my daddy and discuss which car I should replace my Wolls Woyce with, considering the state it is in right now."
+        "You will join me. Now!!":
+            show dahlia upset
+            dh "What are you implying by that? Say something like that again and I will be calling my guards to escort you away."
+    show dahlia neutral
+    dh "Oh well would you look at that, seems like time is about to run out on our date. I have very important business matters to attend to, so if you'll excuse me..."
+    hide dahlia neutral
+    player_name "Well that was certainly interesting. She clearly lives an extravagent life."
+    player_name "This place seems to be full of all sorts of different people. I wonder who else I'm going to meet here..."
+    jump selection
+    
+
 label Chad:
     "This is Chad"
 label Donna:
-    "This is Donna"
+    show donna neutral with fade
+    dn "Hey shweet heart, how’s ya goin?"
+    player_name "Hi, it’s nice to meet you, what’s your name?"
+    dn "The name's Donna honey. Or at least it is now, my husbands wouldn’t recognize that name though, I change it after the divorces babes. My friends call me sugartits though. ;)"
+    dn "What do you call yourself honey?"
+    player_name "Oh, well my name is [player_name], but"
+    menu:
+        "Why do your friends call you sugartits?":
+            show donna happy
+            dn "I mean, can ya see em?! Take a looksie! I spent too much money on ‘em for you not to look honey!"
+            dn "But also a lifetime on the pole and working the corner will get you that name sweet cheeks! I’ve worked hard for these girls here and my friends just recognize that! "
+        "Do you have any kids then?":
+            dn "Oh I love my children, I think I have 6 now, all my little angels."
+            dn "My oldest is Crystal, she's a beautiful girl 27 years young, had her when I was 16. Next is Mary Jane, she just turned 21, and is living it up with her friends in West Oakland!"
+            dn "After her I had my lovely twin girls Indica & Sativa they’re both 18 and are making a great startup business on this website called OnlyFans! I’m so proud of them they’re just like their mama."
+            dn "Lastly there is my one and only son Jack-Daniel who is 10 and my baby girl Methanie at 6 years old! They are both little angels getting straight C’s in school!"
+        "How many husbands have you had?":
+            show donna upset
+            dn "Oh those assholes. *takes drag of cigarette* I try not to count them anymore, but for your sake I think I’m at about 7. Give or take a few boyfriends here and there." 
+            dn "*blows smoke in your face*"
+    show donna neutral
+    player_name "Oh that’s nice. Soooo... do you have any hobbies?"
+    dn "Oh I am sure you can tell just by looking at me sweetie. I do enjoy a nice smoke, smoke at least 3 packs a day. I also love cooking up all kinds of things, heheh."
+    dn "Oh and if I’m not too tired after all that I like to take nice walks to Bob’s trailer down the road, always good to make a quick buck. Knows all the right moves."
+    menu:
+        "You’re quite the busy lady, you sound like a lot of fun":
+            show donna happy
+            dn "Oh thanks darlin, you know fun is my middle name. Well actually it's Malibu, but all the men say it’s fun."
+        "Oh I don’t know much about cigarettes, but I do like cooking!":
+            dn "Oh ain’t that sweet, but I don’t think we are talking about the same kinda cookin darlin."
+        "Hmmm sounds like you spend a lot of time with that guy Bob, so why are you even here?":
+            show donna upset
+            dn "How disrespectful of you, I will have you know Bob was my ex husband, gave me one… or was it two? Of my children, we have a complicated relationship but I don’t need you judging me for it."
+    show donna neutral
+    player_name "Hmmm, so what’s your living situation?"
+    dn "Well lemme tell you about it. I live in a luxury trailer, one of the finest around if you look at my neighbors. It houses me and two of my kids, and any fellas lookin to spend the night."
+    dn "It really is quite nice, once you ignore the smells and some of the mess that's left behind from my kids. We got running water, it ain’t hot but it’s warm. Got the wee bumps in the night from other trailers, some sirens here and there..."
+    dn "Oh, and of course the yelling neighbors, but that's all just part of the trailer park ambience charm."
+    menu:
+        "I think you seem pretty great honestly. I’m not so perfect myself, why don’t we go back to my room?":
+            show donna happy
+            dn "Oh sweetie you don’t even have to ask. I'm right behind you darlin."
+        "I don’t know if I am totally vibing with this, but if I could get your number maybe we can go out again sometime?":
+            dn "I don’t really do that sort of thing sweetie, you seem very nice though, I don’t think you could handle all of this anyways."
+        "You are pretty intimidating and I don’t know if I can match that energy so I don’t think it’s gonna work out.":
+            show donna upset
+            dn "You just can’t handle a strong sexy independent woman like me, I am far too much for you clearly. You probably think you’re better than me huh? All high and mighty cause I live in a trailer, well fuck you!! I don’t need this SHIT ANYWAYS!!!"
+            dn "*blows smoke into face*"
+    show donna neutral
+    player_name "YIPPIE!!"
+
+
+
+
 label Ebony:
     "This is Ebony"
 label Alice:
