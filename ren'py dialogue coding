@@ -1,1 +1,181 @@
-// REN'PY CODING YIPPIEE!!!
+# The script of the game goes in this file.
+
+# Declare characters used by this game. The color argument colorizes the
+# name of the character.
+
+define n = Character("News Reporter")
+define x = Character (" ")
+define z = Character ("You")
+define H = Character ("Host")
+define c = Character ("ChiChi")
+define dh = Character ("Dahlia")
+define dn = Character ("Donna")
+define cd = Character ("Chad")
+define a = Character ("Alice")
+define e = Character ("Ebony")
+define dm = Character ("Damien")
+define an = Character ("Alien")
+image chichi neutral = "cat girl.png" 
+    #zoom 0.7 
+    #xalign 0.5
+image chichi upset = "cat girl displeased.png"
+image chichi happy = "cat girl pleased.png"
+    
+
+# The game starts here.
+
+label start:
+
+    # Show a background. This uses a placeholder by default, but you can
+    # add a file (named either "bg room.png" or "bg room.jpg") to the
+    # images directory to show it.
+
+    scene bg room
+    # This shows a character sprite. A placeholder is used, but you can
+    # replace it by adding a file named "eileen happy.png" to the images
+    # directory.
+
+    # show News Reporter
+
+    # These display lines of dialogue.
+    
+    n "We’re getting reports of a slight drizzle today here in our sunny Southern California town,"
+    n "experts are advising EVERYONE to stay inside and avoid the sprinkle outside."
+    n "Roads are unsafe to drive on, as they are slightly wet, HIGH chance of hydroplaning."
+    z "Oh man that’s so scary, guess that ruins my plans of going to Didnieland. Suppose I’ll have to find something around this hotel to do to spend my time…"
+    x "* A flier suddenly slides under the door*"
+    z "Hmm..what's this?"
+    x "VALENTINES SPEED DATING! <3 IN LOBBY CONFERENCE ROOM SATURDAY FEBRUARY 10TH! ALL AGE 18+!"
+    z "Huh … guess I could use some love in my life since Valentine's day is coming up..might as well give it a shot, don’t have much else to do!"
+    
+    # scene jumps to hotel dating lobby
+    z "*deep breath* Alright…here we go... *enters room*"
+
+    H "Hello hello hello! Welcome to the speed dating event! Let me just read you the terms and conditions and then we’ll continue with the sign up process, ready?"
+    z "Uh, okay I guess..."
+    H "By signing this contract you understand that by participating in this event you are agreeing to meeting with, engaging with, and entertaining new people regardless of their background and your compatibility. You must talk with every contestant you are matched with, regardless of differences in beliefs"
+    H "including opinions, political alignment, social issues, medical, homicidal, and otherwise. You understand by participating in this event you are putting yourself at risk of traveling to and within and returning from one or more foreign countries; foreign, political, legal, social, transportation, health " 
+    H "and economic conditions; different standards of design, safety, and maintenance of buildings, public places, and conveyances; local medical facilities and providers; and local weather conditions. You understand that as the hosts of this event we have no responsibility for, any third party "
+    H "which may provide any services including food, lodging, travel, or other goods or services associated with the Program. You understand that we take no responsibility for in whole or in part, for delays, loss, damage or injury to persons or property whatsoever, caused to me or others "
+    H "prior to departure, while traveling or while staying in designated lodging. I further understand that we are not responsible for matters that are beyond its control. I am aware of the risks associated with traveling to/from and participating in this Program, which include but are not limited to physical"
+    H " or psychological injury, pain, suffering, illness, disfigurement, dismemberment, temporary or permanent disability (including paralysis), economic or emotional loss, and/or death."
+    H "Do you accept to these terms?"
+
+    menu:
+        "Yes":
+            jump continue_game
+        "No":
+            "FUCK YOU"
+            jump start
+
+label continue_game:
+    H "Okay great! Go ahead and sign your name here, grab your name tag, and sit down at that first table! You’ll have 5 minutes with each partner! We’re about to start in a few minutes!"
+    $ player_name = renpy.input("Please enter your name.") 
+
+    #SCENE JUMP TO TABLE
+    player_name "Those were a lot of terms and conditions for this event…I thought speed dating would be pretty straightforward. I don’t even know what she said…did she say death? Dismemberment? What even is that abou-"
+    x "*BELL RINGS* FIRST PAIRING START!"
+
+label selection:
+    menu:
+        "Who would you like to meet?"
+        "Someone who really likes alternative music":
+            jump Ebony
+        "Someone who’s really into fitness":
+            jump Chad
+        "Someone who really likes musical theater":
+            jump Alice
+        "Someone who is really into film":
+            jump Damien
+        "Someone with a lot of money":
+            jump Dahlia
+        "Someone with lots of experience":
+            jump Donna
+        "A normal human":
+            jump Alien
+        "Someone who is chronically online":
+            jump ChiChi
+
+label ChiChi:
+    show chichi neutral:
+        zoom 0.7
+        xalign 0.5
+    c "OMG Hi, My name is Chi-Chi, it means \“good fortune\” in Japanyese!! You’re [player_name] right nya?"
+    player_name "How do you know my name…?"
+    c "Chi-Chi took a look at the sign up sheet and already met evernyan here, so process of elimination you knyow!! Are you here to find the other half of your OTP as well :3?"
+    menu:
+        "I wouldn’t be opposed to finding love.":
+            show chichi happy:
+                zoom 0.7
+                xalign 0.5
+            c "On a search for your waifu, how romantic!! Maybe Chi-Chi can be your kawaii little discord kitten nya :3c "
+        "How did you just say :3 out loud?":
+            c "Teehee, you’re so silly!"
+        "What’s an OTP?":
+            show chichi upset:
+                zoom 0.7
+                xalign 0.5
+            c "You don’t knyow? “One True Pairing” obviously, have you been living under a rock or something nya? "
+    show chichi neutral:
+        zoom 0.7
+        xalign 0.5
+    c "Anyways, what are your socials? Chi-Chi will follow you back!! Chi-Chi’s is @Xx_koNEKOkyutie_xX with a \“k\” on Pwitter and Yinstagram nya!!"
+    player_name "Is this the right one?"
+    c "Nyat’s right!! KYAAA we’re like oomphies now, we’re moving so fast!"
+    menu:
+        "You’re my cutest oomf.":
+            c "D-Doki!! You’ll make Chi-Chi blush nya!!"
+        "Do you have a facebook?":
+            c "EHH facebook?!! LOL you sound like a boomer nya! "
+        "It says your name Abigail Johnson…?":
+            c "My NYAME is CHI-CHI!! Chi-Chi just hasn't changed the display name ‘cause of IRLs on there too. Call Chi-Chi that again and I’ll break moots with you!!"
+    show chichi neutral:
+        zoom 0.7
+        xalign 0.5
+    player_name "So, do you have any hobbies or interests? "
+    c "Ooh!! Chi-Chi really loves watching anime and reading manga nya!! Chi-Chi has also started her gamer girl era lately, have you heard of Kenshin Collision? The addiction is so real nyaaa!!"
+    menu:
+        "I love anime!":
+            c "Ehh!! Y-you like anime too? Chi-Chi thought she was the only one!! Will you be the Kirito to my Asunya? "
+        "Never heard of Kenshin Collision.":
+            c "Nyo way!! It’s so popular, and it’s super fun! You should try it out sometime, it’s free to play, and Chi-Chi can guide you too!!"
+        "I watch manga too!":
+            c "What?? You don’t watch manga, you read manga, everynyan who’s a real fan knows that BAKA. Chi-Chi can tell you’re a fake fan just from that!"
+    player_name " You sound passionate about your hobbies."
+    c "Of course nya!! Chi-Chi always puts her 100\% into everything, that’s what makes me so cute! Girls who try their best sparkle you knyow!! That’s why Chi-Chi wants someone who always does their best too nya!! We can KIRA KIRA together!!"
+    c "So! What kind of partner are you looking for nya?"
+    menu: 
+        "Someone as kawaii as you":
+            c "k-KYA <3!! You’re making my kokoro go DOKI so fast nya!!"
+            # jump selection
+        "I don’t have a type":
+            c "Oh! Chi-Chi was kind of expecting more than such a bland answer, but it just means you’re open-minded I guess nya!!"
+            # jump selection
+        "Someone who doesn’t nya.":
+            c "I’ll kill you nya. "
+            # jump selection
+    c "Oops! Looks like time's about to run out! It was really nyice meeting nya!"
+    player_name "It was nice meeting you too. Take care!"
+    player_name "Hmm...who else should I meet?"
+    jump selection
+
+
+label Dahlia:
+    "This is Dahlia"
+label Chad:
+    "This is Chad"
+label Donna:
+    "This is Donna"
+label Ebony:
+    "This is Ebony"
+label Alice:
+    "This is Alice"
+label Damien:
+    "This is Damien"
+label Alien:
+    "This is Alien"
+
+
+
+    # This ends the game.
+    return
