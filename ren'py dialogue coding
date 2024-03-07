@@ -333,10 +333,10 @@ label Ebony:
             e "*Blushes* R-really? Why? I have an awfully annoying voice and have to force myself to stay quiet so I don't go around bothering others with my voice."
         "Why are you so quiet?":
             show ebony upset
-            e "I'm scared of getting too close to others. Everytime I do, they always leave me. I'm essentially unlovable. No one ever cares about me and no one ever will. Love isn't real, it's just a chemical reaction"
+            e "I'm scared of getting too close to others. Everytime I do, they always leave me. I'm essentially unlovable. No one ever cares about me and no one ever will. Love isn't real, it's just a chemical reaction."
     show ebony neutral
     e "I’m just super insecure *blushes*…No one ever says anything nice about me…The world is just against me. I don't even know why I’m here."
-    e " I'm unlovable. I’m always the one that loves more, I’m a liability. No one can handle me. I’m insane. I’m crazy."
+    e "I'm unlovable. I’m always the one that loves more, I’m a liability. No one can handle me. I’m insane. I’m crazy."
     e "Everyone just uses me like I’m a thing to be played with. When I’m a real human girl. I want love. But I can’t have it. It’s my curse."
     menu: 
         "You're so cute. I can fix you.":
