@@ -1,12 +1,8 @@
-# The script of the game goes in this file.
-
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
 
 define n = Character("News Reporter")
 define x = Character (" ")
 define z = Character ("You")
-define H = Character ("Host")
+define H = Character ("Hosts")
 define c = Character ("ChiChi")
 define dh = Character ("Dahlia")
 define dn = Character ("Donna")
@@ -28,30 +24,43 @@ image donna upset = "trailer park displeased.png"
 image ebony neutral = "emo girl.png"
 image ebony happy = "emo girl pleased.png"
 image ebony upset = "emo girl displeased.png"
+image ebony knife = "emo girl knife.png"
 
-# image launch = Movie(play="oa4_launch.webm", pos=(10, 10), anchor=(0, 0))
-# show launch behind eileen
- 
+
+image table = "table.png"
+image hosts = "hosts.png"
+image tv = "OLD TV.png"
+image doors = "CONFERENCE DOORS.PNG"
+#image EGO = ""
+#image GO = ""
+
+image surf = Movie(play="images/subwaysurfers.webm", size=(720,350), loop=False, xalign = 0, yalign = 0)
 
 # The game starts here.
 label start:
 
-    scene bg room
-    # show chichi neutral with fade
+    scene none
     
-    n "We’re getting reports of a slight drizzle today here in our sunny Southern California town,"
-    n "experts are advising EVERYONE to stay inside and avoid the sprinkle outside."
+    n "We’re getting reports of a slight drizzle today here in our sunny Southern California town, experts are advising EVERYONE to stay inside and avoid the sprinkle outside."
     n "Roads are unsafe to drive on, as they are slightly wet, HIGH chance of hydroplaning."
     z "Oh man that’s so scary, guess that ruins my plans of going to Didnieland. Suppose I’ll have to find something around this hotel to do to spend my time…"
     x "* A flier suddenly slides under the door*"
     z "Hmm..what's this?"
-    show flyer with fade
+    show flyer with moveintop
     x "VALENTINES SPEED DATING! <3 IN LOBBY CONFERENCE ROOM SATURDAY FEBRUARY 10TH! ALL AGE 18+!"
     z "Huh … guess I could use some love in my life since Valentine's day is coming up..might as well give it a shot, don’t have much else to do!"
-    hide flyer with fade
+    hide flyer
     # scene jumps to hotel dating lobby
-    z "*deep breath* Alright…here we go... *enters room*"
 
+    scene doors with fade
+    z "I guess this is it...The decorations are truly something, I mean, the letters are literally falling off the door! What am I even doing, what if all the people here are elderly?"
+    z "But then again, the streets are flooded out there. It's rare that it ever sprinkles in California, but whenever it does it's always a disaster outside. I might as well see what's going on."
+    z "*deep breath* What's the worst that could happen? Alright…here we go..."
+    x "*opens doors*"
+
+    scene none
+    show hosts with fade
+    show table zorder 1
     H "Hello hello hello! Welcome to the speed dating event! Let me just read you the terms and conditions and then we’ll continue with the sign up process, ready?"
     z "Uh, okay I guess..."
     H "By signing this contract you understand that by participating in this event you are agreeing to meeting with, engaging with, and entertaining new people regardless of their background and your compatibility. You must talk with every contestant you are matched with, regardless of differences in beliefs"
@@ -72,10 +81,11 @@ label start:
 label continue_game:
     H "Okay great! Go ahead and sign your name here, grab your name tag, and sit down at that first table! You’ll have 5 minutes with each partner! We’re about to start in a few minutes!"
     $ player_name = renpy.input("Please enter your name.") 
-
+    hide hosts with fade
+    hide table
     #SCENE JUMP TO TABLE
     player_name "Those were a lot of terms and conditions for this event…I thought speed dating would be pretty straightforward. I don’t even know what she said…did she say death? Dismemberment? What even is that abou-"
-    x "*BELL RINGS* FIRST PAIRING START!"
+    x "*BELL RINGS* FIRST PAIRING STARTS NOW! Find your first partner ladies and gents!"
 
 label selection:
     menu:
@@ -130,7 +140,12 @@ label ChiChi:
     show chichi neutral
     player_name "So, do you have any hobbies or interests? "
     show chichi happy
-    c "Ooh!! Chi-Chi really loves watching anime and reading manga nya!! Chi-Chi has also started her gamer girl era lately, have you heard of Kenshin Collision? The addiction is so real nyaaa!!"
+    c "Ooh!! Chi-Chi really loves watching anime and reading manga nya!!" 
+    show chichi upset
+    c "Chi-Chi has also- Wait, are you listening to me?" 
+    show surf
+    show chichi neutral
+    c "There we go. Anyway, ChiChi started her gamer girl era lately, have you heard of Kenshin Collision? The addiction is so real nyaaa!!"
     menu:
         "I love anime!":
             show chichi happy
@@ -232,9 +247,10 @@ label Dahlia:
     
 
 label Donna:
-    show donna neutral with fade
+    show donna happy with fade
     dn "Hey shweet heart, how’s ya goin?"
     player_name "Hi, it’s nice to meet you, what’s your name?"
+    show donna neutral
     dn "The name's Donna honey. Or at least it is now -- my husbands wouldn’t recognize that name though. I change it after the divorces babes, you know how it is. My friends call me sugartits though. *winks*"
     dn "What do you call yourself honey?"
     player_name "Oh, well my name is [player_name], but..."
@@ -244,7 +260,9 @@ label Donna:
             dn "I mean, can ya see em?! Take a looksie! I spent too much money on ‘em for you not to look honey!"
             dn "But also a lifetime on the pole and working the corner will get you that name sweet cheeks! I’ve worked hard for these girls here and my friends just recognize that! "
         "Do you have any kids then?":
+            show donna happy
             dn "Oh I love my children, I think I have 6 now, all my little angels."
+            show donna neutral
             dn "My oldest is Crystal, she's a beautiful girl 27 years young, had her when I was 16. Next is Mary Jane, she just turned 21, and is living it up with her friends in West Oakland!"
             dn "After her I had my lovely twin girls Indica & Sativa they’re both 18 and are making a great startup business on this website called OnlyFans! I’m so proud of them they’re just like their mama."
             dn "Lastly there is my one and only son Jack-Daniel who is 10 and my baby girl Methanie at 6 years old! They are both little angels getting straight C’s in school!"
@@ -255,12 +273,14 @@ label Donna:
     show donna neutral
     player_name "Oh that’s nice. Soooo... do you have any hobbies?"
     dn "Oh I am sure you can tell just by looking at me sweetie. I do enjoy a nice smoke, smoke at least 3 packs a day. I also love cooking up all kinds of things, heheh."
+    show donna happy
     dn "Oh and if I’m not too tired after all that I like to take nice walks to Bob’s trailer down the road, always good to make a quick buck. Knows all the right moves."
     menu:
         "You’re quite the busy lady, you sound like a lot of fun":
             show donna happy
             dn "Oh thanks darlin, you know fun is my middle name. Well actually it's Malibu, but all the men say it’s fun."
         "Oh I don’t know much about cigarettes, but I do like cooking!":
+            show donna neutral
             dn "Oh ain’t that sweet, but I don’t think we are talking about the same kinda cookin darlin."
         "Hmmm sounds like you spend a lot of time with that guy Bob, so why are you even here?":
             show donna upset
@@ -303,7 +323,7 @@ label Ebony:
             e "WHAAAT? You don’t know Amy Lee? The lead singer of the band Evanescence?! RAWR!!!!!!!!!!! I hope you like hardcore music or we won’t get along…"
         "Sorry, I don’t listen to emo music":
             show ebony upset
-            "IT’S NOT EMO!!!! It is art. It is hardcore. You wouldn’t understand, their music is my life."
+            e "IT’S NOT EMO!!!! It is art. It is hardcore. You wouldn’t understand, their music is my life."
     show ebony neutral
     e "*scoffs*"
     player_name "Um...do you have any hobbies?"
@@ -349,14 +369,14 @@ label Ebony:
             e "Rawr xD ! That means I love you in dinoswor x3"
         "I’m sorry to hear that":
             e "Yeah. Everyone always is..."
-        "Girl, you’re a walking red flag":
+        "You’re a walking red flag":
             show ebony upset
             e "Everyone always says that but no one ever lis-"
 label ebony_ending:
     show ebony neutral
     x "*TIMER RINGS*"
     H "Alright ladies and gentleman! Time to move onto your next date!"
-    e "...It's time for me to leave now [player_name]...But you'll forget about me anyway..."
+    e "......It's time for me to leave now [player_name].....But you'll forget about me anyway..."
     hide ebony neutral with fade
     player_name "Geez, she has a lot of baggage. Talking to her definitely brings me back to my younger days and I'm not sure if that's a good or bad thing."
     player_name "Alright...who's up next?"
@@ -367,11 +387,14 @@ label father_tangent:
     e "Oh. Him."
     show ebony neutral
     e "I killed him. Don’t tell anyone."
-    player_name "...What did you say?"
+    player_name "...What did you just say?"
     e "I killed him 3 months ago. No one knows it was me. The voices told me to do it. Jeff the Killer told me to."
     e "I had to do it. He promised me an eternity with him."
     player_name "Uh..."
-    e "NO! Don’t be scared my love. *smiles* I would never hurt someone like you…as long as you..love me..right?"
+    show ebony upset
+    e "NO! Don’t be scared. I would never hurt someone like you."
+    show ebony neutral
+    e "That is...not as long as...you love me.....right?"
     x "*Ebony is looking at you expectantly*"
     menu:
         "I do love you":
@@ -379,10 +402,10 @@ label father_tangent:
             e ".....I see."
             jump ebony_ending
         "No! What?! Are you crazy?!":
-            e "I should've known you wouldn't have understood me. Now you know too much."
+            e "I should've known you wouldn't have understood me. No one does and no one ever will. But now, you know too much."
             show ebony upset
             e "Sorry to end it this way, [player_name]."
-            show ebony neutral with hpunch
+            show ebony knife with hpunch
             x "*Ebony stabs you*"
             #GAME OVER screen?
             jump start 
