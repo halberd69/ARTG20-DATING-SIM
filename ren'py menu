@@ -1,5 +1,7 @@
 ## line 299-302
             imagebutton:
+                xpos 200
+                ypos 400
                 idle "idle_start.png"
                 hover "hover_start.png"
                 action Start()
