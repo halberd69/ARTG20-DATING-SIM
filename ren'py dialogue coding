@@ -15,6 +15,7 @@ define a = Character ("Alice")
 define e = Character ("Ebony")
 define dm = Character ("Damien")
 define an = Character ("Alien")
+image flyer = "Speed Dating Flier.png"
 image chichi neutral = "cat girl.png" 
 image chichi upset = "cat girl displeased.png"
 image chichi happy = "cat girl pleased.png"
@@ -28,6 +29,9 @@ image ebony neutral = "emo girl.png"
 image ebony happy = "emo girl pleased.png"
 image ebony upset = "emo girl displeased.png"
 
+# image launch = Movie(play="oa4_launch.webm", pos=(10, 10), anchor=(0, 0))
+# show launch behind eileen
+ 
 
 # The game starts here.
 label start:
@@ -41,9 +45,10 @@ label start:
     z "Oh man that’s so scary, guess that ruins my plans of going to Didnieland. Suppose I’ll have to find something around this hotel to do to spend my time…"
     x "* A flier suddenly slides under the door*"
     z "Hmm..what's this?"
+    show flyer with fade
     x "VALENTINES SPEED DATING! <3 IN LOBBY CONFERENCE ROOM SATURDAY FEBRUARY 10TH! ALL AGE 18+!"
     z "Huh … guess I could use some love in my life since Valentine's day is coming up..might as well give it a shot, don’t have much else to do!"
-    
+    hide flyer with fade
     # scene jumps to hotel dating lobby
     z "*deep breath* Alright…here we go... *enters room*"
 
@@ -286,7 +291,7 @@ label Donna:
 label Ebony:
     show ebony neutral with fade
     x "H-hey…"
-    player_name "Hi. What's your name?"
+    player_name "Hi, I'm [player_name]. What's your name?"
     e "Ebony…"
     player_name "Oh, that's a pretty na-"
     e "Ebony Dark’ness Dementia Raven Way. Some people tell me I look like Amy Lee."
@@ -351,7 +356,7 @@ label ebony_ending:
     show ebony neutral
     x "*TIMER RINGS*"
     H "Alright ladies and gentleman! Time to move onto your next date!"
-    e "...It's time for me to leave now [player_name]...But you'll probably forget about me anyway..."
+    e "...It's time for me to leave now [player_name]...But you'll forget about me anyway..."
     hide ebony neutral with fade
     player_name "Geez, she has a lot of baggage. Talking to her definitely brings me back to my younger days and I'm not sure if that's a good or bad thing."
     player_name "Alright...who's up next?"
@@ -371,13 +376,13 @@ label father_tangent:
     menu:
         "I do love you":
             show ebony happy
-            e "...I see."
+            e ".....I see."
             jump ebony_ending
         "No! What?! Are you crazy?!":
             e "I should've known you wouldn't have understood me. Now you know too much."
             show ebony upset
             e "Sorry to end it this way, [player_name]."
-            show ebony neutral
+            show ebony neutral with hpunch
             x "*Ebony stabs you*"
             #GAME OVER screen?
             jump start 
@@ -386,9 +391,113 @@ label father_tangent:
 label Chad:
     "This is Chad"
 label Alice:
-    "This is Alice"
+    a "Goodmooorning Baaaltimoooore~"
+    player_name "..."
+    a "OMG sorry did not see you there! Just mentally preparing myself for spring show auditions at my university. I cannot lose the lead role to a freshman again. So tell me, what's your name man?~"
+    menu: 
+        "Alexander Hamilton. My name is Alexander Hamilton":
+            a "OH. MY. GOD. YOU LISTEN TO THE HAMILTON SOUNDTRACK? Lin Manuel Miranda is literally the best composer ever. If I met him in real life I’d literally scream, he’s so baby girl and must be protected at all cost."
+            a "I met him once at my dad’s best friend’s uncle’s ex-step sisters’ wedding once. I blacked out that night."
+        "[player_name]":
+            a "You don’t know where that song is from? I thought everyone knew about Hamilton lol. I guess I just hang out with my theater friends too much. I’d lend you my soundtrack but Leslie Odom Jr. signed it sorry!!"
+        "Eww, is that Hamilton?":
+            a "Wow, okay, that is a pretty strong opinion coming from someone who obviously has a generic music taste. I’ll have you know I got a five on my AP US History exam thanks to listening to that soundtrack five hundred times for my part as Angelica Schuyler which got a standing ovation,"
+            a "something you will NEVER get."
+    player_name "Since you are into theater I am guessing you are good at singing."
+    a "*Blushes* I wouldn’t say that… I mean I did get the lead role twice sophomore year but that does not mean anything, my head rival got sick on audition day so I didn’t really have any competition."
+    player_name "That sounds intense."
+    a "As long as you got the right song you can get any role you dream of! What’s your go-to karaoke song?"
+    menu:
+        "Part of Your World":
+            a "*Squeals* How are we so alike?? That is my go to audition song! Brings back so many good memories of singing in Denny’s with my theater group after opening night. Perhaps you are my happily ever after."
+        "Getcha Head in the Game":
+            a "Ehh, a bit generic but High School Musical is a good movie. For my middle school’s theater group the lead male got sick so I played both Troy and Gabriella; sounds impossible but the theater is a place filled with possibilities!!"
+        "Rich Flex":
+            a "Ummm what kind of song is that?"
+            player_name "It's a rap song."
+            a "Rap??? There is something odd to me about music with curse words and no orchestra. I’ll stick to my Mean Girls soundtrack over any rap song anyday."
+    #show alice neutral
+    a "Anyways, I see you are not as interested in theater as me and that’s totally fine! I am a bit of a musical theater freak. It is a bit insufferable hehe."
+    a "I will force you to listen to every single soundtrack album I own in my car so you can learn muahahaha. Sooo what are some hobbies that you do have?"
+    menu:
+        "I am a bit of a band nerd!":
+            a "Omg! So many of my friends are in bands, musical and band nerds basically go together like peas in a pod. I was actually in band for a bit in elementary school but my teacher said my singing was so angelic that I was meant to be in theater! We are definitely meant to be."
+        "I mainly do art":
+            a "THEATER ARTS???"
+            player_name "Oh no, like painting."
+            a "Ohh, so sorry! That's pretty cool too. Perhaps you can paint background sets for my school plays!"
+        "I am an athlete":
+            a "Ugh I hate athletes. The football players in high school would bully all my guy friends for wearing makeup. Yet they still ended up messaging them on Grindr. Go figure."
+    #show alice neutral
+    a "test end."
+    jump selection
 label Damien:
-    "This is Damien"
+    player_name "Hello there. I'm [player_name]."
+    dm "Hi. I’m Damien. "
+    dm "*Sighs* To be quite honest I am not certain why I am even here."
+    dm "I consider myself to be a gentleman, learned through the classic films of the fifties and sixties. But I missed the movie premiere for the director's cut of my favorite movie so I am here to cure my boredom."
+    player_name "Oh really? What was the name of the movie?"
+    dm "I don’t think you have heard of it… it’s really underground and high class cinema…and if you have then you probably didn’t understand it."
+    player_name "Try me."
+    dm "It’s called \“Memento.\”"
+    menu:
+        "The psychological thriller by Christopher Nolan? That movie was insane.Literally so underrated.":
+            dm "Oh? I see you’ve got good taste in your movies, I applaud you for that. We should go catch a movie sometime, fellow film enthusiasts."
+        "Oh is that the one Christopher Nolan film? I didn’t understand it.":
+            dm "Not surprised. It’s definitely a film not meant for the average movie goer. My friends and I made a podcast analyzing the plot, you should definitely check it out."
+        "Oh yeah I’ve seen it… it was too confusing so I stopped watching it halfway.":
+            dm "*Sighs* Disappointed but not surprised."
+    # show damien neutral
+    dm "Okay, since now you know my favorite film, I have to ask you what is yours? "
+    menu:
+        "Inglourious Basterds":
+            dm "Woah… I think I’m in love. A fellow Tarantino lover? Very impressive, we definitely have to catch a film together at the cinema."
+        "Inception":
+            dm "Playing it on the safe side I see. It’s definitely a good sci-fi film but not the best. A bit overrated if you ask me."
+            dm "But it tries too hard, and Nolan did not do his best directing with that one. He has much better films that I doubt you even know about."
+        "Barbie":
+            dm "Oh. So you’re a feminist I see. I don’t understand how people were getting all emotional over it. Like you wouldn’t see me crying about a Hot Wheels movie."
+            dm "I mean I’m not saying it's a bad film but I felt like it was really attacking men. Like yay… girl power… we get it."
+    #show damien neutral
+    player_name "So by the looks of it I’m guessing you are a film bro."
+    dm "Film bro? No, I’d much rather consider myself a film enthusiast."
+    menu: 
+        "I consider myself a film enthusiast too!":
+            dm "You and I think alike, I don’t understand that whole film guy stereotype. Personally I don’t fit that whole persona. "
+        "What's the difference?":
+            dm "A film bro is just a stereotype of a misogynistic film enjoyer made up by society. It’s so insulting."
+        "Film bro, film enthusiast… It's the same thing.":
+            dm "I. Am. Not. A. Film. Bro. Clearly it’s a concept difficult for you to comprehend so I will not explain any further."
+    player_name "Do you do anything else besides watch movies? Like any hobbies?"
+    dm "Anything else besides movies? Ha, listen to yourself, what else is there to life besides a good film? But if you must know, I do take quite an interest in indie music…"
+    dm "I doubt you know any of the artists though, they’re all super underground; like Radiohead and The Smiths. I doubt you even know one song."
+    menu:
+        "I love The Smiths and Radiohead, they're so underground. All those Tikbok kids are fake fans of them.":
+            dm "Finally, someone who understands my feelings about indie music. No one these days are real connoisseurs of indie. No one understands it. Those are my favorite songs by them as well."
+        "I’ve heard of them before, never listened though. They’re a bit mainstream to be honest…":
+            dm "Mainstream? Mainstream?! Are you insane? No one even listens to these artists, but I couldn’t expect you to understand indie music. *scoffs*"
+        "I’ve never heard of them before, but I’m not really into indie music. I like artists like Taylor Swift!":
+            dm "Of course you like Taylor Swift. She has such shallow lyrics that mean nothing. And all she ever sings about is men and how much she hates men. It's weak."
+    #show damien neutral
+    player_name "Well what’s your ideal first date?"
+    dm "Well obviously it would be taking someone to the cinema, perhaps to see a black and white obscure French film that they’ve probably never heard about, so I can tell them everything I know about it."
+    dm "After the cinema, I’d take them for a long night drive, where I’d play all my favorite indie songs for them. I’ll drive them back to my loft, put on a Cigarettes After Sex vinyl record…and well…you know what happens next. *winks*"
+    menu:
+        "Oh.my.God. That sounds like my dream date. I love expanding my palate with new European films, and Cigarettes After Sex?! I loveeee them!":
+            dm "Wow. You really are my dream person. Let’s get out of here and go to a non transactional coffee co-op that uses reusable mugs and actually plays real music, and get to know each other a bit more."
+        "Interesting first date. Can’t say I’ve ever experienced something like that before, but I don’t think a movie on the first date is a good idea.":
+            dm "First of all, they are called films, NOT movies. Second, you simply just don’t understand what it means to see a good film."
+        "Why would I go see a movie if you’re in my ear talking to me the whole time? Also, I would never go back to someone's house on a first date. Red Flag.":
+            dm "Wow. You’re just like everyone else. My ex-girlfriend always said the same things. You’re such a sheep. My film knowledge should not be wasted on such a simple-minded person like yourself."
+            #play creep by radiohead?
+    # show damien neutral
+    x "*BELL RINGS*"
+    dm "Looks like that's my cue to go. Arrivederci."
+    player_name "Right, see you then."
+    # hide damien neutral with fade
+    player_name "I wonder what movies he hasn't seen. He probably has opinions on every single film in existence."
+    player_name "Alright...who's next?"
+    jump selection
 label Alien:
     "This is Alien"
 
