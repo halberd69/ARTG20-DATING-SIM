@@ -25,6 +25,17 @@ image ebony neutral = "emo girl.png"
 image ebony happy = "emo girl pleased.png"
 image ebony upset = "emo girl displeased.png"
 image ebony knife = "emo girl knife.png"
+image chad neutral = "chad neutral.png"
+image chad happy = "chad happy.png"
+image chad upset = "chad upset.png"
+image handshake = "handshake.jpg"
+image damien neutral = "filmbroneutral.png"
+image damien happy = "filmbrohappy.png"
+image damien upset = "filmbroangry.png"
+image alice neutral ="theatergirlneutral.png"
+image alice happy = "theatergirlecstatic.png"
+image alice upset = "theatergirlangry.png"
+image alice frown = "theatergirlfrown.png"
 
 
 image table = "table.png"
@@ -39,14 +50,16 @@ image surf = Movie(play="images/subwaysurfers.webm", size=(720,350), loop=False,
 # The game starts here.
 label start:
 
-    scene none
-    
+    scene tv with fade
+    pause 1.0
     n "We’re getting reports of a slight drizzle today here in our sunny Southern California town, experts are advising EVERYONE to stay inside and avoid the sprinkle outside."
     n "Roads are unsafe to drive on, as they are slightly wet, HIGH chance of hydroplaning."
     z "Oh man that’s so scary, guess that ruins my plans of going to Didnieland. Suppose I’ll have to find something around this hotel to do to spend my time…"
+    pause 0.3
     x "* A flier suddenly slides under the door*"
-    z "Hmm..what's this?"
     show flyer with moveintop
+    z "Hmm..what's this?"
+
     x "VALENTINES SPEED DATING! <3 IN LOBBY CONFERENCE ROOM SATURDAY FEBRUARY 10TH! ALL AGE 18+!"
     z "Huh … guess I could use some love in my life since Valentine's day is coming up..might as well give it a shot, don’t have much else to do!"
     hide flyer
@@ -81,9 +94,10 @@ label start:
 label continue_game:
     H "Okay great! Go ahead and sign your name here, grab your name tag, and sit down at that first table! You’ll have 5 minutes with each partner! We’re about to start in a few minutes!"
     $ player_name = renpy.input("Please enter your name.") 
-    hide hosts with fade
+    H "Amazing, amazing. It's nice to meet you, [player_name]. We're sure you're going to find the love of your life here. Good luck out there Tiger!"
+    hide hosts
     hide table
-    #SCENE JUMP TO TABLE
+    with fade
     player_name "Those were a lot of terms and conditions for this event…I thought speed dating would be pretty straightforward. I don’t even know what she said…did she say death? Dismemberment? What even is that abou-"
     x "*BELL RINGS* FIRST PAIRING STARTS NOW! Find your first partner ladies and gents!"
 
@@ -412,112 +426,217 @@ label father_tangent:
 
 
 label Chad:
-    "This is Chad"
+    show chad neutral with fade
+    cd "Hey whats up, the name’s Chad, Great name huh? Kinda lame that I have to be here right now, the gyms closed at the hotel for some reason so I said might as well grace this event with my presence. It was leg day anyways so I guess I’m not missing much."
+    player_name "It’s nice to meet you Chad, I'm [player_name]. I can definitely see that you enjoy the gym a lot."
+    cd "Enjoy it? More like live it. The gym is my passion, my safe place. Not that I need a safe place, since I am an absolute unit of a human being. *Flexes muscles*"
+    menu:
+        "Gym is also my life. I love to take care of my body and stay healthy.":
+            show handshake with fade
+            pause 0.3
+            hide handshake 
+            show chad happy with fade
+            cd "Oh right on, right on. The body is a temple and it's important to take care of it. I bet you can’t bench as much as me though."
+        "I work out here and there. It is not the most important thing to me though I do enjoy going.":
+            cd "Oh bro come on, you gotta be getting in the gym more. If gains are not life then that's not a life worth living my guy."
+        "Oh I'm not much of a lifter at all. I prefer going on runs instead of lifting.":
+            show chad upset
+            cd "Wow, that's such a beta mindset. You have to strive to be better, that's how you get everyone to like you. I didn’t get what I have simply from running. I got it through strict body discipline, bulking, and constant protein and pre workout drinks."
+    show chad neutral
+    player_name "Do you have any hobbies outside of the gym?"
+    cd "Hobbies? No, of course not. I’m constantly working on my physique, I have no time for hobbies. Every day is gym day. Don’t even have time for the ladies, but they are allllll over me."
+    menu:
+        "Someone with a physique like yours must be overcompensating for something…":
+            show chad upset
+            cd "WHAT?! That is a myth! Just because I might JUICE, does NOT mean I have small junk! I am massive! Mine is probably bigger than yours, it can lift too! I can do a pushup with BOTH HANDS behind my back, no feet either. "
+        "That right brother daps up gym is life. Who needs a relationship when you have gains like this?!":
+            show handshake with fade
+            pause 0.3
+            hide handshake 
+            show chad happy with fade
+            cd "That's right my man! The body always comes first, everyone else second. So happy you understand my lifestyle."
+        "No time for ladies? Where will you make time for me then?":
+            cd "Well you would be my gym partner of course, though you’d have to keep up with these gains *flexes*"
+    show chad neutral
+    player_name "Since you go to the gym everyday, what does your daily routine look like?"
+    cd "Well it always starts at 5am. I wake up, journal, eat my raw beef heart breakfast, along with my raw eggs mixed with pre-workout. After that, I put on my alpha male podcast, and rev my Doge Hellbat all the way to the gym brother! Once I’m there, usually around 7am, I hit the weights."
+    cd "Always working on my upper body. Mondays are deltoids, Tuesdays are triceps, Wednesdays are biceps, Thursdays are chest, Fridays are glutes, Saturday is full body. Sundays are my God days. I feel one with God and I feel like A God."
+    show chad happy
+    cd "Every workout ends with a sauna trip with the boys."
+    show chad neutral
+    menu: 
+        "What do you and your boys do in the sauna?":
+            show chad happy
+            cd "Well boys will be boys y'know? Ahahaha. *bites lip* I bet we’d have fun together in the sauna."
+        "I didn’t hear you say anything about legs in your routine?":
+            show chad upset
+            cd "I’m always walking anyways, that does enough for them. Leg days are for weaklings, arms are everything. What could I possibly need a leg day for?"
+        "That sounds like a great routine to me. Arms are everything. How much can you bench?":
+            show handshake with fade
+            pause 0.3
+            hide handshake 
+            show chad happy with fade
+            cd "600lbs every day my man. Working up to beat the world record some day. *flexes*"
+    show chad neutral
+    player_name "What are you looking for in a relationship then?"
+    cd "Well obviously they must have an interest in going to the gym. That is my number one priority. Other than that, someone who worships me like the God I am. I am everything."
+    cd "And they must go along with my daily routine, and give my lots of children, boys of course, to continue my gladiator bloodline. Most importantly, someone who will cook me dinner every night. They must be able to make a mean sandwich."
+    menu:
+        "Not quite what I’m looking for, I’m not as into the gym as you seem to be…":
+            cd "That's a shame you won’t get to be with a godlike man like me. But, even though you don’t go to the gym, you still wanna hit?"
+        "That’s exactly what I’m looking for. You're perfect, do you want to hit up the gym after this?":
+            show handshake with fade
+            pause 0.3
+            hide handshake 
+            show chad happy with fade
+            cd "Sheeesh, say less. *bites lip* You’re perfect for me, I’m getting a little flustered too. You look like someone who can give birth to some real athletes."
+        "I should be your number one priority, not the gym. And I don't want to be forced to cook for my partner. You’re definitely not an alpha male.":
+            show chad upset
+            cd "WHAT DID YOU JUST SAY TO ME?! I am very OBVIOUSLY AN ALPHA!! I’ve taken every online quiz available and they all say I have alpha blood. You just don’t understand my grind. Gym is life. Do you even know who you’re talking to? I’m related to Julius Caesar!"
+    show chad neutral
+    "*TIMER RINGS*"
+    cd "Woah that ringer sounds exactly like the lunk alarm at Planet Fittest. I don't go there obviously, I just remember walking past one on my way to Rold's Gym. You know, the gym where all the real lifters go to."
+    show chad happy
+    cd "Stay on that grind my brother! Down that protein and lift heavy! Also steroids can actually be good for you, all that stuff about them being bad is just a myth!"
+    hide chad with fade
+    player_name "Huh..."
+    jump selection
 label Alice:
+    show alice neutral with fade
+    with moveinleft
     a "Goodmooorning Baaaltimoooore~"
     player_name "..."
     a "OMG sorry did not see you there! Just mentally preparing myself for spring show auditions at my university. I cannot lose the lead role to a freshman again. So tell me, what's your name man?~"
     menu: 
         "Alexander Hamilton. My name is Alexander Hamilton":
+            show alice happy
             a "OH. MY. GOD. YOU LISTEN TO THE HAMILTON SOUNDTRACK? Lin Manuel Miranda is literally the best composer ever. If I met him in real life I’d literally scream, he’s so baby girl and must be protected at all cost."
             a "I met him once at my dad’s best friend’s uncle’s ex-step sisters’ wedding once. I blacked out that night."
         "[player_name]":
             a "You don’t know where that song is from? I thought everyone knew about Hamilton lol. I guess I just hang out with my theater friends too much. I’d lend you my soundtrack but Leslie Odom Jr. signed it sorry!!"
         "Eww, is that Hamilton?":
+            show alice upset
             a "Wow, okay, that is a pretty strong opinion coming from someone who obviously has a generic music taste. I’ll have you know I got a five on my AP US History exam thanks to listening to that soundtrack five hundred times for my part as Angelica Schuyler which got a standing ovation,"
             a "something you will NEVER get."
+    show alice neutral
     player_name "Since you are into theater I am guessing you are good at singing."
+    show alice frown
     a "*Blushes* I wouldn’t say that… I mean I did get the lead role twice sophomore year but that does not mean anything, my head rival got sick on audition day so I didn’t really have any competition."
     player_name "That sounds intense."
+    show alice neutral
     a "As long as you got the right song you can get any role you dream of! What’s your go-to karaoke song?"
     menu:
         "Part of Your World":
+            show alice happy
             a "*Squeals* How are we so alike?? That is my go to audition song! Brings back so many good memories of singing in Denny’s with my theater group after opening night. Perhaps you are my happily ever after."
         "Getcha Head in the Game":
             a "Ehh, a bit generic but High School Musical is a good movie. For my middle school’s theater group the lead male got sick so I played both Troy and Gabriella; sounds impossible but the theater is a place filled with possibilities!!"
         "Rich Flex":
+            show alice frown
             a "Ummm what kind of song is that?"
             player_name "It's a rap song."
             a "Rap??? There is something odd to me about music with curse words and no orchestra. I’ll stick to my Mean Girls soundtrack over any rap song anyday."
-    #show alice neutral
+    show alice neutral
     a "Anyways, I see you are not as interested in theater as me and that’s totally fine! I am a bit of a musical theater freak. It is a bit insufferable hehe."
-    a "I will force you to listen to every single soundtrack album I own in my car so you can learn muahahaha. Sooo what are some hobbies that you do have?"
+    a "I will force you to listen to every single soundtrack album I own in my car so you can learn, muahahaha. Sooo, what are some hobbies that you do have?"
     menu:
         "I am a bit of a band nerd!":
+            show alice happy
             a "Omg! So many of my friends are in bands, musical and band nerds basically go together like peas in a pod. I was actually in band for a bit in elementary school but my teacher said my singing was so angelic that I was meant to be in theater! We are definitely meant to be."
         "I mainly do art":
+            show alice happy
             a "THEATER ARTS???"
             player_name "Oh no, like painting."
+            show alice frown
             a "Ohh, so sorry! That's pretty cool too. Perhaps you can paint background sets for my school plays!"
         "I am an athlete":
-            a "Ugh I hate athletes. The football players in high school would bully all my guy friends for wearing makeup. Yet they still ended up messaging them on Grindr. Go figure."
-    #show alice neutral
-    a "test end."
+            show alice upset
+            a "Ugh I hate athletes. The football players in high school would bully all my guy friends for wearing makeup. But they'd still end up messaging them on Grindr. Go figure."
+    show alice neutral
+    a "The show's coming to an end I suppose! Gotta get ready for my next act heheh. Maybe I'll see you later if the audience calls for an encore stage! Goodbyeee~"
+    hide alice with fade
+    player_name "...Does she know she's not on stage right now? I have to respect her dedication to her craft for sure."
     jump selection
 label Damien:
+    show damien neutral with fade
     player_name "Hello there. I'm [player_name]."
     dm "Hi. I’m Damien. "
     dm "*Sighs* To be quite honest I am not certain why I am even here."
     dm "I consider myself to be a gentleman, learned through the classic films of the fifties and sixties. But I missed the movie premiere for the director's cut of my favorite movie so I am here to cure my boredom."
     player_name "Oh really? What was the name of the movie?"
+    show damien upset
     dm "I don’t think you have heard of it… it’s really underground and high class cinema…and if you have then you probably didn’t understand it."
     player_name "Try me."
+    show damien neutral
     dm "It’s called \“Memento.\”"
     menu:
         "The psychological thriller by Christopher Nolan? That movie was insane.Literally so underrated.":
+            show damien happy
             dm "Oh? I see you’ve got good taste in your movies, I applaud you for that. We should go catch a movie sometime, fellow film enthusiasts."
         "Oh is that the one Christopher Nolan film? I didn’t understand it.":
             dm "Not surprised. It’s definitely a film not meant for the average movie goer. My friends and I made a podcast analyzing the plot, you should definitely check it out."
         "Oh yeah I’ve seen it… it was too confusing so I stopped watching it halfway.":
+            show damien upset
             dm "*Sighs* Disappointed but not surprised."
-    # show damien neutral
+    show damien neutral
     dm "Okay, since now you know my favorite film, I have to ask you what is yours? "
     menu:
         "Inglourious Basterds":
+            show damien happy
             dm "Woah… I think I’m in love. A fellow Tarantino lover? Very impressive, we definitely have to catch a film together at the cinema."
         "Inception":
             dm "Playing it on the safe side I see. It’s definitely a good sci-fi film but not the best. A bit overrated if you ask me."
             dm "But it tries too hard, and Nolan did not do his best directing with that one. He has much better films that I doubt you even know about."
         "Barbie":
+            show damien upset
             dm "Oh. So you’re a feminist I see. I don’t understand how people were getting all emotional over it. Like you wouldn’t see me crying about a Hot Wheels movie."
             dm "I mean I’m not saying it's a bad film but I felt like it was really attacking men. Like yay… girl power… we get it."
-    #show damien neutral
+    show damien neutral
     player_name "So by the looks of it I’m guessing you are a film bro."
     dm "Film bro? No, I’d much rather consider myself a film enthusiast."
     menu: 
         "I consider myself a film enthusiast too!":
+            show damien happy
             dm "You and I think alike, I don’t understand that whole film guy stereotype. Personally I don’t fit that whole persona. "
         "What's the difference?":
+            show damien upset
             dm "A film bro is just a stereotype of a misogynistic film enjoyer made up by society. It’s so insulting."
         "Film bro, film enthusiast… It's the same thing.":
+            show damien upset
             dm "I. Am. Not. A. Film. Bro. Clearly it’s a concept difficult for you to comprehend so I will not explain any further."
+    show damien neutral
     player_name "Do you do anything else besides watch movies? Like any hobbies?"
     dm "Anything else besides movies? Ha, listen to yourself, what else is there to life besides a good film? But if you must know, I do take quite an interest in indie music…"
     dm "I doubt you know any of the artists though, they’re all super underground; like Radiohead and The Smiths. I doubt you even know one song."
     menu:
         "I love The Smiths and Radiohead, they're so underground. All those Tikbok kids are fake fans of them.":
+            show damien happy
             dm "Finally, someone who understands my feelings about indie music. No one these days are real connoisseurs of indie. No one understands it. Those are my favorite songs by them as well."
         "I’ve heard of them before, never listened though. They’re a bit mainstream to be honest…":
+            show damien upset
             dm "Mainstream? Mainstream?! Are you insane? No one even listens to these artists, but I couldn’t expect you to understand indie music. *scoffs*"
         "I’ve never heard of them before, but I’m not really into indie music. I like artists like Taylor Swift!":
+            show damien upset
             dm "Of course you like Taylor Swift. She has such shallow lyrics that mean nothing. And all she ever sings about is men and how much she hates men. It's weak."
-    #show damien neutral
+    show damien neutral
     player_name "Well what’s your ideal first date?"
     dm "Well obviously it would be taking someone to the cinema, perhaps to see a black and white obscure French film that they’ve probably never heard about, so I can tell them everything I know about it."
     dm "After the cinema, I’d take them for a long night drive, where I’d play all my favorite indie songs for them. I’ll drive them back to my loft, put on a Cigarettes After Sex vinyl record…and well…you know what happens next. *winks*"
     menu:
         "Oh.my.God. That sounds like my dream date. I love expanding my palate with new European films, and Cigarettes After Sex?! I loveeee them!":
+            show damien happy
             dm "Wow. You really are my dream person. Let’s get out of here and go to a non transactional coffee co-op that uses reusable mugs and actually plays real music, and get to know each other a bit more."
         "Interesting first date. Can’t say I’ve ever experienced something like that before, but I don’t think a movie on the first date is a good idea.":
             dm "First of all, they are called films, NOT movies. Second, you simply just don’t understand what it means to see a good film."
         "Why would I go see a movie if you’re in my ear talking to me the whole time? Also, I would never go back to someone's house on a first date. Red Flag.":
+            show damien upset
             dm "Wow. You’re just like everyone else. My ex-girlfriend always said the same things. You’re such a sheep. My film knowledge should not be wasted on such a simple-minded person like yourself."
             #play creep by radiohead?
-    # show damien neutral
+    show damien neutral
     x "*BELL RINGS*"
-    dm "Looks like that's my cue to go. Arrivederci."
+    dm "Looks like that's my cue to go. Arrivederci, [player_name]."
     player_name "Right, see you then."
-    # hide damien neutral with fade
+    hide damien neutral with fade
     player_name "I wonder what movies he hasn't seen. He probably has opinions on every single film in existence."
     player_name "Alright...who's next?"
     jump selection
