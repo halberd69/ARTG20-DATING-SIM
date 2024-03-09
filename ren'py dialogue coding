@@ -308,8 +308,9 @@ label Donna:
     menu:
         "Why do your friends call you sugartits?":
             show donna happy
+            $ donnacount += 1
             dn "I mean, can ya see em?! Take a looksie! I spent too much money on ‘em for you not to look honey!"
-            dn "But also a lifetime on the pole and working the corner will get you that name sweet cheeks! I’ve worked hard for these girls here and my friends just recognize that! "
+            dn "But also a lifetime on the pole and working the corner will get you that name sweet cheeks! I’ve worked hard for these girls here and my friends just recognize that!"
         "Do you have any kids then?":
             show donna happy
             dn "Oh I love my children, I think I have 6 now, all my little angels."
@@ -319,6 +320,7 @@ label Donna:
             dn "Lastly there is my one and only son Jack-Daniel who is 10 and my baby girl Methanie at 6 years old! They are both little angels getting straight C’s in school!"
         "How many husbands have you had?":
             show donna upset
+            $ donnacount -= 1
             dn "Oh, those assholes. *takes drag of cigarette* I try not to count them anymore, but for your sake I think I’m at about 7. Give or take a few boyfriends here and there." 
             dn "*blows smoke in your face*"
     show donna neutral
@@ -329,12 +331,14 @@ label Donna:
     menu:
         "You’re quite the busy lady, you sound like a lot of fun":
             show donna happy
+            $ donnacount += 1
             dn "Oh thanks darlin, you know fun is my middle name. Well actually it's Malibu, but all the men say it’s fun."
         "Oh I don’t know much about cigarettes, but I do like cooking!":
             show donna neutral
             dn "Oh ain’t that sweet, but I don’t think we are talking about the same kinda cookin darlin."
         "Hmmm sounds like you spend a lot of time with that guy Bob, so why are you even here?":
             show donna upset
+            $ donnacount -= 1
             dn "How disrespectful of you, I will have you know Bob was my ex husband, gave me one… or was it two? Of my children, we have a complicated relationship but I don’t need you judging me for it."
     show donna neutral
     player_name "Hmmm, so what’s your living situation?"
@@ -344,11 +348,13 @@ label Donna:
     menu:
         "I think you seem pretty great honestly. I’m not so perfect myself, why don’t we go back to my room?":
             show donna happy
+            $ donnacount += 1
             dn "Oh sweetie you don’t even have to ask. I'm right behind you darlin."
         "I don’t know if I am totally vibing with this, but if I could get your number maybe we can go out again sometime?":
             dn "I don’t really do that sort of thing sweetie, you seem very nice though, I don’t think you could handle all of this anyways."
         "You are pretty intimidating and I don’t know if I can match that energy so I don’t think it’s gonna work out.":
             show donna upset
+            $ donnacount -= 1
             dn "You just can’t handle a strong sexy independent woman like me, I am far too much for you clearly. You probably think you’re better than me huh? All high and mighty cause I live in a trailer, well fuck you!! I don’t need this SHIT ANYWAYS!!!"
             dn "*blows smoke into face*"
     show donna neutral
@@ -370,6 +376,7 @@ label Ebony:
     menu:
         "I love evanescence":
             show ebony happy
+            $ ebonycount += 1
             e "OMG! I can’t believe you know them, they are one of my favorrrrrite bands x3 ! They’re super underground. They make music that represents how I feel inside."
         "Who's that?":
             e "WHAAAT? You don’t know Amy Lee? The lead singer of the band Evanescence?! RAWR!!!!!!!!!!! I hope you like hardcore music or we won’t get along…"
@@ -383,11 +390,13 @@ label Ebony:
     menu:
         "Wow, I love MCR!":
             show ebony happy
+            $ ebonycount += 1
             e "YOU LIKE MCR?!?!?!?!!! OMG RAWR X3 that’s so great…Gerard Way is such a smol bean Cx I luv him so much and he’s my vampire boyfriend."
         "Do you do anything else?":
             e "No. All I do is listen to bands and watch videos about my favorite bands and read fanfiction about my bands. I guess you don’t understand, but I wouldn’t expect anything less from a normie."
         "What are you like, emo or something?":
             show ebony upset
+            $ ebonycount -= 1
             e "I’M NOT EMO!!!!! I’m a mall-goth, punk rock, ukulele screamo, grungecore, alternative, tumblr, scene girl okay? And it is not a phase, but I wouldn’t expect a normie poser like you to understand that."
     show ebony neutral
     e "*scoffs*"
@@ -397,6 +406,7 @@ label Ebony:
     menu:
         "Wow… that's beautiful…":
             show ebony happy
+            $ ebonycount += 1
             e "You really think so? I spend a lot of my time writing poetry in the notes app on my phone. Never get much of a chance to share it with anybody…"
         "Are you okay?":
             e "As Gerard Way would say, no I’m not okay, but who really is in this broken world? Everything is always going wrong in my life, but I’m used to it by now."
@@ -407,9 +417,11 @@ label Ebony:
     menu:
         "I like when you talk":
             show ebony happy
+            $ ebonycount += 1
             e "*Blushes* R-really? Why? I have an awfully annoying voice and have to force myself to stay quiet so I don't go around bothering others with my voice."
         "Why are you so quiet?":
             show ebony upset
+            $ ebonycount -= 1
             e "I'm scared of getting too close to others. Everytime I do, they always leave me. I'm essentially unlovable. No one ever cares about me and no one ever will. Love isn't real, it's just a chemical reaction."
     show ebony neutral
     e "I’m just super insecure *blushes*…No one ever says anything nice about me…The world is just against me. I don't even know why I’m here."
@@ -418,13 +430,15 @@ label Ebony:
     menu: 
         "You're so cute. I can fix you.":
             show ebony happy
+            $ ebonycount += 1
             e "Rawr xD ! That means I love you in dinoswor x3"
         "I’m sorry to hear that":
             e "Yeah. Everyone always is..."
         "You’re a walking red flag":
             show ebony upset
+            $ ebonycount -= 1
             e "Everyone always says that but no one ever lis-"
-label ebony_ending:
+label ebony_convo_continue:
     show ebony neutral
     x "*TIMER RINGS*"
     H "Alright ladies and gentleman! Time to move onto your next date!"
@@ -437,6 +451,7 @@ label ebony_ending:
 
 label father_tangent:
     show ebony upset
+    $ ebonycount -= 1
     e "Oh. Him."
     show ebony neutral
     e "I killed him. Don’t tell anyone."
@@ -452,16 +467,16 @@ label father_tangent:
     menu:
         "I do love you":
             show ebony happy
+            $ ebonycount += 2
             e ".....I see."
-            jump ebony_ending
+            jump ebony_convo_continue
         "No! What?! Are you crazy?!":
             e "I should've known you wouldn't have understood me. No one does and no one ever will. But now, you know too much."
             show ebony upset
             e "Sorry to end it this way, [player_name]."
             show ebony knife with hpunch
             x "*Ebony stabs you*"
-            #GAME OVER screen?
-            jump start 
+            jump EBending 
 
 
 label Chad:
@@ -475,11 +490,13 @@ label Chad:
             pause 0.3
             hide handshake 
             show chad happy with fade
+            $ chadcount += 1
             cd "Oh right on, right on. The body is a temple and it's important to take care of it. I bet you can’t bench as much as me though."
         "I work out here and there. It is not the most important thing to me though I do enjoy going.":
             cd "Oh bro come on, you gotta be getting in the gym more. If gains are not life then that's not a life worth living my guy."
         "Oh I'm not much of a lifter at all. I prefer going on runs instead of lifting.":
             show chad upset
+            $ chadcount -= 1
             cd "Wow, that's such a beta mindset. You have to strive to be better, that's how you get everyone to like you. I didn’t get what I have simply from running. I got it through strict body discipline, bulking, and constant protein and pre workout drinks."
     show chad neutral
     player_name "Do you have any hobbies outside of the gym?"
@@ -487,12 +504,14 @@ label Chad:
     menu:
         "Someone with a physique like yours must be overcompensating for something…":
             show chad upset
+            $ chadcount -= 1
             cd "WHAT?! That is a myth! Just because I might JUICE, does NOT mean I have small junk! I am massive! Mine is probably bigger than yours, it can lift too! I can do a pushup with BOTH HANDS behind my back, no feet either. "
         "That right brother daps up gym is life. Who needs a relationship when you have gains like this?!":
             show handshake with fade
             pause 0.3
             hide handshake 
             show chad happy with fade
+            $ chadcount += 1
             cd "That's right my man! The body always comes first, everyone else second. So happy you understand my lifestyle."
         "No time for ladies? Where will you make time for me then?":
             cd "Well you would be my gym partner of course, though you’d have to keep up with these gains *flexes*"
@@ -509,12 +528,14 @@ label Chad:
             cd "Well boys will be boys y'know? Ahahaha. *bites lip* I bet we’d have fun together in the sauna."
         "I didn’t hear you say anything about legs in your routine?":
             show chad upset
+            $ chadcount -= 1
             cd "I’m always walking anyways, that does enough for them. Leg days are for weaklings, arms are everything. What could I possibly need a leg day for?"
         "That sounds like a great routine to me. Arms are everything. How much can you bench?":
             show handshake with fade
             pause 0.3
             hide handshake 
             show chad happy with fade
+            $ chadcount += 1
             cd "600lbs every day my man. Working up to beat the world record some day. *flexes*"
     show chad neutral
     player_name "What are you looking for in a relationship then?"
@@ -528,9 +549,11 @@ label Chad:
             pause 0.3
             hide handshake 
             show chad happy with fade
+            $ chadcount += 1
             cd "Sheeesh, say less. *bites lip* You’re perfect for me, I’m getting a little flustered too. You look like someone who can give birth to some real athletes."
         "I should be your number one priority, not the gym. And I don't want to be forced to cook for my partner. You’re definitely not an alpha male.":
             show chad upset
+            $ chadcount -= 1
             cd "WHAT DID YOU JUST SAY TO ME?! I am very OBVIOUSLY AN ALPHA!! I’ve taken every online quiz available and they all say I have alpha blood. You just don’t understand my grind. Gym is life. Do you even know who you’re talking to? I’m related to Julius Caesar!"
     show chad neutral
     "*TIMER RINGS*"
@@ -542,20 +565,22 @@ label Chad:
     $ count += 1
     jump selection
 label Alice:
-    show alice neutral with fade
-    with moveinleft
+    show alice happy with moveinleft
     a "Goodmooorning Baaaltimoooore~"
     player_name "..."
+    show alice neutral
     a "OMG sorry did not see you there! Just mentally preparing myself for spring show auditions at my university. I cannot lose the lead role to a freshman again. So tell me, what's your name man?~"
     menu: 
         "Alexander Hamilton. My name is Alexander Hamilton":
             show alice happy
+            $ alicecount += 1
             a "OH. MY. GOD. YOU LISTEN TO THE HAMILTON SOUNDTRACK? Lin Manuel Miranda is literally the best composer ever. If I met him in real life I’d literally scream, he’s so baby girl and must be protected at all cost."
             a "I met him once at my dad’s best friend’s uncle’s ex-step sisters’ wedding once. I blacked out that night."
-        "[player_name]":
+        "My name is [player_name]":
             a "You don’t know where that song is from? I thought everyone knew about Hamilton lol. I guess I just hang out with my theater friends too much. I’d lend you my soundtrack but Leslie Odom Jr. signed it sorry!!"
         "Eww, is that Hamilton?":
             show alice upset
+            $ alicecount -= 1
             a "Wow, okay, that is a pretty strong opinion coming from someone who obviously has a generic music taste. I’ll have you know I got a five on my AP US History exam thanks to listening to that soundtrack five hundred times for my part as Angelica Schuyler which got a standing ovation,"
             a "something you will NEVER get."
     show alice neutral
@@ -568,11 +593,13 @@ label Alice:
     menu:
         "Part of Your World":
             show alice happy
+            $ alicecount += 1
             a "*Squeals* How are we so alike?? That is my go to audition song! Brings back so many good memories of singing in Denny’s with my theater group after opening night. Perhaps you are my happily ever after."
         "Getcha Head in the Game":
             a "Ehh, a bit generic but High School Musical is a good movie. For my middle school’s theater group the lead male got sick so I played both Troy and Gabriella; sounds impossible but the theater is a place filled with possibilities!!"
         "Rich Flex":
             show alice frown
+            $ alicecount -= 1
             a "Ummm what kind of song is that?"
             player_name "It's a rap song."
             a "Rap??? There is something odd to me about music with curse words and no orchestra. I’ll stick to my Mean Girls soundtrack over any rap song anyday."
@@ -582,6 +609,7 @@ label Alice:
     menu:
         "I am a bit of a band nerd!":
             show alice happy
+            $ alicecount += 1
             a "Omg! So many of my friends are in bands, musical and band nerds basically go together like peas in a pod. I was actually in band for a bit in elementary school but my teacher said my singing was so angelic that I was meant to be in theater! We are definitely meant to be."
         "I mainly do art":
             show alice happy
@@ -591,8 +619,10 @@ label Alice:
             a "Ohh, so sorry! That's pretty cool too. Perhaps you can paint background sets for my school plays!"
         "I am an athlete":
             show alice upset
+            $ alicecount -= 1
             a "Ugh I hate athletes. The football players in high school would bully all my guy friends for wearing makeup. But they'd still end up messaging them on Grindr. Go figure."
     show alice neutral
+    "*BELL RINGS*"
     a "The show's coming to an end I suppose! Gotta get ready for my next act heheh. Maybe I'll see you later if the audience calls for an encore stage! Goodbyeee~"
     hide alice with fade
     player_name "...Does she know she's not on stage right now? I have to respect her dedication to her craft for sure."
@@ -613,23 +643,27 @@ label Damien:
     menu:
         "The psychological thriller by Christopher Nolan? That movie was insane.Literally so underrated.":
             show damien happy
+            $ damiencount += 1
             dm "Oh? I see you’ve got good taste in your movies, I applaud you for that. We should go catch a movie sometime, fellow film enthusiasts."
         "Oh is that the one Christopher Nolan film? I didn’t understand it.":
             dm "Not surprised. It’s definitely a film not meant for the average movie goer. My friends and I made a podcast analyzing the plot, you should definitely check it out."
         "Oh yeah I’ve seen it… it was too confusing so I stopped watching it halfway.":
             show damien upset
+            $ damiencount -= 1
             dm "*Sighs* Disappointed but not surprised."
     show damien neutral
     dm "Okay, since now you know my favorite film, I have to ask you what is yours? "
     menu:
         "Inglourious Basterds":
             show damien happy
+            $ damiencount += 1
             dm "Woah… I think I’m in love. A fellow Tarantino lover? Very impressive, we definitely have to catch a film together at the cinema."
         "Inception":
             dm "Playing it on the safe side I see. It’s definitely a good sci-fi film but not the best. A bit overrated if you ask me."
             dm "But it tries too hard, and Nolan did not do his best directing with that one. He has much better films that I doubt you even know about."
         "Barbie":
             show damien upset
+            $ damiencount -= 1
             dm "Oh. So you’re a feminist I see. I don’t understand how people were getting all emotional over it. Like you wouldn’t see me crying about a Hot Wheels movie."
             dm "I mean I’m not saying it's a bad film but I felt like it was really attacking men. Like yay… girl power… we get it."
     show damien neutral
@@ -638,12 +672,14 @@ label Damien:
     menu: 
         "I consider myself a film enthusiast too!":
             show damien happy
+            $ damiencount += 1
             dm "You and I think alike, I don’t understand that whole film guy stereotype. Personally I don’t fit that whole persona. "
         "What's the difference?":
             show damien upset
             dm "A film bro is just a stereotype of a misogynistic film enjoyer made up by society. It’s so insulting."
         "Film bro, film enthusiast… It's the same thing.":
             show damien upset
+            $ damiencount -= 1
             dm "I. Am. Not. A. Film. Bro. Clearly it’s a concept difficult for you to comprehend so I will not explain any further."
     show damien neutral
     player_name "Do you do anything else besides watch movies? Like any hobbies?"
@@ -652,12 +688,14 @@ label Damien:
     menu:
         "I love The Smiths and Radiohead, they're so underground. All those Tikbok kids are fake fans of them.":
             show damien happy
+            $ damiencount += 1
             dm "Finally, someone who understands my feelings about indie music. No one these days are real connoisseurs of indie. No one understands it. Those are my favorite songs by them as well."
         "I’ve heard of them before, never listened though. They’re a bit mainstream to be honest…":
             show damien upset
             dm "Mainstream? Mainstream?! Are you insane? No one even listens to these artists, but I couldn’t expect you to understand indie music. *scoffs*"
         "I’ve never heard of them before, but I’m not really into indie music. I like artists like Taylor Swift!":
             show damien upset
+            $ damiencount -= 1
             dm "Of course you like Taylor Swift. She has such shallow lyrics that mean nothing. And all she ever sings about is men and how much she hates men. It's weak."
     show damien neutral
     player_name "Well what’s your ideal first date?"
@@ -666,11 +704,13 @@ label Damien:
     menu:
         "Oh.my.God. That sounds like my dream date. I love expanding my palate with new European films, and Cigarettes After Sex?! I loveeee them!":
             show damien happy
+            $ damiencount += 1
             dm "Wow. You really are my dream person. Let’s get out of here and go to a non transactional coffee co-op that uses reusable mugs and actually plays real music, and get to know each other a bit more."
         "Interesting first date. Can’t say I’ve ever experienced something like that before, but I don’t think a movie on the first date is a good idea.":
             dm "First of all, they are called films, NOT movies. Second, you simply just don’t understand what it means to see a good film."
         "Why would I go see a movie if you’re in my ear talking to me the whole time? Also, I would never go back to someone's house on a first date. Red Flag.":
             show damien upset
+            $ damiencount -= 1
             dm "Wow. You’re just like everyone else. My ex-girlfriend always said the same things. You’re such a sheep. My film knowledge should not be wasted on such a simple-minded person like yourself."
             #play creep by radiohead?
     show damien neutral
@@ -697,6 +737,7 @@ label endgame:
             jump chichiend
         "Dahlia":
             jump dahliaend
+        "Donna"
 
 label chichiend:
         show chichi neutral with fade
@@ -742,11 +783,143 @@ label dahliaend:
             hide dahlia upset with fade
             jump normalend
 
+label donnaend:
+        show donna neutral with fade
+        pause 2.0
+        if donnacount >= 3:
+            show donna happy with fade
+            pause 2.0
+            dh "Oh yes, I would love to go on a second date with you as well. Who would've guessed we would meet each other here."
+            hide donna happy with fade
+            jump normalend
+        elif donnacount >= 1:
+            show donna neutral with fade
+            pause 2.0
+            dh "Some things you said were interesting, however some other things you said...Not so much."
+            hide donna neutral with fade
+            jump normalend
+        else:
+            show donna upset with fade
+            pause 2.0
+            dh "Unbelievable to think you'd have a chance with me."
+            hide donna upset with fade
+            jump normalend
+
+label damienend:
+        show damien neutral with fade
+        pause 2.0
+        if damiencount >= 3:
+            show damien happy with fade
+            pause 2.0
+            dh "Oh yes, I would love to go on a second date with you as well. Who would've guessed we would meet each other here."
+            hide damien happy with fade
+            jump normalend
+        elif damiencount >= 1:
+            show damien neutral with fade
+            pause 2.0
+            dh "Some things you said were interesting, however some other things you said...Not so much."
+            hide damien neutral with fade
+            jump normalend
+        else:
+            show damien upset with fade
+            pause 2.0
+            dh "Unbelievable to think you'd have a chance with me."
+            hide damien upset with fade
+            jump normalend
+
+label aliceend:
+        show alice neutral with fade
+        pause 2.0
+        if alicecount >= 3:
+            show alice happy with fade
+            pause 2.0
+            dh "Oh yes, I would love to go on a second date with you as well. Who would've guessed we would meet each other here."
+            hide alice happy with fade
+            jump normalend
+        elif alicecount >= 1:
+            show alice neutral with fade
+            pause 2.0
+            dh "Some things you said were interesting, however some other things you said...Not so much."
+            hide alice neutral with fade
+            jump normalend
+        else:
+            show alice upset with fade
+            pause 2.0
+            dh "Unbelievable to think you'd have a chance with me."
+            hide alice upset with fade
+            jump normalend
+
+label ebonyend:
+        show ebony neutral with fade
+        pause 2.0
+        if ebonycount >= 3:
+            show ebony happy with fade
+            pause 2.0
+            dh "Oh yes, I would love to go on a second date with you as well. Who would've guessed we would meet each other here."
+            hide ebony happy with fade
+            jump normalend
+        elif ebonycount >= 1:
+            show ebony neutral with fade
+            pause 2.0
+            dh "Some things you said were interesting, however some other things you said...Not so much."
+            hide ebony neutral with fade
+            jump normalend
+        else:
+            show ebony upset with fade
+            pause 2.0
+            dh "Unbelievable to think you'd have a chance with me."
+            hide ebony upset with fade
+            jump normalend
+
+label chadend:
+        show chad neutral with fade
+        pause 2.0
+        if chadcount >= 3:
+            show chad happy with fade
+            pause 2.0
+            dh "Oh yes, I would love to go on a second date with you as well. Who would've guessed we would meet each other here."
+            hide dahlia happy with fade
+            jump normalend
+        elif chadcount >= 1:
+            show dahlia neutral with fade
+            pause 2.0
+            dh "Some things you said were interesting, however some other things you said...Not so much."
+            hide dahlia neutral with fade
+            jump normalend
+        else:
+            show chad upset with fade
+            pause 2.0
+            dh "Unbelievable to think you'd have a chance with me."
+            hide chad upset with fade
+            jump normalend
+            
+label alienend:
+        show alien neutral with fade
+        pause 2.0
+        if aliencount >= 3:
+            show alien happy with fade
+            pause 2.0
+            dh "Oh yes, I would love to go on a second date with you as well. Who would've guessed we would meet each other here."
+            hide alien happy with fade
+            jump normalend
+        elif aliencount >= 1:
+            show alien neutral with fade
+            pause 2.0
+            dh "Some things you said were interesting, however some other things you said...Not so much."
+            hide alien neutral with fade
+            jump normalend
+        else:
+            show alien upset with fade
+            pause 2.0
+            dh "Unbelievable to think you'd have a chance with me."
+            hide alien upset with fade
+            jump normalend
+
 label normalend:
     scene GO with fade
     pause 8.0
     jump endofgamefr
-label ebonyend:
+label EBending:
     scene EGO with fade
     pause 8.0
     jump endofgamefr
