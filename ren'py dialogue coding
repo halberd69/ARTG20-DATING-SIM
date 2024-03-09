@@ -57,6 +57,16 @@ default aliencount = 0
 
 image surf = Movie(play="images/subwaysurfers.webm", size=(720,350), loop=False, xalign = 0, yalign = 0)
 
+init:
+    image blue = "#485865" 
+    image light_purple = "#e2cfe3"
+    image yellow = "#ebdc92"
+    image green = "#80a786"
+    image brown = "#7f695c"
+    image tiffany_blue = "#bfd8db"
+    image red = "#d65656"
+    image purple = "#836178"
+
 
 # The game starts here.
 label start:
@@ -109,7 +119,7 @@ label start:
 label continue_game:
     H "Okay great! Go ahead and sign your name here, grab your name tag, and sit down at that first table! You’ll have 5 minutes with each partner! We’re about to start in a few minutes!"
     $ player_name = renpy.input("Please enter your name.") 
-    H "Amazing, amazing. It's nice to meet you, [player_name]. We're sure you're going to find the love of your life here. Good luck out there Tiger!"
+    H "Amazing, amazing. It's nice to meet you, [player_name]. We're sure you're going to find the love of your life here. Good luck out there tiger!"
     hide hosts
     hide table
     with fade
@@ -118,7 +128,7 @@ label continue_game:
 
 label selection:
     # $ chosen = []
-    if count >= 6:
+    if count >= 7:
         jump endgame
 
     else:
@@ -143,7 +153,9 @@ label selection:
                 jump ChiChi
 
 label ChiChi:
-    show chichi happy with fade
+    scene light_purple
+    show chichi happy 
+    with fade
     c "OMG Hi, My name is Chi-Chi, it means \“good fortune\” in Japanyese!! You’re [player_name] right nya?"
     player_name "How do you know my name…?"
     show chichi neutral
@@ -223,7 +235,9 @@ label ChiChi:
 
 
 label Dahlia:
-    show dahlia upset with fade
+    scene tiffany_blue
+    show dahlia upset 
+    with fade
     dh "Ugh, what a joke. There’s a terrible storm outside, I can’t leave because my Wolls Woyce is in shambles and my driver is repairing it, and now I’m stuck here in this dingy hotel."
     show dahlia neutral
     dh "I guess you’ll have to do for entertainment. My name is Dahlia."
@@ -302,7 +316,9 @@ label Dahlia:
     
 
 label Donna:
-    show donna happy with fade
+    scene purple
+    show donna happy 
+    with fade
     dn "Hey shweet heart, how’s ya goin?"
     player_name "Hi, it’s nice to meet you, what’s your name?"
     show donna neutral
@@ -371,7 +387,9 @@ label Donna:
 
 
 label Ebony:
-    show ebony neutral with fade
+    scene blue
+    show ebony neutral
+    with fade
     x "H-hey…"
     player_name "Hi, I'm [player_name]. What's your name?"
     e "Ebony…"
@@ -383,6 +401,7 @@ label Ebony:
             $ ebonycount += 1
             e "OMG! I can’t believe you know them, they are one of my favorrrrrite bands x3 ! They’re super underground. They make music that represents how I feel inside."
         "Who's that?":
+            show ebony upset
             e "WHAAAT? You don’t know Amy Lee? The lead singer of the band Evanescence?! RAWR!!!!!!!!!!! I hope you like hardcore music or we won’t get along…"
         "Sorry, I don’t listen to emo music":
             show ebony upset
@@ -484,7 +503,9 @@ label father_tangent:
 
 
 label Chad:
-    show chad neutral with fade
+    scene red
+    show chad neutral 
+    with fade
     cd "Hey whats up, the name’s Chad, Great name huh? Kinda lame that I have to be here right now, the gyms closed at the hotel for some reason so I said might as well grace this event with my presence. It was leg day anyways so I guess I’m not missing much."
     player_name "It’s nice to meet you Chad, I'm [player_name]. I can definitely see that you enjoy the gym a lot."
     cd "Enjoy it? More like live it. The gym is my passion, my safe place. Not that I need a safe place, since I am an absolute unit of a human being. *Flexes muscles*"
@@ -569,6 +590,7 @@ label Chad:
     $ count += 1
     jump selection
 label Alice:
+    scene yellow
     show alice happy with moveinleft
     a "Goodmooorning Baaaltimoooore~"
     player_name "..."
@@ -633,7 +655,9 @@ label Alice:
     $ count += 1
     jump selection
 label Damien:
-    show damien neutral with fade
+    scene brown
+    show damien neutral 
+    with fade
     player_name "Hello there. I'm [player_name]."
     dm "Hi. I’m Damien. "
     dm "*Sighs* To be quite honest I am not certain why I am even here."
@@ -727,8 +751,10 @@ label Damien:
     $ count += 1
     jump selection
 label Alien:
+    show green
     "This is Alien"
     $ count += 1
+    jump selection
 
 label endgame:
     show hosts with fade
