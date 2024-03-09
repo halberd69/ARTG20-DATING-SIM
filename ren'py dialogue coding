@@ -66,6 +66,8 @@ init:
     image tiffany_blue = "#bfd8db"
     image red = "#d65656"
     image purple = "#836178"
+    image grey = "#bbbbbb"
+    image pink = "#f1c0cd"
 
 
 # The game starts here.
@@ -80,7 +82,7 @@ label start:
     x "* A flier suddenly slides under the door*"
     z "Hmm..what's this?"
 
-    scene none with fade
+    scene grey with fade
     show flyer with moveintop
     pause 2.0
 
@@ -90,12 +92,13 @@ label start:
     # scene jumps to hotel dating lobby
 
     scene doors with fade
+    pause 3.0
     z "I guess this is it...The decorations are truly something, I mean, the letters are literally falling off the door! What am I even doing, what if all the people here are elderly?"
     z "But then again, the streets are flooded out there. It's rare that it ever sprinkles in California, but whenever it does it's always a disaster outside. I might as well see what's going on."
     z "*deep breath* What's the worst that could happen? Alright…here we go..."
     x "*opens doors*"
 
-    scene none
+    scene grey
     show hosts
     show table zorder 1
     with fade
@@ -757,6 +760,7 @@ label Alien:
     jump selection
 
 label endgame:
+    scene pink
     show hosts with fade
     H "Alright ladies and gents, that is the end of our introductions phase! Now comes the \"second date\" phase, the most important moment of the night."
     H "You must make your decision now. Who will you choose to date, [player_name]?"
@@ -786,13 +790,13 @@ label chichiend:
         if chichicount >= 3:
             show chichi happy with fade
             pause 2.0
-            c "Yay! I love you!"
+            c "Yay! You're my favorite oomfie ^_^ Let's go match profile pictures on all our social media platforms!!"
             hide chichi happy with fade
             jump normalend
         elif chichicount >= 1:
-            pause 2.0
             show chichi neutral with fade
-            c "Hmm...Chichi's unsure...I don't know if I know you well enough to go on a second date."
+            pause 2.0
+            c "Hmm...Chichi's unsure...ChiChi didn't really feel any sparks going on."
             hide chichi neutral with fade
             jump normalend
         else:
