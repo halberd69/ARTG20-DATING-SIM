@@ -42,10 +42,21 @@ image table = "table.png"
 image hosts = "hosts.png"
 image tv = "OLD TV.png"
 image doors = "CONFERENCE DOORS.PNG"
-#image EGO = ""
-#image GO = ""
+image EGO = "you died.png"
+image GO = "normal game over.png"
+
+default count = 0
+default chichicount = 0
+default dahliacount = 0
+default donnacount = 0
+default ebonycount = 0
+default chadcount = 0
+default damiencount = 0
+default alicecount = 0
+default aliencount = 0
 
 image surf = Movie(play="images/subwaysurfers.webm", size=(720,350), loop=False, xalign = 0, yalign = 0)
+
 
 # The game starts here.
 label start:
@@ -102,24 +113,30 @@ label continue_game:
     x "*BELL RINGS* FIRST PAIRING STARTS NOW! Find your first partner ladies and gents!"
 
 label selection:
-    menu:
-        "Who would you like to meet?"
-        "Someone who really likes alternative music":
-            jump Ebony
-        "Someone who’s really into fitness":
-            jump Chad
-        "Someone who really likes musical theater":
-            jump Alice
-        "Someone who is really into film":
-            jump Damien
-        "Someone with a lot of money":
-            jump Dahlia
-        "Someone with lots of experience":
-            jump Donna
-        "A normal human":
-            jump Alien
-        "Someone who is chronically online":
-            jump ChiChi
+    # $ chosen = []
+    if count >= 6:
+        jump endgame
+
+    else:
+        menu:
+            # set chosen
+            "Who would you like to meet?"
+            "Someone who really likes alternative music":
+                jump Ebony
+            "Someone who’s really into fitness":
+                jump Chad
+            "Someone who really likes musical theater":
+                jump Alice
+            "Someone who is really into film":
+                jump Damien
+            "Someone with a lot of money":
+                jump Dahlia
+            "Someone with lots of experience":
+                jump Donna
+            "A normal human":
+                jump Alien
+            "Someone who is chronically online":
+                jump ChiChi
 
 label ChiChi:
     show chichi happy with fade
@@ -130,11 +147,13 @@ label ChiChi:
     menu:
         "I wouldn’t be opposed to finding love.":
             show chichi happy
+            $ chichicount += 1
             c "On a search for your waifu, how romantic!! Maybe Chi-Chi can be your kawaii little discord kitten nya :3c "
         "How did you just say :3 out loud?":
             c "Teehee, you’re so silly!"
         "What’s an OTP?":
             show chichi upset
+            $ chichicount -= 1
             c "You don’t knyow? “One True Pairing” obviously, have you been living under a rock or something nya? "
     show chichi neutral
     c "Anyways, what are your socials? Chi-Chi will follow you back!! Chi-Chi’s is @Xx_koNEKOkyutie_xX with a \“k\” on Pwitter and Binstagram nya!!"
@@ -144,12 +163,14 @@ label ChiChi:
     menu:
         "You’re my cutest oomf.":
             show chichi happy
+            $ chichicount += 1
             c "D-Doki!! You’ll make Chi-Chi blush nya!!"
         "Do you have a facebook?":
             show chichi neutral
             c "EHH facebook?!! LOL you sound like a boomer nya! "
         "It says your name Abigail Johnson…?":
             show chichi upset
+            $ chichicount -= 1
             c "My NYAME is CHI-CHI!! Chi-Chi just hasn't changed the display name ‘cause of IRLs on there too. Call Chi-Chi that again and I’ll break moots with you!!"
     show chichi neutral
     player_name "So, do you have any hobbies or interests? "
@@ -162,6 +183,7 @@ label ChiChi:
     c "There we go. Anyway, ChiChi started her gamer girl era lately, have you heard of Kenshin Collision? The addiction is so real nyaaa!!"
     menu:
         "I love anime!":
+            $ chichicount += 1
             show chichi happy
             c "Ehh!! Y-you like anime too? Chi-Chi thought she was the only one!! Will you be the Kirito to my Asunya? "
         "Never heard of Kenshin Collision.":
@@ -169,6 +191,7 @@ label ChiChi:
             c "Nyo way!! It’s so popular, and it’s super fun! You should try it out sometime, it’s free to play, and Chi-Chi can guide you too!!"
         "I watch manga too!":
             show chichi upset
+            $ chichicount -= 1
             c "What?? You don’t watch manga, you read manga, everynyan who’s a real fan knows that BAKA. Chi-Chi can tell you’re a fake fan just from that!"
     show chichi neutral
     player_name " You sound passionate about your hobbies."
@@ -177,11 +200,13 @@ label ChiChi:
     menu: 
         "Someone as kawaii as you":
             show chichi happy
+            $ chichicount += 1
             c "k-KYA <3!! You’re making my kokoro go DOKI so fast nya!!"
         "I don’t have a type":
             c "Oh! Chi-Chi was kind of expecting more than such a bland answer, but it just means you’re open-minded I guess nya!!"
         "Someone who doesn’t nya.":
             show chichi upset
+            $ chichicount -= 1
             c "...I’ll kill you nya."
     show chichi neutral
     c "Oops! Looks like time's about to run out! It was really nyice meeting nya!"
@@ -189,6 +214,7 @@ label ChiChi:
     hide chichi neutral with dissolve
     player_name "A cat girl huh...I thought those kinds of people only existed online."
     player_name "What have I gotten myself into? And who else am I going to meet here?"
+    $ count += 1
     jump selection
 
 
@@ -200,11 +226,13 @@ label Dahlia:
     menu:
         "I’m in the same boat. The helicopter to my yacht crashed and I’m stuck here too.":
             show dahlia happy
+            $ dahliacount += 1
             dh "Oh! Well, good to know I’m not the only one dealing with such mindless drivel."
         "I like your necklace.":
             dh "Thanks, I get that a lot."
         "Oh, one of my friends has earrings that look just like that.":
             show dahlia upset
+            $ dahliacount -= 1
             dh "What did you just say? My earrings are one of a kind, custom-made, and handcrafted by a professional designer in Italy. Your friend must have the cheap knock off version of what mine is."
     show dahlia neutral
     player_name "So what do you like to do in your free time?"
@@ -212,22 +240,26 @@ label Dahlia:
     menu:
         "God, I love taking my private jets around from city to city to attend my business conferences.":
             show dahlia happy
+            $ dahliacount += 1
             dh "Oh yes, someone as well-established and intelligent as you must understand the joys of travel. Say, how much money do you make? Oh well, I suppose we can talk about that some other time yes?"
         "Wow, you lead quite a luxurious life.":
             "Yes, I’m sure common folk such as yourself dream of waking up and being me."
         "You’re stopped here just because of a scratch?":
             show dahlia upset
+            $ dahliacount -= 1
             dh "Take a good look out that window over there. You really think someone like me can be caught driving around in a car as wrecked as that? You can NOT be serious."
     show dahlia neutral
     dh "Anyway, the food here looks abominable. I mean look at this steak! As if I could eat anything that's not premium Wagyu. I can’t bear to eat something like this, but I have to admit I am getting peckish."
     menu:
         "I know an establishment that serves every dish with caviar and gold. I could take you after this.":
             show dahlia happy
+            $ dahliacount += 1
             dh "Is that so? I'm surprised an establishment like that exists in such a small town. I might have to take you up on your offer."
         "Yeah, I’ve definitely had better food than this.":
             dh "Yes…Nothing groundbreaking. Tell me, is this truly what people of your social status consider to be delicious? Thank goodness I wasn't born poor."
         "I’m going to order as much food as I can and put it on your tab.":
             show dahlia upset
+            $ dahliacount -= 1
             dh "You vile little creature…! Typical behavior of common folk such as yourself, always scavenging around for crumbs and handouts."
     show dahlia neutral
     player_name "Oh wow, take a look outside. The rain doesn’t seem to be letting up any time soon…"
@@ -235,28 +267,33 @@ label Dahlia:
     menu:
         "I can lend you my Vouie Luitton umbrella and call you a diamond encrusted helicopter.":
             show dahlia happy
+            $ dahliacount += 1
             dh "Oh my gosh, that would be perfect. That’s exactly what I need right now."
         "I can order you a Yoober so you can leave.":
             dh "Ugh, I suppose, if that's the only option. But if you do, make sure you order the Yoober helicopter alright? I wouldn't be caught dead riding around in any, how would you say... conventional vehicles."
         "Why don’t we walk to the nearest bus stop?":
             show dahlia upset
+            $ dahliacount -= 1
             dh "Bus...stop? Walk? You think I’d soil such an expensive dress just to sit on filthy chairs next to random strangers? You certainly have never been with a classy woman."
     show dahlia neutral
     dh "Quite some time has past since I got stranded here. I wonder if my driver is almost done fixing up the car -- I'd like to go somewhere much more refined to forget this experience ever happened."
     menu:
         "I have some dinner plans at the Ritz after this, if you’d care to join me.":
             show dahlia happy
+            $ dahliacount += 1
             dh "My, what a considerate offer. Yes, I would love to continue our conversations. You certainly seem like a person with mature tastes."
         "Would you like to join me for some real food after this?":
             dh "Not sure. I'm a very busy woman you know. I have to call my daddy and discuss which car I should replace my Wolls Woyce with, considering the state it is in right now."
         "You will join me. Now!!":
             show dahlia upset
+            $ dahliacount -= 1
             dh "Excuse me? What are you implying by that? Say something like that again and I will be calling my guards to escort you away."
     show dahlia neutral
     dh "Oh well would you look at that, seems like time is about to run out on our date. I have very important business matters to attend to, so if you'll excuse me..."
     hide dahlia neutral with dissolve
     player_name "Well that was certainly interesting. She clearly lives an extravagent life."
     player_name "This place seems to be full of all sorts of different people. I wonder who else I'm going to meet here..."
+    $ count += 1
     jump selection
     
 
@@ -319,6 +356,7 @@ label Donna:
     hide donna neutral with dissolve
     player_name "Wow...Donna \"Sugartits\" sure is a lot to take in. She definitely knows a thing or two."
     player_name "I wonder if the next person I meet will be as wild as her."
+    $ count += 1
     jump selection
 
 
@@ -394,6 +432,7 @@ label ebony_ending:
     hide ebony neutral with fade
     player_name "Geez, she has a lot of baggage. Talking to her definitely brings me back to my younger days and I'm not sure if that's a good or bad thing."
     player_name "Alright...who's up next?"
+    $ count += 1
     jump selection
 
 label father_tangent:
@@ -500,6 +539,7 @@ label Chad:
     cd "Stay on that grind my brother! Down that protein and lift heavy! Also steroids can actually be good for you, all that stuff about them being bad is just a myth!"
     hide chad with fade
     player_name "Huh..."
+    $ count += 1
     jump selection
 label Alice:
     show alice neutral with fade
@@ -556,6 +596,7 @@ label Alice:
     a "The show's coming to an end I suppose! Gotta get ready for my next act heheh. Maybe I'll see you later if the audience calls for an encore stage! Goodbyeee~"
     hide alice with fade
     player_name "...Does she know she's not on stage right now? I have to respect her dedication to her craft for sure."
+    $ count += 1
     jump selection
 label Damien:
     show damien neutral with fade
@@ -639,11 +680,75 @@ label Damien:
     hide damien neutral with fade
     player_name "I wonder what movies he hasn't seen. He probably has opinions on every single film in existence."
     player_name "Alright...who's next?"
+    $ count += 1
     jump selection
 label Alien:
     "This is Alien"
+    $ count += 1
 
+label endgame:
+    show hosts with fade
+    H "Alright ladies and gents, that is the end of our introductions phase! Now comes the \"second date\" phase, the most important moment of the night."
+    H "You must make your decision now. Who will you choose to date, [player_name]?"
+    hide hosts
 
+    menu:
+        "Chichi":
+            jump chichiend
+        "Dahlia":
+            jump dahliaend
 
-    # This ends the game.
+label chichiend:
+        show chichi neutral with fade
+        pause 2.0
+        if chichicount >= 3:
+            show chichi happy with fade
+            pause 2.0
+            c "Yay! I love you!"
+            hide chichi happy with fade
+            jump normalend
+        elif chichicount >= 1:
+            pause 2.0
+            show chichi neutral with fade
+            c "Hmm...Chichi's unsure...I don't know if I know you well enough to go on a second date."
+            hide chichi neutral with fade
+            jump normalend
+        else:
+            show chichi upset with fade
+            pause 2.0
+            c "As if I'd go on a date with anynyan like you!!"
+            hide chichi neutral with fade
+            jump normalend
+
+label dahliaend:
+        show dahlia neutral with fade
+        pause 2.0
+        if dahliacount >= 3:
+            show dahlia happy with fade
+            pause 2.0
+            dh "Oh yes, I would love to go on a second date with you as well. Who would've guessed we would meet each other here."
+            hide dahlia happy with fade
+            jump normalend
+        elif dahliacount >= 1:
+            show dahlia neutral with fade
+            pause 2.0
+            dh "Some things you said were interesting, however some other things you said...Not so much."
+            hide dahlia neutral with fade
+            jump normalend
+        else:
+            show dahlia upset with fade
+            pause 2.0
+            dh "Unbelievable to think you'd have a chance with me."
+            hide dahlia upset with fade
+            jump normalend
+
+label normalend:
+    scene GO with fade
+    pause 8.0
+    jump endofgamefr
+label ebonyend:
+    scene EGO with fade
+    pause 8.0
+    jump endofgamefr
+label endofgamefr:
     return
