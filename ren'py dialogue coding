@@ -62,14 +62,17 @@ image surf = Movie(play="images/subwaysurfers.webm", size=(720,350), loop=False,
 label start:
 
     scene tv with fade
-    pause 1.0
+    pause 3.0
     n "We’re getting reports of a slight drizzle today here in our sunny Southern California town, experts are advising EVERYONE to stay inside and avoid the sprinkle outside."
     n "Roads are unsafe to drive on, as they are slightly wet, HIGH chance of hydroplaning."
     z "Oh man that’s so scary, guess that ruins my plans of going to Didnieland. Suppose I’ll have to find something around this hotel to do to spend my time…"
     pause 0.3
     x "* A flier suddenly slides under the door*"
-    show flyer with moveintop
     z "Hmm..what's this?"
+
+    scene none with fade
+    show flyer with moveintop
+    pause 2.0
 
     x "VALENTINES SPEED DATING! <3 IN LOBBY CONFERENCE ROOM SATURDAY FEBRUARY 10TH! ALL AGE 18+!"
     z "Huh … guess I could use some love in my life since Valentine's day is coming up..might as well give it a shot, don’t have much else to do!"
@@ -83,8 +86,9 @@ label start:
     x "*opens doors*"
 
     scene none
-    show hosts with fade
+    show hosts
     show table zorder 1
+    with fade
     H "Hello hello hello! Welcome to the speed dating event! Let me just read you the terms and conditions and then we’ll continue with the sign up process, ready?"
     z "Uh, okay I guess..."
     H "By signing this contract you understand that by participating in this event you are agreeing to meeting with, engaging with, and entertaining new people regardless of their background and your compatibility. You must talk with every contestant you are matched with, regardless of differences in beliefs"
@@ -737,7 +741,18 @@ label endgame:
             jump chichiend
         "Dahlia":
             jump dahliaend
-        "Donna"
+        "Donna":
+            jump donnaend
+        "Alice":
+            jump aliceend
+        "Ebony":
+            jump ebonyend
+        "Chad":
+            jump chadend
+        "Alien":
+            jump alienend
+        "Damien":
+            jump damienend
 
 label chichiend:
         show chichi neutral with fade
@@ -779,29 +794,30 @@ label dahliaend:
         else:
             show dahlia upset with fade
             pause 2.0
-            dh "Unbelievable to think you'd have a chance with me."
+            dh "As if. Unbelievable to think you'd have a chance with me."
             hide dahlia upset with fade
             jump normalend
 
 label donnaend:
         show donna neutral with fade
         pause 2.0
-        if donnacount >= 3:
+        if donnacount >= 2:
             show donna happy with fade
             pause 2.0
-            dh "Oh yes, I would love to go on a second date with you as well. Who would've guessed we would meet each other here."
+            dn "Oh honey, let's go to my hotel room. I'm ALWAYS down for a good time."
             hide donna happy with fade
             jump normalend
-        elif donnacount >= 1:
+        elif donnacount == 1:
             show donna neutral with fade
             pause 2.0
-            dh "Some things you said were interesting, however some other things you said...Not so much."
+            dn "Sorry schweetheart, I got a date with Bob tonight. I really don't wanna miss it, considering what he's offerin, heh."
             hide donna neutral with fade
             jump normalend
         else:
             show donna upset with fade
             pause 2.0
-            dh "Unbelievable to think you'd have a chance with me."
+            dn "*blows smoke in your face*"
+            dn "Tough luck. I'd rather go on a date with one of my ex-husbands than go on a date with you."
             hide donna upset with fade
             jump normalend
 
@@ -811,19 +827,19 @@ label damienend:
         if damiencount >= 3:
             show damien happy with fade
             pause 2.0
-            dh "Oh yes, I would love to go on a second date with you as well. Who would've guessed we would meet each other here."
+            dm "I knew you wanted me as much as I wanted you. Come on, you have to be a guest on one of my film podcasts."
             hide damien happy with fade
             jump normalend
         elif damiencount >= 1:
             show damien neutral with fade
             pause 2.0
-            dh "Some things you said were interesting, however some other things you said...Not so much."
+            dm "Sorry, you gave off too much of a \"normie\" vibe to me. I can't be dating someone who can't understand all the inner mechanics involved with film making."
             hide damien neutral with fade
             jump normalend
         else:
             show damien upset with fade
             pause 2.0
-            dh "Unbelievable to think you'd have a chance with me."
+            dm "Sorry, but I'm not interested at all. You're the type of person who rates every movie they watch a 10/10. In other words, you have no ounce of taste in your body."
             hide damien upset with fade
             jump normalend
 
@@ -833,19 +849,19 @@ label aliceend:
         if alicecount >= 3:
             show alice happy with fade
             pause 2.0
-            dh "Oh yes, I would love to go on a second date with you as well. Who would've guessed we would meet each other here."
+            a "OMG I was hoping you'd choose me! I'm interested in you as well. Let's go to my car and listen to as many Hamilton songs as we can til the day ends~!"
             hide alice happy with fade
             jump normalend
         elif alicecount >= 1:
-            show alice neutral with fade
+            show alice frown with fade
             pause 2.0
-            dh "Some things you said were interesting, however some other things you said...Not so much."
+            a "I'm sorry, but I'm afraid theater isn't as important to you as it is to me. It's my life so I can't be with someone who doesn't share the same passion. It was nice meeting you though."
             hide alice neutral with fade
             jump normalend
         else:
             show alice upset with fade
             pause 2.0
-            dh "Unbelievable to think you'd have a chance with me."
+            a "Eww, no! You were so rude to me! You're probably just asking me out as a joke. I'm not falling for it."
             hide alice upset with fade
             jump normalend
 
@@ -855,19 +871,19 @@ label ebonyend:
         if ebonycount >= 3:
             show ebony happy with fade
             pause 2.0
-            dh "Oh yes, I would love to go on a second date with you as well. Who would've guessed we would meet each other here."
+            e "...I admit, I wuv you already...Do you want to go make a gun out of Monster cans after this? And then maybe after we can listen to some music from my iPod with my wired earbuds?"
             hide ebony happy with fade
             jump normalend
         elif ebonycount >= 1:
             show ebony neutral with fade
             pause 2.0
-            dh "Some things you said were interesting, however some other things you said...Not so much."
+            e "......You think you understand me...but you don't."
             hide ebony neutral with fade
             jump normalend
         else:
             show ebony upset with fade
             pause 2.0
-            dh "Unbelievable to think you'd have a chance with me."
+            e "...What makes you think I would go on a second date with you? I don't even want to be within a 5 mile radius of you."
             hide ebony upset with fade
             jump normalend
 
@@ -877,41 +893,41 @@ label chadend:
         if chadcount >= 3:
             show chad happy with fade
             pause 2.0
-            dh "Oh yes, I would love to go on a second date with you as well. Who would've guessed we would meet each other here."
-            hide dahlia happy with fade
+            cd "Aw yeah babe, you and I are a unique breed nowadays. I knew great recognized great. Let's go hit the gym hot stuff."
+            hide chad happy with fade
             jump normalend
         elif chadcount >= 1:
-            show dahlia neutral with fade
+            show chad neutral with fade
             pause 2.0
-            dh "Some things you said were interesting, however some other things you said...Not so much."
-            hide dahlia neutral with fade
+            cd "Hmm, nah no not really interested bro. We can be gym buds though. Well actually, I don't really like lifting with other people. I always get called out for \"ego lifting\", but they don't understand my process brah."
+            hide chad neutral with fade
             jump normalend
         else:
             show chad upset with fade
             pause 2.0
-            dh "Unbelievable to think you'd have a chance with me."
+            cd "After everything you said about the gym and stuff bro?! You gotta be pulling my finger, or like what was it, my tail or however the stupid phrase goes."
             hide chad upset with fade
             jump normalend
-            
+
 label alienend:
         show alien neutral with fade
         pause 2.0
         if aliencount >= 3:
             show alien happy with fade
             pause 2.0
-            dh "Oh yes, I would love to go on a second date with you as well. Who would've guessed we would meet each other here."
+            dh "Geep gorp."
             hide alien happy with fade
             jump normalend
         elif aliencount >= 1:
             show alien neutral with fade
             pause 2.0
-            dh "Some things you said were interesting, however some other things you said...Not so much."
+            dh "Geep gorp."
             hide alien neutral with fade
             jump normalend
         else:
             show alien upset with fade
             pause 2.0
-            dh "Unbelievable to think you'd have a chance with me."
+            dh "Geep gorp."
             hide alien upset with fade
             jump normalend
 
