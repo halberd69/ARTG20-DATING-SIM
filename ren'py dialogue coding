@@ -1,4 +1,3 @@
-
 define n = Character("News Reporter")
 define x = Character (" ")
 define z = Character ("You")
@@ -56,6 +55,11 @@ default alicecount = 0
 default aliencount = 0
 
 image surf = Movie(play="images/subwaysurfers.webm", size=(720,350), loop=False, xalign = 0, yalign = 0)
+define audio.bgm = "Killing Time Newgrounds.mp3" 
+define audio.paper = "page.mp3"
+define audio.footsteps = "steps.mp3"
+define audio.writing = "write.mp3"
+define audio.rain = "showering.mp3"
 
 init:
     image blue = "#485865" 
@@ -73,6 +77,8 @@ init:
 # The game starts here.
 label start:
 
+    play music bgm volume 0.3
+    play sound rain volume 0.1
     scene tv with fade
     pause 3.0
     n "We’re getting reports of a slight drizzle today here in our sunny Southern California town, experts are advising EVERYONE to stay inside and avoid the sprinkle outside."
@@ -83,6 +89,7 @@ label start:
     z "Hmm..what's this?"
 
     scene grey with fade
+    play sound paper volume 1.0
     show flyer with moveintop
     pause 2.0
 
@@ -92,7 +99,8 @@ label start:
     # scene jumps to hotel dating lobby
 
     scene doors with fade
-    pause 3.0
+    #play sound footsteps volume 4.0
+    pause 2.0
     z "I guess this is it...The decorations are truly something, I mean, the letters are literally falling off the door! What am I even doing, what if all the people here are elderly?"
     z "But then again, the streets are flooded out there. It's rare that it ever sprinkles in California, but whenever it does it's always a disaster outside. I might as well see what's going on."
     z "*deep breath* What's the worst that could happen? Alright…here we go..."
@@ -102,13 +110,19 @@ label start:
     show hosts
     show table zorder 1
     with fade
+    #play sound footsteps volume 4.0
     H "Hello hello hello! Welcome to the speed dating event! Let me just read you the terms and conditions and then we’ll continue with the sign up process, ready?"
     z "Uh, okay I guess..."
     H "By signing this contract you understand that by participating in this event you are agreeing to meeting with, engaging with, and entertaining new people regardless of their background and your compatibility. You must talk with every contestant you are matched with, regardless of differences in beliefs"
+    play sound paper volume 1.0
     H "including opinions, political alignment, social issues, medical, homicidal, and otherwise. You understand by participating in this event you are putting yourself at risk of traveling to and within and returning from one or more foreign countries; foreign, political, legal, social, transportation, health " 
+    play sound paper volume 1.0
     H "and economic conditions; different standards of design, safety, and maintenance of buildings, public places, and conveyances; local medical facilities and providers; and local weather conditions. You understand that as the hosts of this event we have no responsibility for, any third party "
+    play sound paper volume 1.0
     H "which may provide any services including food, lodging, travel, or other goods or services associated with the Program. You understand that we take no responsibility for in whole or in part, for delays, loss, damage or injury to persons or property whatsoever, caused to me or others "
+    play sound paper volume 1.0
     H "prior to departure, while traveling or while staying in designated lodging. I further understand that we are not responsible for matters that are beyond its control. I am aware of the risks associated with traveling to/from and participating in this Program, which include but are not limited to physical"
+    play sound paper volume 1.0
     H " or psychological injury, pain, suffering, illness, disfigurement, dismemberment, temporary or permanent disability (including paralysis), economic or emotional loss, and/or death."
     H "Do you accept to these terms?"
 
@@ -122,6 +136,7 @@ label start:
 label continue_game:
     H "Okay great! Go ahead and sign your name here, grab your name tag, and sit down at that first table! You’ll have 5 minutes with each partner! We’re about to start in a few minutes!"
     $ player_name = renpy.input("Please enter your name.") 
+    play sound writing volume 1.0
     H "Amazing, amazing. It's nice to meet you, [player_name]. We're sure you're going to find the love of your life here. Good luck out there tiger!"
     hide hosts
     hide table
@@ -131,7 +146,8 @@ label continue_game:
 
 label selection:
     # $ chosen = []
-    if count >= 7:
+    scene grey
+    if count == 7:
         jump endgame
 
     else:
