@@ -43,6 +43,7 @@ image tv = "OLD TV.png"
 image doors = "CONFERENCE DOORS.PNG"
 image EGO = "you died.png"
 image GO = "normal game over.png"
+image sunny = "sunny day.jpg"
 
 default count = 0
 default chichicount = 0
@@ -78,7 +79,7 @@ init:
 label start:
 
     play music bgm volume 0.3
-    play sound rain volume 0.1
+    play sound rain volume 0.2
     scene tv with fade
     pause 3.0
     n "We’re getting reports of a slight drizzle today here in our sunny Southern California town, experts are advising EVERYONE to stay inside and avoid the sprinkle outside."
@@ -99,18 +100,18 @@ label start:
     # scene jumps to hotel dating lobby
 
     scene doors with fade
-    #play sound footsteps volume 4.0
+    #play sound footsteps volume 1.0
     pause 2.0
     z "I guess this is it...The decorations are truly something, I mean, the letters are literally falling off the door! What am I even doing, what if all the people here are elderly?"
     z "But then again, the streets are flooded out there. It's rare that it ever sprinkles in California, but whenever it does it's always a disaster outside. I might as well see what's going on."
     z "*deep breath* What's the worst that could happen? Alright…here we go..."
     x "*opens doors*"
 
-    scene grey
+    scene pink
     show hosts
     show table zorder 1
     with fade
-    #play sound footsteps volume 4.0
+    #play sound footsteps volume 1.0
     H "Hello hello hello! Welcome to the speed dating event! Let me just read you the terms and conditions and then we’ll continue with the sign up process, ready?"
     z "Uh, okay I guess..."
     H "By signing this contract you understand that by participating in this event you are agreeing to meeting with, engaging with, and entertaining new people regardless of their background and your compatibility. You must talk with every contestant you are matched with, regardless of differences in beliefs"
@@ -146,7 +147,7 @@ label continue_game:
 
 label selection:
     # $ chosen = []
-    scene grey
+    scene pink
     if count == 7:
         jump endgame
 
@@ -299,8 +300,11 @@ label Dahlia:
             $ dahliacount -= 1
             dh "You vile little creature…! Typical behavior of common folk such as yourself, always scavenging around for crumbs and handouts."
     show dahlia neutral
+    show sunny:
+        pos(0, 0)
     player_name "Oh wow, take a look outside. The rain doesn’t seem to be letting up any time soon…"
     dh "Yes, it’s an absolute mess out there. It is positively pouring! I swear I'm going to be stuck here forever. Why couldn't I have gotten stranded in Hawaii instead?"
+    hide sunny
     menu:
         "I can lend you my Vouie Luitton umbrella and call you a diamond encrusted helicopter.":
             show dahlia happy
