@@ -424,12 +424,12 @@ label Ebony:
     e "Ebony Dark’ness Dementia Raven Way. Some people tell me I look like Amy Lee."
     menu:
         "I love evanescence":
-        "Who's that?":
-            show ebony upset
-            e "WHAAAT? You don’t know Amy Lee? The lead singer of the band Evanescence?! RAWR!!!!!!!!!!! I hope you like hardcore music or we won’t get along…"
             show ebony happy
             $ ebonycount += 1
             e "OMG! I can’t believe you know them, they are one of my favorrrrrite bands x3 ! They’re super underground. They make music that represents how I feel inside."
+        "Who's that?":
+            show ebony upset
+            e "WHAAAT? You don’t know Amy Lee? The lead singer of the band Evanescence?! RAWR!!!!!!!!!!! I hope you like hardcore music or we won’t get along…"
         "Sorry, I don’t listen to emo music":
             show ebony upset
             e "IT’S NOT EMO!!!! It is art. It is hardcore. You wouldn’t understand, their music is my life."
