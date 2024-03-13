@@ -16,3 +16,19 @@
 
     ##        text "[config.version]":
     ##            style "main_menu_version"
+
+## line 252-264
+## remove code and add imagebutton for skip
+            ##textbutton _("Back") action Rollback()
+            ##textbutton _("History") action ShowMenu('history')
+            ## textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
+            imagebutton:
+                xpos 800
+                ypos -950
+                idle "skip_button.png"
+                hover "skip_button.png"
+                action Skip() alternate Skip(fast=True, confirm=True)
+
+            ##textbutton _("Save") action ShowMenu('save')
+            ##textbutton _("Q.Load") action QuickLoad()
+            ##textbutton _("Prefs") action ShowMenu('preferences')
