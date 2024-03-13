@@ -1,7 +1,7 @@
 define n = Character("News Reporter")
 define x = Character (" ")
 define z = Character ("You")
-define H = Character ("Kayley and Natasha")
+define H = Character ("Kayley & Natasha")
 define K = Character ("Kayley")
 define N = Character ("Natasha")
 define c = Character ("ChiChi")
@@ -13,6 +13,8 @@ define e = Character ("Ebony")
 define dm = Character ("Damien")
 define an = Character ("Alien")
 define KN = Character ("Kayley & Natasha")
+define sh = Character ("Shmamilton?")
+define ax = Character ("Alex?")
 image flyer = "Speed Dating Flier.png"
 image chichi neutral = "cat girl.png" 
 image chichi upset = "cat girl displeased.png"
@@ -64,7 +66,7 @@ default aliencount = 0
 default chosen = []
 
 image surf = Movie(play="images/subwaysurfers.webm", size=(720,350), loop=False, xalign = 0, yalign = 0)
-image UFO = Movie(play="images/ufo.webm", size=(350,720), loop=False, xalign = 1, yalign = 0)
+image UFO = Movie(play="images/ufo.webm", size=(350,720), loop=False, xalign = 0.9, yalign = 0)
 define audio.bgm = "Killing Time Newgrounds.mp3" 
 define audio.paper = "page.mp3"
 define audio.footsteps = "steps.mp3"
@@ -107,7 +109,6 @@ label start:
     x "VALENTINES SPEED DATING! <3 IN LOBBY CONFERENCE ROOM SATURDAY FEBRUARY 10TH! ALL AGE 18+!"
     z "Huh … guess I could use some love in my life since Valentine's day is coming up..might as well give it a shot, don’t have much else to do!"
     hide flyer
-    # scene jumps to hotel dating lobby
 
     scene doors with fade
     #play sound footsteps volume 1.0
@@ -117,13 +118,13 @@ label start:
     z "*deep breath* What's the worst that could happen? Alright…here we go..."
     x "*opens doors*"
 
-label rules:
     scene pink
     show hosts
     show table zorder 1
     with fade
     #play sound footsteps volume 1.0
     K "Hello hello hello! Welcome to the speed dating event!"
+label rules:
     K "During the event you’ll get to choose from a variety of our lovely contestants and go on a 5 minute speed date with each of them, so make the time count!"
     K "The timer will ring when your date starts and when it ends, then you’ll be able to choose the next single to date."
     K "After everyone has gone through a date cycle the event will come to a close where you’ll be able to choose which person you want to go on a second date with!"
@@ -155,7 +156,7 @@ label contract:
             jump continue_game
         "No":
             "FUCK YOU"
-            jump start
+            jump GO
 
 label continue_game:
     H "Okay great! Go ahead and sign your name here, grab your name tag, and sit down at that first table! You’ll have 5 minutes with each partner! We’re about to start in a few minutes!"
@@ -415,20 +416,46 @@ label Donna:
     dn "It really is quite nice, once you ignore the smells and some of the mess that's left behind from my kids. We got running water, it ain’t hot but it’s warm. Got the wee bumps in the night from other trailers, some sirens here and there..."
     dn "Oh, and of course the yelling neighbors, but that's all just part of the trailer park ambience charm."
     menu:
-        "I think you seem pretty great honestly. We should hang out more":
+        "I know exactly what you’re talking about. The comradery makes me feel safe.":
             show donna happy
             $ donnacount += 1
-            dn "Oh sweetie you don’t even have to ask. I'm right behind you darlin."
-        "Could I get your number so I can see you after all this?":
-            dn "I don’t really do that sort of thing sweetie, you seem very nice though, I don’t think you could handle all of this anyways."
-        "You are pretty intimidating...":
+            dn "Oh my darling I can tell just from the looks of you that you understand me. I think we’d get along just fine in my one bedroom trailer, if you know what I mean honeybun."
+            dn "I’d love to smoke a few packs with you on a Sunday afternoon, watching Bob try to train his pregnant doggie. Oh she has such an attitude!"
+            dn "Then we can watch Randy try and catch a few minnows in the creek, but what he doesn’t know is that it’s actually a canal, but he’s wayyyy too high to realize that."
+            dn "It’s quite a fun event, he falls in the canal quite often. He’s a fun guy to have a few beers with."
+            dn "Sorry about me babbling on like that sweet thing, did you have anything else you wanted to ask me? "
+        "Well that’s very rural-core of you, so granola mom-esque. Have you ever seen Breaking Bad? You remind me of that. ":
+            dn "Oh sweetie I don’t know what any of those words mean. Did you learn that on that iPhone of yours? I don’t have one of those back where I’m from, we use phones just for calling. "
+        "I’m not sure if the trailer park lifestyle is for me…it seems a bit…trashy to be honest":
             show donna upset
             $ donnacount -= 1
-            dn "You just can’t handle a strong sexy independent woman like me, I am far too much for you clearly. You probably think you’re better than me huh? All high and mighty cause I live in a trailer, well fuck you!! I don’t need this SHIT ANYWAYS!!!"
-            dn "*blows smoke into face*"
+            dn "Oh honey that is not how you talk to a woman like me. Your kind are always calling my trashy but when push comes to shove you know who will win the fight."
+            dn "*Meet me outside after this if you want to see what real trashy is sweetcheeks."
+    player_name "Just out of curiosity, if you won the lottery how would you spend it?"
+    dn "Oh that’s a good question. I’ve thought about it quite a bit, I actually buy a lotto ticket everytime I buy a pack of cigs hoping to win. I think I would spend it on my children if I’m being honest with you sweetie. I know I could spend it on myself but look at me y’know?"
+    dn "I fell off the beaten track a long while ago, there’s not much hope for me left, and I don’t hate my life either, it has its perks."
+    dn "But my babies, especially my baby girl Methanie, she has so much life ahead of her and could actually make something of herself in this world. She could actually own a house one day!"
+    dn "But, any money leftover from that lottery, I’m not gonna lie I’ll buy a pack of beers or two. But I would use that money for my babies."
+    dn "I know this got a bit deep here, usually takes me a few drinks and a couple packs before I get talkin’ about the future and stuff like this, hope I didn’t ruin the mood for you honeybun!"
+    menu:
+        "You seem to really care about your kids. I appreciate that.":
+            show donna happy
+            $ donnacount += 1
+            dn "Thank you sweetie, I’m glad you see that in me baby. I hope you would do the same if you won money like that, or if you have kids someday."
+        "Why in the world would you do that?! You could get yourself out of that hellhole of a trailer park and actually own a real house! For yourself!":
+            show donna upset
+            $ donnacount -= 1
+            dn "Oh you’re just one of those selfish pricks aren’t you? Always trying to tell me, an independent woman, what to do?"
+            dn "Everyone always thinks they can tell me how to spend my money and what to do with my time! It is a free country baby!"
+            dn "If I like smoking and drinking in a trailer park you cannot stop me! My kids have much more potential than YOU will ever have!"
+        "Hm, interesting choice, can’t say I would do the same, but that's quite nice that you would use it for your kids.":
+            dn "My babies are my world honey, it’s unfortunate you wouldn’t do the same. But I understand, you’re young, you haven’t lived the life I have. When you’re older you’ll get it."
     show donna neutral
-    dn "Alright sweetheart, Donna can't be tied down for too long you know. And don't get it twisted, this lifestyle is all my choice. See you around babes."
-    hide donna neutral with dissolve
+    dn "Anyway darlin, it looks like we’re almost out of time for our little date thing here, and after this I gotta pick up Jack-Daniel & Methanie from daycare."
+    dn "Well, it’s not actually daycare, it’s just Bob’s trailer and he works evenings at the grocery store, and if I leave them with him long enough he’ll try to get them to cook for him."
+    show donna upset
+    dn "And it’s not the kind of cooking you’re thinking of."
+    hide donna upset with dissolve
     player_name "Wow...Donna \"Sugartits\" sure is a lot to take in. She definitely knows a thing or two."
     player_name "I wonder if the next person I meet will be as wild as her."
     $ count += 1
@@ -699,9 +726,70 @@ label Alice:
             $ alicecount += 1
             a "Omg! So many of my friends are in bands, musical and band nerds basically go together like peas in a pod. I was actually in band for a bit in elementary school but my teacher said my singing was so angelic that I was meant to be in theater! We are definitely meant to be."    
     show alice neutral
+    player_name "If i'm being completely honest, I didn’t plan on coming to this event until the very last minute."
+    a "Really? As soon as I found that speed dating flier I practiced day and night what I was going to say! I can never turn down an opportunity to perform!"
+    player_name "Perform?"
+    a "You heard that right."
+    a "Would you be interested in helping me practice my lines for my upcoming audition? They’re from a play I am working on writing all by myself!"
+    menu:
+        "Sure":
+            a "Okay great thanks! Here’s the script, I'll be Alex and you'll beeee..."
+            a "...Shmamilton."
+            jump fanfic
+        "No thanks.":
+            show alice frown
+            a "Oh okay I understand, that’s fine. Not everyone is built for the stage."
+            jump alice_continue
+label fanfic:
+    sh "Oh Alex, since the moment I laid eyes on you I always knew you would be the one for me my sweet darling girl!"
+    show alice happy
+    $ alicecount += 1
+    ax "Shamilton!"
+    ax "You are my everything, I wish our parents didn’t hate each other and we could be together forever my love!"
+    sh "Let’s run away together Alex! We don’t need them anymore, we are our own people! We can be in love without them interfering!"
+    ax "Oh what a great idea! Come inside my room with me, help me pack my things for us to run away tonight!"
+    # VINE BOOM
+    sh "Oh I will come inside! But first, before we pack up your things, let make lov-"
+    menu:
+        "Wait, where is this going?":
+            show alice frown
+            a "Oh I’m sorry if it made you uncomfortable, this is just the art of theater! You must be comfortable getting uncomfortable!"
+        "Is this HAMILTON fanfiction?":
+            show alice upset
+            $ alicecount -= 1
+            a "WHAT?! NO! Of course not! This is my original piece of work, it isn’t based off of anything else, I’ve been working on it for years!"
+    show alice neutral
+    a "Anyway, I guess that’s enough practicing my lines for now! Thank you!"
+    menu:
+        "I hope you get the part you want! Your play seemed really interesting, I would be interested in seeing where it goes!":
+            show alice happy
+            $ alicecount += 1
+            a "Thank you so much! I could send you a copy of my script if you’re interested in reading it! If I’m lucky, hopefully I could take it to Broadway someday."
+        "You’re welcome, though I think your writing skills could use a little work.":
+            a "Do you really think that? I’ve been working on it for so long though…all my friends told me it was good."
+        "I don’t think your weird self-insert Hamilton fanfiction is gonna get you anywhere in the theater world.":
+            show alice upset
+            $ alicecount -= 1
+            a "That is really mean of you to say. This is an original work! And you’ll be regretting those words when I made it on Broadway someday!"
+label alice_continue:
+    show alice neutral
+    a "Anyways, what are you looking to get out of this love shack?"
+    menu:
+        "Perhaps a second date.":
+            show alice frown
+            a "Perhaps??? You don’t sound to sure about that. The theater is not a place for maybes."
+        "A hookup.":
+            show alice upset
+            $ alicecount -= 1
+            a "Gross. If you wanted one soooo bad you should’ve joined my high school theater group when you had the chance. The Dennys bathrooms were always packed with PDA. I couldn’t change my tampon in peace. "
+        "I’m looking for a love to last a lifetime.":
+            show alice happy
+            $ alicecount += 1
+            a "You never cease to amaze me. You could be the Troy to my Gabriella. The Sandy to my Zuko. The Alexander to my Skylar. We are so alike, we are meant to beeeeee."
+    show alice neutral
     "*BELL RINGS*"
     a "The show's coming to an end I suppose! Gotta get ready for my next act heheh. Maybe I'll see you later if the audience calls for an encore stage! Goodbyeee~"
-    hide alice with fade
+    hide alice neutral with fade
     player_name "...Does she know she's not on stage right now? I have to respect her dedication to her craft for sure."
     $ count += 1
     jump selection
@@ -792,6 +880,9 @@ label Damien:
             $ damiencount -= 1
             dm "Wow. You’re just like everyone else. My ex-girlfriend always said the same things. You’re such a sheep. My film knowledge should not be wasted on such a simple-minded person like yourself."
             #play creep by radiohead?
+    dm "Well if you’re interested in hearing some REAL good music, you should listen to what I’m making."
+    dm "I know what good music is, as you can already probably tell. Here, take a listen, it’s only instrumental right now, we haven’t recorded any vocals yet."
+    #SHOW GARAGEBAND
     show damien neutral
     x "*BELL RINGS*"
     dm "Looks like that's my cue to go. Arrivederci, [player_name]."
