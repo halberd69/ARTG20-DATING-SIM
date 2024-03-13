@@ -50,9 +50,12 @@ image table = "table.png"
 image hosts = "hosts.png"
 image tv = "OLD TV.png"
 image doors = "CONFERENCE DOORS.PNG"
-image EGO = "you died.png"
-image GO = "normal game over.png"
+image EGO = "you died game over.png"
+image GO = "general game over.png"
+image abduct = "abducted game over.png"
 image sunny = "sunny day.jpg"
+image playscript = "alice's script.png"
+image steak = "steak.jpeg"
 
 default count = 0
 default chichicount = 0
@@ -75,6 +78,8 @@ define audio.footsteps = "steps.mp3"
 define audio.writing = "write.mp3"
 define audio.rain = "showering.mp3"
 define audio.knife = "knife.mp3"
+define audio.boom = "vineboom.mp3"
+define audio.whip = "whipcrack.mp3"
 
 init:
     image blue = "#485865" 
@@ -173,7 +178,7 @@ label continue_game:
 
 label selection:
     scene pink with fade
-    if count == 7:
+    if count == 8:
         jump endgame
 
     else:
@@ -313,18 +318,23 @@ label Dahlia:
             $ dahliacount -= 1
             dh "Take a good look out that window over there. You really think someone like me can be caught driving around in a car as wrecked as that? You can NOT be serious."
     show dahlia neutral
+    show steak:
+        pos (1,0)
     dh "Anyway, the food here looks abominable. I mean look at this steak! As if I could eat anything that's not premium Wagyu. I can’t bear to eat something like this, but I have to admit I am getting peckish."
     menu:
         "I know an establishment that serves every dish with caviar and gold. I could take you after this.":
+            hide steak
             show dahlia happy
             $ dahliacount += 1
             dh "Is that so? I'm surprised an establishment like that exists in such a small town. I might have to take you up on your offer."
 
         "I’m going to order as much food as I can and put it on your tab.":
+            hide steak
             show dahlia upset
             $ dahliacount -= 1
             dh "You vile little creature…! Typical behavior of common folk such as yourself, always scavenging around for crumbs and handouts."
         "Yeah, I’ve definitely had better food than this.":
+            hide steak
             dh "Yes…Nothing groundbreaking. Tell me, is this truly what people of your social status consider to be delicious? Thank goodness I wasn't born poor."
     show dahlia neutral
     show sunny:
@@ -591,6 +601,7 @@ label Chad:
     cd "Enjoy it? More like live it. The gym is my passion, my safe place. Not that I need a safe place, since I am an absolute unit of a human being. *Flexes muscles*"
     menu:
         "Gym is also my life. I love to take care of my body and stay healthy.":
+            play sound whip
             show handshake with fade
             pause 0.3
             hide handshake 
@@ -614,6 +625,7 @@ label Chad:
         "No time for ladies? Where will you make time for me then?":
             cd "Well you would be my gym partner of course, though you’d have to keep up with these gains *flexes*"
         "That right brother *daps up* Gym is life. Who needs a relationship when you have gains like this?!":
+            play sound whip
             show handshake with fade
             pause 0.3
             hide handshake 
@@ -636,6 +648,7 @@ label Chad:
             $ chadcount -= 1
             cd "I’m always walking anyways, that does enough for them. Leg days are for weaklings, arms are everything. What could I possibly need a leg day for?"
         "That sounds like a great routine to me. Arms are everything. How much can you bench?":
+            play sound whip
             show handshake with fade
             pause 0.3
             hide handshake 
@@ -650,6 +663,7 @@ label Chad:
         "Not quite what I’m looking for, I’m not as into the gym as you seem to be…":
             cd "That's a shame you won’t get to be with a godlike man like me. But, even though you don’t go to the gym, you still wanna hit?"
         "That’s exactly what I’m looking for. You're perfect, do you want to hit up the gym after this?":
+            play sound whip
             show handshake with fade
             pause 0.3
             hide handshake 
@@ -743,6 +757,8 @@ label Alice:
             a "Oh okay I understand, that’s fine. Not everyone is built for the stage."
             jump alice_continue
 label fanfic:
+    play sound paper volume 1.0
+    show playscript with moveinbottom
     sh "Oh Alex, since the moment I laid eyes on you I always knew you would be the one for me my sweet darling girl!"
     show alice happy
     $ alicecount += 1
@@ -750,13 +766,15 @@ label fanfic:
     ax "You are my everything, I wish our parents didn’t hate each other and we could be together forever my love!"
     sh "Let’s run away together Alex! We don’t need them anymore, we are our own people! We can be in love without them interfering!"
     ax "Oh what a great idea! Come inside my room with me, help me pack my things for us to run away tonight!"
-    # VINE BOOM
+    play sound boom
     sh "Oh I will come inside! But first, before we pack up your things, let make lov-"
     menu:
         "Wait, where is this going?":
+            hide playscript
             show alice frown
             a "Oh I’m sorry if it made you uncomfortable, this is just the art of theater! You must be comfortable getting uncomfortable!"
         "Is this HAMILTON fanfiction?":
+            hide playscript
             show alice upset
             $ alicecount -= 1
             a "WHAT?! NO! Of course not! This is my original piece of work, it isn’t based off of anything else, I’ve been working on it for years!"
@@ -768,6 +786,7 @@ label fanfic:
             $ alicecount += 1
             a "Thank you so much! I could send you a copy of my script if you’re interested in reading it! If I’m lucky, hopefully I could take it to Broadway someday."
         "You’re welcome, though I think your writing skills could use a little work.":
+            show alice frown
             a "Do you really think that? I’ve been working on it for so long though…all my friends told me it was good."
         "I don’t think your weird self-insert Hamilton fanfiction is gonna get you anywhere in the theater world.":
             show alice upset
@@ -866,6 +885,22 @@ label Damien:
             show damien happy
             $ damiencount += 1
             dm "Finally, someone who understands my feelings about indie music. No one these days are real connoisseurs of indie. No one understands it. Those are my favorite songs by them as well."
+    dm "Well if you’re interested in hearing some REAL good music, you should listen to what I’m making."
+    dm "I know what good music is, as you can already probably tell. Here, take a listen, it’s only instrumental right now, we haven’t recorded any vocals yet."
+    $ renpy.movie_cutscene("video/barsssss.WebM")
+    menu:
+        "I’m sorry but that is some of the worst sounding music I’ve ever heard- I don’t even think that could be considered music dude.":
+            show damien upset
+            $ damiencount -= 1
+            dm "Oh I’m not surprised a simpleton like you doesn’t understand it; this is really complex stuff. It’s EXPERIMENTAL! It takes a high IQ to appreciate art like this; which it is very apparent that you do not have."
+        "It’s definitely very…interesting. I think it needs a little work before you release it if I’m being honest":
+            show damien upset
+            dm "Ugh. I knew a simpleton like you would never understand what real music is."
+            dm "And of course it’s not FINISHED so you can’t even really judge it okay? It’s literally a work in progress. SMH"
+        "Wow, you’re realllyyyyy good Damien, I can totally see the vision":
+            show damien happy
+            $ damiencount += 1
+            dm "Thank you, I know. It’s just a little something I cooked up with my band the other day, nothing crazy."    
     show damien neutral
     player_name "Well what’s your ideal first date?"
     dm "Well obviously it would be taking someone to the cinema, perhaps to see a black and white obscure French film that they’ve probably never heard about, so I can tell them everything I know about it."
@@ -882,23 +917,6 @@ label Damien:
             $ damiencount -= 1
             dm "Wow. You’re just like everyone else. My ex-girlfriend always said the same things. You’re such a sheep. My film knowledge should not be wasted on such a simple-minded person like yourself."
             #play creep by radiohead?
-    dm "Well if you’re interested in hearing some REAL good music, you should listen to what I’m making."
-    dm "I know what good music is, as you can already probably tell. Here, take a listen, it’s only instrumental right now, we haven’t recorded any vocals yet."
-    #SHOW GARAGEBAND
-    $ renpy.movie_cutscene("video/barsssss.WebM")
-    menu:
-        "I’m sorry but that is some of the worst sounding music I’ve ever heard- I don’t even think that could be considered music dude.":
-            show damien upset
-            $ damiencount -= 1
-            dm "Oh I’m not surprised a simpleton like you doesn’t understand it; this is really complex stuff. It’s EXPERIMENTAL! It takes a high IQ to appreciate art like this; which it is very apparent that you do not have."
-        "It’s definitely very…interesting. I think it needs a little work before you release it if I’m being honest":
-            show damien upset
-            dm "Ugh. I knew a simpleton like you would never understand what real music is."
-            dm "And of course it’s not FINISHED so you can’t even really judge it okay? It’s literally a work in progress. SMH"
-        "Wow, you’re realllyyyyy good Damien, I can totally see the vision":
-            show damien happy
-            $ damiencount += 1
-            dm "Thank you, I know. It’s just a little something I cooked up with my band the other day, nothing crazy."
     show damien neutral
     x "*BELL RINGS*"
     dm "Looks like that's my cue to go. Arrivederci, [player_name]."
@@ -920,9 +938,11 @@ label Alien:
             show alien neutral
             an "Strange? Richard is far from strange, Richard is a totally normal human, Richard is from the great world of California. There is nothing strange about that?"
         "You seem really funny, tell me more about yourself.":
+            $ aliencount += 1
             an "Well I go by the name of Richard and Richard really likes cows, crops, and other fun farm activities. Richard likes to fly around, but am also a little shy of other normal people like me, because Richard is normal, just like you."
         "Your name is interesting, well the first one you said was at least.":
             show alien upset
+            $ aliencount -= 1
             an "What do you mean, all Richard said was my name is Richard. That is all. It is just my totally normal human name."
     show alien happy
     player_name "Interesting, something is off about you but I can’t quite put my finger on it. What brings you here anyways?"
@@ -934,6 +954,7 @@ label Alien:
     menu:
         "Something about you just isn’t…right. I get the feeling I need to call the police or the FBI.":
             show alien upset
+            $ aliencount -= 1
             an "No please no police. There is no reason for that here. You have no reason to be scared of Richard. Look into my eyes, you can trust me, friend."
             jump alien_secret
         "Why does the research have to be a secret?":
@@ -946,6 +967,7 @@ label Alien:
             jump alien_continue
         "Sounds serious. You can trust me, I won’t tell anyone. A classified secret can be a lot to carry.":
             show alien happy
+            $ aliencount += 1
             an "Well you do seem to be a trustworthy human so Richard guesses he can debrief you on the mission. The main goal is to gain the trust of humans and learn how they experience love."
             an "Richard himself finds you humans very fascinating."
             jump alien_continue
@@ -960,6 +982,7 @@ label alien_continue:
     menu:
         "It is alright, I will do everything to help you out and get you back home.":
             show alien happy
+            $ aliencount += 1
             an "Thank you, Richard really appreciates that."
             an "You are very different from what Richard thought you would be like. Humans can actually be very caring."
         "Oh no that sucks. What are you gonna do about that?":
@@ -967,6 +990,7 @@ label alien_continue:
             an "Richard does not know. There is no way back unless they come back for me. Your human space crafts are no good compared to our technology."
         "OOF. Big L. I bet they left to get rid of you.":
             show alien shocked
+            $ aliencount -= 1
             an "No, is that really the reason? It has to be. They have never just left people before, the weirdest of behaviors..."
             show alien upset
             an "...Richard is sad now."
@@ -986,6 +1010,7 @@ label alien_continue:
     menu:
         "What rich culture. What made you want to study love?":
             show alien happy
+            $ aliencount += 1
             an "Ah. Richard quite enjoys human love. Richard wishes he could experience love like the humans do. That is what made Richard so passionate about it."
             an "And yes, aliens are real, and there are many many many more planets of creatures like Richard."
         "Hm. Kind of weird that you have been watching me for so long.":
@@ -995,6 +1020,7 @@ label alien_continue:
             an "And we are all quite astonished at your selfishness, and stupidity. You have had thousands of years to contact us yet all you care about is yourselves."
         "Must have not been that elite of a researcher if all your teammates left you here bozo.":
             show alien upset
+            $ aliencount -= 1
             an "That makes Richard sad. I sure do not hope that they thought that. Richard was, is, one of the best!"
             an "Queen Khägud even gave Richard her blessing before we left. Oh what will Richard do with all his time here."
     show alien upset
@@ -1008,9 +1034,11 @@ label alien_continue:
             an "Do you really think so? Richard always felt like human love was the center of everything."
         "HA! Good luck with that Alien boy! No one will ever love you!":
             show alien upset
+            $ aliencount -= 1
             an "You make Richard oh so very sad. Richard just wants somebody to love. Why must you be so mean?"
         "Well Richard, you could fall in love with me…":
             show alien happy
+            $ aliencount += 1
             an "R-Really?! You want Richard to love you? Oh human friend that sounds like much fun!"
     x "*BELL RINGS*"
     show alien happy
@@ -1024,14 +1052,18 @@ label alien_continue:
 label alien_secret:
     menu:
         "Ok I will trust you, But you need to tell me more about yourself. So I can totally understand why you are here.":
+            $ aliencount += 2
+            show alien upset
             an "Oh okay, Richard understands."
+            show alien neutral
             an "Richard was sent to this planet to discover how you humans experience love."
             an "It sounds a little weird, But Richard comes far and wide from the planet Saturn as you call it but we call it Ghaldjud."
             jump alien_continue
         "NO WAY “Richard” if that even is your name. I'm getting a hold of the authorities.":
+            show alien upset
             an "You will regret that. *leans over and speaks into his watch*"
             an "Richard has been compromised by human, immediate evac, no witnesses."
-            #jump GO
+            jump abduction
     
     $ count += 1
     jump selection
@@ -1056,8 +1088,8 @@ label endgame:
             jump ebonyend
         "Chad (Gym Bro)":
             jump chadend
-        #"Alien":
-        #    jump alienend
+        "Richard (Alien)":
+            jump alienend
         "Damien (Film Guy)":
             jump damienend
 
@@ -1069,7 +1101,7 @@ label chichiend:
             pause 2.0
             c "Yay! You're my favorite oomfie ^_^ Let's go match profile pictures on all our social media platforms!!"
             hide chichi happy with fade
-            show hosts
+            show hosts with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Chichi!"
             jump normalend
         elif chichicount >= 1:
@@ -1077,7 +1109,7 @@ label chichiend:
             pause 2.0
             c "Hmm...Chichi's unsure...Chichi didn't really feel any sparks going on."
             hide chichi neutral with fade
-            show hosts
+            show hosts with fade
             N "Ooof…that’s awkward. Looks like Chichi didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1086,7 +1118,7 @@ label chichiend:
             pause 2.0
             c "Hmph! As if I'd go on a date with anynyan like you!!"
             hide chichi neutral with fade
-            show hosts
+            show hosts with fade
             N "Ooof…that’s awkward. Looks like Chichi didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1099,7 +1131,7 @@ label dahliaend:
             pause 2.0
             dh "Oh yes, I would love to go on a second date with you as well. Who would've guessed we would meet each other here."
             hide dahlia happy with fade
-            show hosts
+            show hosts with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Dahlia!"
             jump normalend
         elif dahliacount >= 1:
@@ -1107,7 +1139,7 @@ label dahliaend:
             pause 2.0
             dh "Some things you said were interesting, however some other things you said...Not so much."
             hide dahlia neutral with fade
-            show hosts
+            show hosts with fade
             N "Ooof…that’s awkward. Looks like Dahlia didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1116,7 +1148,7 @@ label dahliaend:
             pause 2.0
             dh "As if. Unbelievable to think you'd have a chance with me."
             hide dahlia upset with fade
-            show hosts
+            show hosts with fade
             N "Ooof…that’s awkward. Looks like Dahlia didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1124,20 +1156,20 @@ label dahliaend:
 label donnaend:
         show donna neutral with fade
         pause 2.0
-        if donnacount >= 2:
+        if donnacount >= 3:
             show donna happy with fade
             pause 2.0
             dn "Oh honey, let's go to my hotel room. I'm ALWAYS down for a good time."
             hide donna happy with fade
-            show hosts
+            show hosts with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Donna!"
             jump normalend
-        elif donnacount == 1:
+        elif donnacount >= 1:
             show donna neutral with fade
             pause 2.0
             dn "Sorry schweetheart, I got a date with Bob tonight. I really don't wanna miss it, considering what he's offerin, heh."
             hide donna neutral with fade
-            show hosts
+            show hosts with fade
             N "Ooof…that’s awkward. Looks like Donna didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1147,7 +1179,7 @@ label donnaend:
             dn "*blows smoke in your face*"
             dn "Tough luck. I'd rather go on a date with one of my ex-husbands than go on a date with you."
             hide donna upset with fade
-            show hosts
+            show hosts with fade
             N "Ooof…that’s awkward. Looks like Donna didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1155,20 +1187,20 @@ label donnaend:
 label damienend:
         show damien neutral with fade
         pause 2.0
-        if damiencount >= 3:
+        if damiencount >= 5:
             show damien happy with fade
             pause 2.0
             dm "I knew you wanted me as much as I wanted you. Come on, you have to be a guest on one of my film podcasts."
             hide damien happy with fade
-            show hosts
+            show hosts with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Damien!"
             jump normalend
-        elif damiencount >= 1:
+        elif damiencount >= 2:
             show damien neutral with fade
             pause 2.0
             dm "Sorry, you gave off too much of a \"normie\" vibe to me. I can't be dating someone who can't understand all the inner mechanics involved with film making."
             hide damien neutral with fade
-            show hosts
+            show hosts with fade
             N "Ooof…that’s awkward. Looks like Damien didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1177,7 +1209,7 @@ label damienend:
             pause 2.0
             dm "Sorry, but I'm not interested at all. You're the type of person who rates every movie they watch a 10/10. In other words, you have no ounce of taste in your body."
             hide damien upset with fade
-            show hosts
+            show hosts with fade
             N "Ooof…that’s awkward. Looks like Damien didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1185,20 +1217,20 @@ label damienend:
 label aliceend:
         show alice neutral with fade
         pause 2.0
-        if alicecount >= 3:
+        if alicecount >= 5:
             show alice happy with fade
             pause 2.0
             a "OMG I was hoping you'd choose me! I'm interested in you as well. Let's go to my car and listen to as many Hamilton songs as we can til the day ends~!"
             hide alice happy with fade
-            show hosts
+            show hosts with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Alice!"
             jump normalend
-        elif alicecount >= 1:
+        elif alicecount >= 2:
             show alice frown with fade
             pause 2.0
             a "I'm sorry, but I'm afraid theater isn't as important to you as it is to me. It's my life so I can't be with someone who doesn't share the same passion. It was nice meeting you though."
             hide alice neutral with fade
-            show hosts
+            show hosts with fade
             N "Ooof…that’s awkward. Looks like Alice didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1207,7 +1239,7 @@ label aliceend:
             pause 2.0
             a "Eww, no! You were so rude to me! You're probably just asking me out as a joke. I'm not falling for it."
             hide alice upset with fade
-            show hosts
+            show hosts with fade
             N "Ooof…that’s awkward. Looks like Alice didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1220,7 +1252,7 @@ label ebonyend:
             pause 2.0
             e "...I admit, I wuv you already...Do you want to go make a gun out of Monster cans after this? And then maybe after we can listen to some music from my iPod with my wired earbuds?"
             hide ebony happy with fade
-            show hosts
+            show hosts with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Ebony!"
             jump normalend
         elif ebonycount >= 1:
@@ -1228,7 +1260,7 @@ label ebonyend:
             pause 2.0
             e "......You think you understand me...but you don't."
             hide ebony neutral with fade
-            show hosts
+            show hosts with fade
             N "Ooof…that’s awkward. Looks like Richard didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1237,7 +1269,7 @@ label ebonyend:
             pause 2.0
             e "...What makes you think I would go on a second date with you? I don't even want to be within a 5 mile radius of you."
             hide ebony upset with fade
-            show hosts
+            show hosts with fade
             N "Ooof…that’s awkward. Looks like Ebony didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1250,7 +1282,7 @@ label chadend:
             pause 2.0
             cd "Aw yeah babe, you and I are a unique breed nowadays. I knew great recognized great. Let's go hit the gym hot stuff."
             hide chad happy with fade
-            show hosts
+            show hosts with fade
             N "Wow! How lovely! Congratulations to the new couple, [player_name] and Chad!"
             jump normalend
         elif chadcount >= 1:
@@ -1258,7 +1290,7 @@ label chadend:
             pause 2.0
             cd "Hmm, nah no not really interested bro. We can be gym buds though. Well actually, I don't really like lifting with other people. I always get called out for \"ego lifting\", but they don't understand my process brah."
             hide chad neutral with fade
-            show hosts
+            show hosts with fade
             N "Ooof…that’s awkward. Looks like Chad didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1267,7 +1299,7 @@ label chadend:
             pause 2.0
             cd "After everything you said about the gym and stuff bro?! You gotta be pulling my finger, or like what was it, my tail or however the stupid phrase goes."
             hide chad upset with fade
-            show hosts
+            show hosts with fade
             N "Ooof…that’s awkward. Looks like Chad didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1275,22 +1307,22 @@ label chadend:
 label alienend:
         show alien neutral with fade
         pause 2.0
-        if aliencount >= 3:
+        if aliencount >= 6:
             show alien happy with fade
             pause 2.0
             an "Oh yay! Richard’s favorite human wants to go on another date!"
             an "Yippee! Richard cannot wait to experience human love!."
             hide alien happy with fade
-            show hosts
+            show hosts with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Richard!"
             jump normalend
-        elif aliencount >= 1:
+        elif aliencount >= 2:
             show alien neutral with fade
             pause 2.0
             an "Hmmm, Richard did not feel enough connection with you."
             an "It does not seem like you would be a suitable candidate to learn love from."
             hide alien neutral with fade
-            show hosts
+            show hosts with fade
             N "Ooof…that’s awkward. Looks like Richard didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1300,7 +1332,7 @@ label alienend:
             an "AH! You again!"
             an "Oh you were oh so mean to Richard on our date, Richard does not want to experience human love with you!"
             hide alien upset with fade
-            show hosts
+            show hosts with fade
             N "Ooof…that’s awkward. Looks like Richard didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1312,12 +1344,15 @@ label normalend:
     K "Love kills: Speed dating for convicted murders, the insane, and other criminals!"
     K "Look for us at a prison near you!"
     KN "Have a safe afternoon everyone, and stay out of the rain!"
-    # show credits
     scene GO with fade
     pause 8.0
     jump endofgamefr
 label EBending:
     scene EGO with fade
+    pause 8.0
+    jump endofgamefr
+label abduction:
+    scene abduct with fade
     pause 8.0
     jump endofgamefr
 label endofgamefr:
