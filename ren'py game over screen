@@ -4,4 +4,4 @@ screen gameOver():
         yalign 0.5
         idle "game_over.png" 
         hover "game_over.png"
-        action MainMenu()
+        action MainMenu(confirm=False)
