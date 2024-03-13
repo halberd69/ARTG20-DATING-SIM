@@ -11,7 +11,7 @@ define cd = Character ("Chad")
 define a = Character ("Alice")
 define e = Character ("Ebony")
 define dm = Character ("Damien")
-define an = Character ("Alien")
+define an = Character ("Richard")
 define KN = Character ("Kayley & Natasha")
 define sh = Character ("Shmamilton?")
 define ax = Character ("Alex?")
@@ -57,6 +57,14 @@ image sunny = "sunny day.jpg"
 image playscript = "alice's script.png"
 image steak = "steak.jpeg"
 image endscreen = "endscreen.png"
+image credit1 = "credits-01.png"
+image credit2 = "credits-02.png"
+image credit3 = "credits-03.png"
+image credit4 = "credits-04.png"
+image credit5 = "credits-05.png"
+image credit6 = "credits-06.png"
+image credit7 = "credits-07.png"
+image credit8 = "credits-08.png"
 
 default count = 0
 default chichicount = 0
@@ -111,7 +119,6 @@ init:
 # The game starts here.
 label start:
 
-    #jump chichiend
     play music bgm volume 0.3 fadein 1.0
     play sound rain volume 0.2
     scene tv with fade
@@ -1447,15 +1454,34 @@ label normalend:
     K "Look for us at a prison near you!"
     KN "Have a safe afternoon everyone, and stay out of the rain!"
     scene GO with fade
-    pause 8.0
+    pause 15.0
+    #hide GO with fade
     jump endofgamefr
 label EBending:
     scene EGO with fade
-    pause 8.0
+    pause 15.0
+#hide EGO with fade
     jump endofgamefr
 label abduction:
     scene abduct with fade
-    pause 8.0
+    pause 15.0
+    #hide abduct with fade
     jump endofgamefr
 label endofgamefr:
+    show credit1 with fade
+    pause 8.0
+    show credit2 with fade
+    pause 8.0
+    show credit3 with fade
+    pause 8.0
+    show credit4 with fade
+    pause 8.0
+    show credit5 with fade
+    pause 8.0
+    show credit6 with fade
+    pause 8.0
+    show credit7 with fade
+    pause 8.0
+    show credit8 with fade
+    pause 8.0
     return
