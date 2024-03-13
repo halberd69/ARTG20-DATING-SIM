@@ -72,7 +72,17 @@ default chosen = []
 
 image surf = Movie(play="images/subwaysurfers.webm", size=(720,350), loop=False, xalign = 0, yalign = 0)
 image UFO = Movie(play="images/ufo.webm", size=(350,720), loop=False, xalign = 0.9, yalign = 0)
-define audio.bgm = "Killing Time Newgrounds.mp3" 
+define audio.bgm = "Killing Time Newgrounds.mp3"
+define audio.selectionmusic = "selectionmusic.mp3"
+define audio.moody = "moodymusic.mp3"
+define audio.chadio = "chadio.mp3"
+define audio.dahdio = "dahdio.mp3"
+define audio.dondio = "dondio.mp3"
+define audio.chidio = "chidio.mp3"
+define audio.ebdio = "ebdio.mp3"
+define audio.damdio = "damdio.mp3"
+define audio.richdio = "richdio.mp3"
+define audio.aldio = "aldio.mp3"
 define audio.paper = "page.mp3"
 define audio.footsteps = "steps.mp3"
 define audio.writing = "write.mp3"
@@ -97,7 +107,7 @@ init:
 # The game starts here.
 label start:
 
-    play music bgm volume 0.3
+    play music bgm volume 0.3 fadein 1.0
     play sound rain volume 0.2
     scene tv with fade
     pause 3.0
@@ -175,9 +185,12 @@ label continue_game:
     with fade
     player_name "Those were a lot of terms and conditions for this event…I thought speed dating would be pretty straightforward. I don’t even know what she said…did she say death? Dismemberment? What even is that abou-"
     x "*BELL RINGS* FIRST PAIRING STARTS NOW! Find your first partner ladies and gents!"
+  
 
 label selection:
-    scene pink with fade
+    play music moody volume 0.3 fadein 1.5
+    scene pink
+    with fade
     if count == 8:
         jump endgame
 
@@ -206,6 +219,7 @@ label ChiChi:
     scene light_purple
     show chichi happy 
     with fade
+    play music chidio volume 0.3 fadein 1.0
     c "OMG Hi, My name is Chi-Chi, it means \“good fortune\” in Japanyese!! You’re [player_name] right nya?"
     player_name "How do you know my name…?"
     show chichi neutral
@@ -289,6 +303,7 @@ label Dahlia:
     scene tiffany_blue
     show dahlia upset 
     with fade
+    play music dahdio volume 0.3 fadein 1.0
     dh "Ugh, what a joke. There’s a terrible storm outside, I can’t leave because my Wolls Woyce is in shambles and my driver is repairing it, and now I’m stuck here in this dingy hotel."
     show dahlia neutral
     dh "I guess you’ll have to do for entertainment. My name is Dahlia."
@@ -381,6 +396,7 @@ label Donna:
     scene purple
     show donna happy 
     with fade
+    play music dondio volume 0.3 fadein 1.0
     dn "Hey shweet heart, how’s ya goin?"
     player_name "Hi, it’s nice to meet you, what’s your name?"
     show donna neutral
@@ -478,6 +494,7 @@ label Ebony:
     scene blue
     show ebony neutral
     with fade
+    play music ebdio volume 0.3 fadein 1.0
     x "H-hey…"
     player_name "Hi, I'm [player_name]. What's your name?"
     e "Ebony…"
@@ -596,6 +613,7 @@ label Chad:
     scene red
     show chad neutral 
     with fade
+    play music chadio volume 0.2 fadein 1.0
     cd "Hey whats up, the name’s Chad, Great name huh? Kinda lame that I have to be here right now, the gyms closed at the hotel for some reason so I said might as well grace this event with my presence. It was leg day anyways so I guess I’m not missing much."
     player_name "It’s nice to meet you Chad, I'm [player_name]. I can definitely see that you enjoy the gym a lot."
     cd "Enjoy it? More like live it. The gym is my passion, my safe place. Not that I need a safe place, since I am an absolute unit of a human being. *Flexes muscles*"
@@ -686,6 +704,7 @@ label Chad:
 label Alice:
     scene yellow
     show alice happy with moveinleft
+    play music aldio volume 0.3 fadein 1.0
     a "Goodmooorning Baaaltimoooore~"
     player_name "..."
     show alice neutral
@@ -818,6 +837,7 @@ label Damien:
     scene brown
     show damien neutral 
     with fade
+    play music damdio volume 1.3 fadein 1.0
     player_name "Hello there. I'm [player_name]."
     dm "Hi. I’m Damien. "
     dm "*Sighs* To be quite honest I am not certain why I am even here."
@@ -929,6 +949,7 @@ label Damien:
 label Alien:
     scene green
     show alien neutral with fade
+    play music richdio volume 1.8 fadein 1.0
     an "Good afternoon fellow normal human, what a glorious day we are having."
     player_name "Hi, I'm [player_name]. I don’t know about glorious but the day has been alright. What's your name?"
     show alien happy
@@ -1071,6 +1092,7 @@ label alien_secret:
 label endgame:
     scene pink
     show hosts with fade
+    play music selectionmusic volume 0.1 fadein 1.0
     H "Alright ladies and gents, that is the end of our introductions phase! Now comes the \"second date\" phase, the most important moment of the night."
     H "You must make your decision now. Who will you choose to date, [player_name]?"
     hide hosts
@@ -1100,16 +1122,18 @@ label chichiend:
             show chichi happy with fade
             pause 2.0
             c "Yay! You're my favorite oomfie ^_^ Let's go match profile pictures on all our social media platforms!!"
-            hide chichi happy with fade
-            show hosts with fade
+            hide chichi happy
+            show hosts 
+            with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Chichi!"
             jump normalend
         elif chichicount >= 1:
             show chichi neutral with fade
             pause 2.0
             c "Hmm...Chichi's unsure...Chichi didn't really feel any sparks going on."
-            hide chichi neutral with fade
-            show hosts with fade
+            hide chichi neutral
+            show hosts 
+            with fade
             N "Ooof…that’s awkward. Looks like Chichi didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1117,8 +1141,9 @@ label chichiend:
             show chichi upset with fade
             pause 2.0
             c "Hmph! As if I'd go on a date with anynyan like you!!"
-            hide chichi neutral with fade
-            show hosts with fade
+            hide chichi neutral
+            show hosts
+            with fade
             N "Ooof…that’s awkward. Looks like Chichi didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1130,16 +1155,18 @@ label dahliaend:
             show dahlia happy with fade
             pause 2.0
             dh "Oh yes, I would love to go on a second date with you as well. Who would've guessed we would meet each other here."
-            hide dahlia happy with fade
-            show hosts with fade
+            hide dahlia
+            show hosts 
+            with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Dahlia!"
             jump normalend
         elif dahliacount >= 1:
             show dahlia neutral with fade
             pause 2.0
-            dh "Some things you said were interesting, however some other things you said...Not so much."
-            hide dahlia neutral with fade
-            show hosts with fade
+            dh "Some things you said were charming, however some other things you said...Not so much."
+            hide dahlia neutral
+            show hosts 
+            with fade
             N "Ooof…that’s awkward. Looks like Dahlia didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1147,8 +1174,9 @@ label dahliaend:
             show dahlia upset with fade
             pause 2.0
             dh "As if. Unbelievable to think you'd have a chance with me."
-            hide dahlia upset with fade
-            show hosts with fade
+            hide dahlia upset 
+            show hosts
+            with fade
             N "Ooof…that’s awkward. Looks like Dahlia didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1160,16 +1188,18 @@ label donnaend:
             show donna happy with fade
             pause 2.0
             dn "Oh honey, let's go to my hotel room. I'm ALWAYS down for a good time."
-            hide donna happy with fade
-            show hosts with fade
+            hide donna happy
+            show hosts 
+            with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Donna!"
             jump normalend
         elif donnacount >= 1:
             show donna neutral with fade
             pause 2.0
             dn "Sorry schweetheart, I got a date with Bob tonight. I really don't wanna miss it, considering what he's offerin, heh."
-            hide donna neutral with fade
-            show hosts with fade
+            hide donna neutral 
+            show hosts 
+            with fade
             N "Ooof…that’s awkward. Looks like Donna didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1178,8 +1208,9 @@ label donnaend:
             pause 2.0
             dn "*blows smoke in your face*"
             dn "Tough luck. I'd rather go on a date with one of my ex-husbands than go on a date with you."
-            hide donna upset with fade
-            show hosts with fade
+            hide donna upset 
+            show hosts 
+            with fade
             N "Ooof…that’s awkward. Looks like Donna didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1191,16 +1222,18 @@ label damienend:
             show damien happy with fade
             pause 2.0
             dm "I knew you wanted me as much as I wanted you. Come on, you have to be a guest on one of my film podcasts."
-            hide damien happy with fade
-            show hosts with fade
+            hide damien happy 
+            show hosts 
+            with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Damien!"
             jump normalend
         elif damiencount >= 2:
             show damien neutral with fade
             pause 2.0
             dm "Sorry, you gave off too much of a \"normie\" vibe to me. I can't be dating someone who can't understand all the inner mechanics involved with film making."
-            hide damien neutral with fade
-            show hosts with fade
+            hide damien neutral
+            show hosts 
+            with fade
             N "Ooof…that’s awkward. Looks like Damien didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1208,8 +1241,9 @@ label damienend:
             show damien upset with fade
             pause 2.0
             dm "Sorry, but I'm not interested at all. You're the type of person who rates every movie they watch a 10/10. In other words, you have no ounce of taste in your body."
-            hide damien upset with fade
-            show hosts with fade
+            hide damien upset
+            show hosts 
+            with fade
             N "Ooof…that’s awkward. Looks like Damien didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1229,8 +1263,9 @@ label aliceend:
             show alice frown with fade
             pause 2.0
             a "I'm sorry, but I'm afraid theater isn't as important to you as it is to me. It's my life so I can't be with someone who doesn't share the same passion. It was nice meeting you though."
-            hide alice neutral with fade
-            show hosts with fade
+            hide alice neutral 
+            show hosts 
+            with fade
             N "Ooof…that’s awkward. Looks like Alice didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1238,8 +1273,9 @@ label aliceend:
             show alice upset with fade
             pause 2.0
             a "Eww, no! You were so rude to me! You're probably just asking me out as a joke. I'm not falling for it."
-            hide alice upset with fade
-            show hosts with fade
+            hide alice upset 
+            show hosts
+            with fade
             N "Ooof…that’s awkward. Looks like Alice didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1251,16 +1287,18 @@ label ebonyend:
             show ebony happy with fade
             pause 2.0
             e "...I admit, I wuv you already...Do you want to go make a gun out of Monster cans after this? And then maybe after we can listen to some music from my iPod with my wired earbuds?"
-            hide ebony happy with fade
-            show hosts with fade
+            hide ebony happy 
+            show hosts 
+            with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Ebony!"
             jump normalend
         elif ebonycount >= 1:
             show ebony neutral with fade
             pause 2.0
             e "......You think you understand me...but you don't."
-            hide ebony neutral with fade
-            show hosts with fade
+            hide ebony neutral 
+            show hosts 
+            with fade
             N "Ooof…that’s awkward. Looks like Richard didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1268,8 +1306,9 @@ label ebonyend:
             show ebony upset with fade
             pause 2.0
             e "...What makes you think I would go on a second date with you? I don't even want to be within a 5 mile radius of you."
-            hide ebony upset with fade
-            show hosts with fade
+            hide ebony upset
+            show hosts 
+            with fade
             N "Ooof…that’s awkward. Looks like Ebony didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1281,16 +1320,18 @@ label chadend:
             show chad happy with fade
             pause 2.0
             cd "Aw yeah babe, you and I are a unique breed nowadays. I knew great recognized great. Let's go hit the gym hot stuff."
-            hide chad happy with fade
-            show hosts with fade
+            hide chad happy
+            show hosts 
+            with fade
             N "Wow! How lovely! Congratulations to the new couple, [player_name] and Chad!"
             jump normalend
         elif chadcount >= 1:
             show chad neutral with fade
             pause 2.0
             cd "Hmm, nah no not really interested bro. We can be gym buds though. Well actually, I don't really like lifting with other people. I always get called out for \"ego lifting\", but they don't understand my process brah."
-            hide chad neutral with fade
-            show hosts with fade
+            hide chad neutral
+            show hosts 
+            with fade
             N "Ooof…that’s awkward. Looks like Chad didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1298,8 +1339,9 @@ label chadend:
             show chad upset with fade
             pause 2.0
             cd "After everything you said about the gym and stuff bro?! You gotta be pulling my finger, or like what was it, my tail or however the stupid phrase goes."
-            hide chad upset with fade
-            show hosts with fade
+            hide chad upset
+            show hosts 
+            with fade
             N "Ooof…that’s awkward. Looks like Chad didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1312,8 +1354,9 @@ label alienend:
             pause 2.0
             an "Oh yay! Richard’s favorite human wants to go on another date!"
             an "Yippee! Richard cannot wait to experience human love!."
-            hide alien happy with fade
-            show hosts with fade
+            hide alien happy 
+            show hosts 
+            with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Richard!"
             jump normalend
         elif aliencount >= 2:
@@ -1321,8 +1364,9 @@ label alienend:
             pause 2.0
             an "Hmmm, Richard did not feel enough connection with you."
             an "It does not seem like you would be a suitable candidate to learn love from."
-            hide alien neutral with fade
-            show hosts with fade
+            hide alien neutral
+            show hosts 
+            with fade
             N "Ooof…that’s awkward. Looks like Richard didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
@@ -1331,8 +1375,9 @@ label alienend:
             pause 2.0
             an "AH! You again!"
             an "Oh you were oh so mean to Richard on our date, Richard does not want to experience human love with you!"
-            hide alien upset with fade
-            show hosts with fade
+            hide alien upset
+            show hosts 
+            with fade
             N "Ooof…that’s awkward. Looks like Richard didn’t want to go on a second date with [player_name]."
             N "Looks like it will be a lonely Valentine’s Day for you! Try not to take it too harshly! Remember, there’s plenty of fish in the sea [player_name]!"
             jump normalend
