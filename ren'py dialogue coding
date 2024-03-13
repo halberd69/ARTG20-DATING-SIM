@@ -56,6 +56,7 @@ image abduct = "abducted game over.png"
 image sunny = "sunny day.jpg"
 image playscript = "alice's script.png"
 image steak = "steak.jpeg"
+image endscreen = "endscreen.png"
 
 default count = 0
 default chichicount = 0
@@ -90,6 +91,8 @@ define audio.rain = "showering.mp3"
 define audio.knife = "knife.mp3"
 define audio.boom = "vineboom.mp3"
 define audio.whip = "whipcrack.mp3"
+define audio.love = "loveydovey.mp3"
+define audio.womp = "womp.mp3"
 
 init:
     image blue = "#485865" 
@@ -107,6 +110,7 @@ init:
 # The game starts here.
 label start:
 
+    #jump chichiend
     play music bgm volume 0.3 fadein 1.0
     play sound rain volume 0.2
     scene tv with fade
@@ -1096,6 +1100,7 @@ label endgame:
     H "Alright ladies and gents, that is the end of our introductions phase! Now comes the \"second date\" phase, the most important moment of the night."
     H "You must make your decision now. Who will you choose to date, [player_name]?"
     hide hosts
+    show endscreen with fade
 
     menu:
         "Chichi (Cat Girl)":
@@ -1121,6 +1126,7 @@ label chichiend:
         if chichicount >= 3:
             show chichi happy with fade
             pause 2.0
+            play sound love
             c "Yay! You're my favorite oomfie ^_^ Let's go match profile pictures on all our social media platforms!!"
             hide chichi happy
             show hosts 
@@ -1130,6 +1136,7 @@ label chichiend:
         elif chichicount >= 1:
             show chichi neutral with fade
             pause 2.0
+            play sound womp volume 0.6
             c "Hmm...Chichi's unsure...Chichi didn't really feel any sparks going on."
             hide chichi neutral
             show hosts 
@@ -1140,6 +1147,7 @@ label chichiend:
         else:
             show chichi upset with fade
             pause 2.0
+            play sound womp volume 0.6
             c "Hmph! As if I'd go on a date with anynyan like you!!"
             hide chichi neutral
             show hosts
@@ -1154,6 +1162,7 @@ label dahliaend:
         if dahliacount >= 3:
             show dahlia happy with fade
             pause 2.0
+            play sound love
             dh "Oh yes, I would love to go on a second date with you as well. Who would've guessed we would meet each other here."
             hide dahlia
             show hosts 
@@ -1163,6 +1172,7 @@ label dahliaend:
         elif dahliacount >= 1:
             show dahlia neutral with fade
             pause 2.0
+            play sound womp volume 0.6
             dh "Some things you said were charming, however some other things you said...Not so much."
             hide dahlia neutral
             show hosts 
@@ -1173,6 +1183,7 @@ label dahliaend:
         else:
             show dahlia upset with fade
             pause 2.0
+            play sound womp volume 0.6
             dh "As if. Unbelievable to think you'd have a chance with me."
             hide dahlia upset 
             show hosts
@@ -1187,6 +1198,7 @@ label donnaend:
         if donnacount >= 3:
             show donna happy with fade
             pause 2.0
+            play sound love
             dn "Oh honey, let's go to my hotel room. I'm ALWAYS down for a good time."
             hide donna happy
             show hosts 
@@ -1196,7 +1208,9 @@ label donnaend:
         elif donnacount >= 1:
             show donna neutral with fade
             pause 2.0
-            dn "Sorry schweetheart, I got a date with Bob tonight. I really don't wanna miss it, considering what he's offerin, heh."
+            play sound womp volume 0.6
+            dn "Sorry schweetheart, but after all this I just want to go home and drink a few bottles and smoke a few packs."
+            dn "Don't take it personally though."
             hide donna neutral 
             show hosts 
             with fade
@@ -1206,6 +1220,7 @@ label donnaend:
         else:
             show donna upset with fade
             pause 2.0
+            play sound womp volume 0.6
             dn "*blows smoke in your face*"
             dn "Tough luck. I'd rather go on a date with one of my ex-husbands than go on a date with you."
             hide donna upset 
@@ -1221,6 +1236,7 @@ label damienend:
         if damiencount >= 5:
             show damien happy with fade
             pause 2.0
+            play sound love
             dm "I knew you wanted me as much as I wanted you. Come on, you have to be a guest on one of my film podcasts."
             hide damien happy 
             show hosts 
@@ -1230,6 +1246,7 @@ label damienend:
         elif damiencount >= 2:
             show damien neutral with fade
             pause 2.0
+            play sound womp volume 0.6
             dm "Sorry, you gave off too much of a \"normie\" vibe to me. I can't be dating someone who can't understand all the inner mechanics involved with film making."
             hide damien neutral
             show hosts 
@@ -1240,6 +1257,7 @@ label damienend:
         else:
             show damien upset with fade
             pause 2.0
+            play sound womp volume 0.6
             dm "Sorry, but I'm not interested at all. You're the type of person who rates every movie they watch a 10/10. In other words, you have no ounce of taste in your body."
             hide damien upset
             show hosts 
@@ -1254,6 +1272,7 @@ label aliceend:
         if alicecount >= 5:
             show alice happy with fade
             pause 2.0
+            play sound love
             a "OMG I was hoping you'd choose me! I'm interested in you as well. Let's go to my car and listen to as many Hamilton songs as we can til the day ends~!"
             hide alice happy with fade
             show hosts with fade
@@ -1262,6 +1281,7 @@ label aliceend:
         elif alicecount >= 2:
             show alice frown with fade
             pause 2.0
+            play sound womp volume 0.6
             a "I'm sorry, but I'm afraid theater isn't as important to you as it is to me. It's my life so I can't be with someone who doesn't share the same passion. It was nice meeting you though."
             hide alice neutral 
             show hosts 
@@ -1272,6 +1292,7 @@ label aliceend:
         else:
             show alice upset with fade
             pause 2.0
+            play sound womp volume 0.6
             a "Eww, no! You were so rude to me! You're probably just asking me out as a joke. I'm not falling for it."
             hide alice upset 
             show hosts
@@ -1286,6 +1307,7 @@ label ebonyend:
         if ebonycount >= 3:
             show ebony happy with fade
             pause 2.0
+            play sound love
             e "...I admit, I wuv you already...Do you want to go make a gun out of Monster cans after this? And then maybe after we can listen to some music from my iPod with my wired earbuds?"
             hide ebony happy 
             show hosts 
@@ -1295,6 +1317,7 @@ label ebonyend:
         elif ebonycount >= 1:
             show ebony neutral with fade
             pause 2.0
+            play sound womp volume 0.6
             e "......You think you understand me...but you don't."
             hide ebony neutral 
             show hosts 
@@ -1305,6 +1328,7 @@ label ebonyend:
         else:
             show ebony upset with fade
             pause 2.0
+            play sound womp volume 0.6
             e "...What makes you think I would go on a second date with you? I don't even want to be within a 5 mile radius of you."
             hide ebony upset
             show hosts 
@@ -1319,6 +1343,7 @@ label chadend:
         if chadcount >= 3:
             show chad happy with fade
             pause 2.0
+            play sound love
             cd "Aw yeah babe, you and I are a unique breed nowadays. I knew great recognized great. Let's go hit the gym hot stuff."
             hide chad happy
             show hosts 
@@ -1328,6 +1353,7 @@ label chadend:
         elif chadcount >= 1:
             show chad neutral with fade
             pause 2.0
+            play sound womp volume 0.6
             cd "Hmm, nah no not really interested bro. We can be gym buds though. Well actually, I don't really like lifting with other people. I always get called out for \"ego lifting\", but they don't understand my process brah."
             hide chad neutral
             show hosts 
@@ -1338,6 +1364,7 @@ label chadend:
         else:
             show chad upset with fade
             pause 2.0
+            play sound womp volume 0.6
             cd "After everything you said about the gym and stuff bro?! You gotta be pulling my finger, or like what was it, my tail or however the stupid phrase goes."
             hide chad upset
             show hosts 
@@ -1352,6 +1379,7 @@ label alienend:
         if aliencount >= 6:
             show alien happy with fade
             pause 2.0
+            play sound love
             an "Oh yay! Richard’s favorite human wants to go on another date!"
             an "Yippee! Richard cannot wait to experience human love!."
             hide alien happy 
@@ -1362,6 +1390,7 @@ label alienend:
         elif aliencount >= 2:
             show alien neutral with fade
             pause 2.0
+            play sound womp volume 0.6
             an "Hmmm, Richard did not feel enough connection with you."
             an "It does not seem like you would be a suitable candidate to learn love from."
             hide alien neutral
@@ -1373,6 +1402,7 @@ label alienend:
         else:
             show alien upset with fade
             pause 2.0
+            play sound womp volume 0.6
             an "AH! You again!"
             an "Oh you were oh so mean to Richard on our date, Richard does not want to experience human love with you!"
             hide alien upset
