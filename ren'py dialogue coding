@@ -119,6 +119,7 @@ init:
 # The game starts here.
 label start:
 
+    jump endgame
     play music bgm volume 0.3 fadein 1.0
     play sound rain volume 0.2
     scene tv with fade
@@ -185,7 +186,10 @@ label contract:
             jump continue_game
         "No":
             "FUCK YOU"
-            jump GO
+            hide hosts
+            hide table
+            window hide dissolve
+            jump endofgamefr
 
 label continue_game:
     H "Okay great! Go ahead and sign your name here, grab your name tag, and sit down at that first table! You’ll have 5 minutes with each partner! We’re about to start in a few minutes!"
@@ -1131,6 +1135,7 @@ label endgame:
     show endscreen with fade
     pause 3.0
     H "You must make your decision now. Who will you choose to date, [player_name]?"
+    window hide dissolve
     hide hosts
     hide endscreen
     with fade
@@ -1166,6 +1171,7 @@ label chichiend:
             show hosts 
             with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Chichi!"
+            N "Have fun on your second date, lovebirds!"
             jump normalend
         elif chichicount >= 1:
             show chichi neutral with fade
@@ -1202,6 +1208,7 @@ label dahliaend:
             show hosts 
             with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Dahlia!"
+            N "Have fun on your second date, lovebirds!"
             jump normalend
         elif dahliacount >= 1:
             show dahlia neutral with fade
@@ -1238,6 +1245,7 @@ label donnaend:
             show hosts 
             with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Donna!"
+            N "Have fun on your second date, lovebirds!"
             jump normalend
         elif donnacount >= 1:
             show donna neutral with fade
@@ -1276,6 +1284,7 @@ label damienend:
             show hosts 
             with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Damien!"
+            N "Have fun on your second date, lovebirds!"
             jump normalend
         elif damiencount >= 2:
             show damien neutral with fade
@@ -1311,6 +1320,7 @@ label aliceend:
             hide alice happy with fade
             show hosts with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Alice!"
+            N "Have fun on your second date, lovebirds!"
             jump normalend
         elif alicecount >= 2:
             show alice frown with fade
@@ -1347,6 +1357,7 @@ label ebonyend:
             show hosts 
             with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Ebony!"
+            N "Have fun on your second date, lovebirds!"
             jump normalend
         elif ebonycount >= 1:
             show ebony neutral with fade
@@ -1383,6 +1394,7 @@ label chadend:
             show hosts 
             with fade
             N "Wow! How lovely! Congratulations to the new couple, [player_name] and Chad!"
+            N "Have fun on your second date, lovebirds!"
             jump normalend
         elif chadcount >= 1:
             show chad neutral with fade
@@ -1420,6 +1432,7 @@ label alienend:
             show hosts 
             with fade
             N "Wow! How lovely! Congratulations to the new couple [player_name] and Richard!"
+            N "Have fun on your second date, lovebirds!"
             jump normalend
         elif aliencount >= 2:
             show alien neutral with fade
@@ -1447,7 +1460,6 @@ label alienend:
             jump normalend
 
 label normalend:
-    N "Have fun on your second date, lovebirds!"
     K "Thank you to everyone who participated in our lovely event today! Everyone seemed to have a really fun time and shared some…interesting…information!"
     K "If you didn’t meet your true love here, make sure to come to our next speed dating event:"
     K "Love kills: Speed dating for convicted murders, the insane, and other criminals!"
