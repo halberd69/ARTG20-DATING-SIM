@@ -1,5 +1,5 @@
 ## line 298-304
-##
+## add code
         if main_menu:
             imagebutton:
                 xpos -60
@@ -7,3 +7,11 @@
                 idle "start_menu.png"
                 hover "start_menu.png"
                 action Start()
+
+## line 376-380
+## remove code
+    ##        text "[config.name!t]":
+    ##            style "main_menu_title"
+
+    ##        text "[config.version]":
+    ##            style "main_menu_version"
