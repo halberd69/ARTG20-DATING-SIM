@@ -1,7 +1,9 @@
-## line 299-302
+## line 298-304
+##
+        if main_menu:
             imagebutton:
-                xpos 200
-                ypos 400
-                idle "idle_start.png"
-                hover "hover_start.png"
+                xpos -60
+                ypos 140
+                idle "start_menu.png"
+                hover "start_menu.png"
                 action Start()
