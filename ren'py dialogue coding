@@ -1,5 +1,5 @@
 define n = Character("News Reporter")
-define x = Character (" ")
+# define x = Character (" ")
 define z = Character ("You")
 define H = Character ("Kayley & Natasha")
 define K = Character ("Kayley")
@@ -93,6 +93,7 @@ define audio.boom = "vineboom.mp3"
 define audio.whip = "whipcrack.mp3"
 define audio.love = "loveydovey.mp3"
 define audio.womp = "womp.mp3"
+define audio.bell = "chime.mp3"
 
 init:
     image blue = "#485865" 
@@ -119,7 +120,7 @@ label start:
     n "Roads are unsafe to drive on, as they are slightly wet, HIGH chance of hydroplaning."
     z "Oh man that’s so scary, guess that ruins my plans of going to Didnieland. Suppose I’ll have to find something around this hotel to do to spend my time…"
     pause 0.3
-    x "* A flier suddenly slides under the door*"
+    "* A flier suddenly slides under the door*"
     z "Hmm..what's this?"
 
     scene grey with fade
@@ -127,7 +128,7 @@ label start:
     show flyer with moveintop
     pause 2.0
 
-    x "VALENTINES SPEED DATING! <3 IN LOBBY CONFERENCE ROOM SATURDAY FEBRUARY 10TH! ALL AGE 18+!"
+    "VALENTINES SPEED DATING! <3 IN LOBBY CONFERENCE ROOM SATURDAY FEBRUARY 10TH! ALL AGE 18+!"
     z "Huh … guess I could use some love in my life since Valentine's day is coming up..might as well give it a shot, don’t have much else to do!"
     hide flyer
 
@@ -137,7 +138,7 @@ label start:
     z "I guess this is it...The decorations are truly something, I mean, the letters are literally falling off the door! What am I even doing, what if all the people here are elderly?"
     z "But then again, the streets are flooded out there. It's rare that it ever sprinkles in California, but whenever it does it's always a disaster outside. I might as well see what's going on."
     z "*deep breath* What's the worst that could happen? Alright…here we go..."
-    x "*opens doors*"
+    "*opens doors*"
 
     scene pink
     show hosts
@@ -188,7 +189,10 @@ label continue_game:
     hide table
     with fade
     player_name "Those were a lot of terms and conditions for this event…I thought speed dating would be pretty straightforward. I don’t even know what she said…did she say death? Dismemberment? What even is that abou-"
-    x "*BELL RINGS* FIRST PAIRING STARTS NOW! Find your first partner ladies and gents!"
+    play sound bell volume 3.5
+    "*BELL RINGS*"
+    stop music fadeout 1.0
+    "FIRST PAIRING STARTS NOW! Find your first partner ladies and gents!"
   
 
 label selection:
@@ -264,7 +268,15 @@ label ChiChi:
     c "Chi-Chi has also- Wait, are you listening to me?" 
     show surf
     show chichi neutral
-    c "There we go. Anyway, ChiChi started her gamer girl era lately, have you heard of Kenshin Collision? The addiction is so real nyaaa!!"
+    c "There we go. Hey everyone, I (25F) am an avid gamer and have been since I was a kid."
+    show chichi happy
+    c "Games and anime aren't just a hobby, they are a way of life!"
+    show chichi neutral
+    c "I spend 20 hours a day playing on my PC. What do I do in the other 4 hours you ask?"
+    show chichi happy
+    c "Teehee! A woman never reveals her secrets!"
+    show chichi neutral
+    c "Anyway, ChiChi has started to venture off into new video games. Have you heard of Kenshin Collision? The addiction is so real nyaaa!!"
     menu:
         "I love anime!":
             $ chichicount += 1
@@ -294,7 +306,9 @@ label ChiChi:
             $ chichicount -= 1
             c "...I’ll kill you nya."
     show chichi neutral
-    c "Oops! Looks like time's about to run out! It was really nyice meeting nya!"
+    play sound bell volume 3.5
+    "*BELL RINGS*"
+    c "Oops! Looks like time's run out! It was really nyice meeting nya!"
     player_name "It was nice meeting you too. See you around."
     hide chichi neutral with dissolve
     player_name "A cat girl huh...I thought those kinds of people only existed online."
@@ -388,7 +402,9 @@ label Dahlia:
         "Would you like to join me for some real food after this?":
             dh "Not sure. I'm a very busy woman you know. I have to call my daddy and discuss which car I should replace my Wolls Woyce with, considering the state it is in right now."
     show dahlia neutral
-    dh "Oh well would you look at that, seems like time is about to run out on our date. I have very important business matters to attend to, so if you'll excuse me..."
+    play sound bell volume 3.5
+    "*BELL RINGS*"
+    dh "Oh well would you look at that, seems like time has run out on our date. I have very important business matters to attend to, so if you'll excuse me..."
     hide dahlia neutral with dissolve
     player_name "Well that was certainly interesting. She clearly lives an extravagent life."
     player_name "This place seems to be full of all sorts of different people. I wonder who else I'm going to meet here..."
@@ -483,7 +499,9 @@ label Donna:
         "Hm, interesting choice, can’t say I would do the same, but that's quite nice that you would use it for your kids.":
             dn "My babies are my world honey, it’s unfortunate you wouldn’t do the same. But I understand, you’re young, you haven’t lived the life I have. When you’re older you’ll get it."
     show donna neutral
-    dn "Anyway darlin, it looks like we’re almost out of time for our little date thing here, and after this I gotta pick up Jack-Daniel & Methanie from daycare."
+    play sound bell volume 3.5
+    "*BELL RINGS*"
+    dn "Anyway darlin, it looks like we’re out of time for our little date thing here, and after this I gotta pick up Jack-Daniel & Methanie from daycare."
     dn "Well, it’s not actually daycare, it’s just Bob’s trailer and he works evenings at the grocery store, and if I leave them with him long enough he’ll try to get them to cook for him."
     show donna upset
     dn "And it’s not the kind of cooking you’re thinking of."
@@ -499,7 +517,7 @@ label Ebony:
     show ebony neutral
     with fade
     play music ebdio volume 0.3 fadein 1.0
-    x "H-hey…"
+    "H-hey…"
     player_name "Hi, I'm [player_name]. What's your name?"
     e "Ebony…"
     player_name "Oh, that's a pretty na-"
@@ -573,7 +591,8 @@ label ebony_convo_continue:
             $ ebonycount -= 1
             e "Everyone always says that but no one ever lis-"
     show ebony neutral
-    x "*TIMER RINGS*"
+    play sound bell volume 3.5
+    "*TIMER RINGS*"
     H "Alright ladies and gentleman! Time to move onto your next date!"
     e "......It's time for me to leave now [player_name].....But you'll forget about me anyway..."
     hide ebony neutral with fade
@@ -596,7 +615,7 @@ label father_tangent:
     e "NO! Don’t be scared. I would never hurt someone like you."
     show ebony neutral
     e "That is...not as long as...you love me.....right?"
-    x "*Ebony is looking at you expectantly*"
+    "*Ebony is looking at you expectantly*"
     menu:
         "I do love you":
             show ebony happy
@@ -609,7 +628,7 @@ label father_tangent:
             e "Sorry to end it this way, [player_name]."
             play sound knife
             show ebony knife with hpunch
-            x "*Ebony stabs you*"
+            "*Ebony stabs you*"
             jump EBending 
 
 
@@ -697,6 +716,7 @@ label Chad:
             $ chadcount -= 1
             cd "WHAT DID YOU JUST SAY TO ME?! I am very OBVIOUSLY AN ALPHA!! I’ve taken every online quiz available and they all say I have alpha blood. You just don’t understand my grind. Gym is life. Do you even know who you’re talking to? I’m related to Julius Caesar!"
     show chad neutral
+    play sound bell volume 3.5
     "*TIMER RINGS*"
     cd "Woah that ringer sounds exactly like the lunk alarm at Planet Fittest. I don't go there obviously, I just remember walking past one on my way to Rold's Gym. You know, the gym where all the real lifters go to."
     show chad happy
@@ -831,6 +851,7 @@ label alice_continue:
             $ alicecount += 1
             a "You never cease to amaze me. You could be the Troy to my Gabriella. The Sandy to my Zuko. The Alexander to my Skylar. We are so alike, we are meant to beeeeee."
     show alice neutral
+    play sound bell volume 3.5
     "*BELL RINGS*"
     a "The show's coming to an end I suppose! Gotta get ready for my next act heheh. Maybe I'll see you later if the audience calls for an encore stage! Goodbyeee~"
     hide alice neutral with fade
@@ -942,7 +963,8 @@ label Damien:
             dm "Wow. You’re just like everyone else. My ex-girlfriend always said the same things. You’re such a sheep. My film knowledge should not be wasted on such a simple-minded person like yourself."
             #play creep by radiohead?
     show damien neutral
-    x "*BELL RINGS*"
+    play sound bell volume 3.5
+    "*BELL RINGS*"
     dm "Looks like that's my cue to go. Arrivederci, [player_name]."
     player_name "Right, see you then."
     hide damien neutral with fade
@@ -1065,7 +1087,8 @@ label alien_continue:
             show alien happy
             $ aliencount += 1
             an "R-Really?! You want Richard to love you? Oh human friend that sounds like much fun!"
-    x "*BELL RINGS*"
+    play sound bell volume 3.5
+    "*BELL RINGS*"
     show alien happy
     an "Richard thanks you for the time you spent with him. It was quite insightful."
     hide alien happy with fade
@@ -1098,9 +1121,13 @@ label endgame:
     show hosts with fade
     play music selectionmusic volume 0.1 fadein 1.0
     H "Alright ladies and gents, that is the end of our introductions phase! Now comes the \"second date\" phase, the most important moment of the night."
+    show endscreen with fade
+    pause 3.0
     H "You must make your decision now. Who will you choose to date, [player_name]?"
     hide hosts
-    show endscreen with fade
+    hide endscreen
+    with fade
+    
 
     menu:
         "Chichi (Cat Girl)":
