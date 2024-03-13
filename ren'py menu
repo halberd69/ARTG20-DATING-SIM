@@ -1,5 +1,6 @@
 ## line 298-304
 ## add code
+## need to add start_menu.png into game folder
         if main_menu:
             imagebutton:
                 xpos -60
