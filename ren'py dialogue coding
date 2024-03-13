@@ -119,7 +119,6 @@ init:
 # The game starts here.
 label start:
 
-    jump endgame
     play music bgm volume 0.3 fadein 1.0
     play sound rain volume 0.2
     scene tv with fade
