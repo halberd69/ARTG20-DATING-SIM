@@ -118,7 +118,6 @@ init:
 
 # The game starts here.
 label start:
-
     play music bgm volume 0.3 fadein 1.0
     play sound rain volume 0.2
     scene tv with fade
@@ -1132,9 +1131,9 @@ label endgame:
     play music selectionmusic volume 0.1 fadein 1.0
     H "Alright ladies and gents, that is the end of our introductions phase! Now comes the \"second date\" phase, the most important moment of the night."
     show endscreen with fade
+    window hide dissolve
     pause 3.0
     H "You must make your decision now. Who will you choose to date, [player_name]?"
-    window hide dissolve
     hide hosts
     hide endscreen
     with fade
