@@ -65,6 +65,8 @@ default alicecount = 0
 default aliencount = 0
 default chosen = []
 
+# barsssss
+
 image surf = Movie(play="images/subwaysurfers.webm", size=(720,350), loop=False, xalign = 0, yalign = 0)
 image UFO = Movie(play="images/ufo.webm", size=(350,720), loop=False, xalign = 0.9, yalign = 0)
 define audio.bgm = "Killing Time Newgrounds.mp3" 
@@ -883,6 +885,20 @@ label Damien:
     dm "Well if you’re interested in hearing some REAL good music, you should listen to what I’m making."
     dm "I know what good music is, as you can already probably tell. Here, take a listen, it’s only instrumental right now, we haven’t recorded any vocals yet."
     #SHOW GARAGEBAND
+    $ renpy.movie_cutscene("video/barsssss.WebM")
+    menu:
+        "I’m sorry but that is some of the worst sounding music I’ve ever heard- I don’t even think that could be considered music dude.":
+            show damien upset
+            $ damiencount -= 1
+            dm "Oh I’m not surprised a simpleton like you doesn’t understand it; this is really complex stuff. It’s EXPERIMENTAL! It takes a high IQ to appreciate art like this; which it is very apparent that you do not have."
+        "It’s definitely very…interesting. I think it needs a little work before you release it if I’m being honest":
+            show damien upset
+            dm "Ugh. I knew a simpleton like you would never understand what real music is."
+            dm "And of course it’s not FINISHED so you can’t even really judge it okay? It’s literally a work in progress. SMH"
+        "Wow, you’re realllyyyyy good Damien, I can totally see the vision":
+            show damien happy
+            $ damiencount += 1
+            dm "Thank you, I know. It’s just a little something I cooked up with my band the other day, nothing crazy."
     show damien neutral
     x "*BELL RINGS*"
     dm "Looks like that's my cue to go. Arrivederci, [player_name]."
