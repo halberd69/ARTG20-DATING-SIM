@@ -13,7 +13,7 @@ define e = Character ("Ebony")
 define dm = Character ("Damien")
 define an = Character ("Richard")
 define KN = Character ("Kayley & Natasha")
-define sh = Character ("Shmamilton?")
+define sh = Character ("Shamilton?")
 define ax = Character ("Alex?")
 image flyer = "Speed Dating Flier.png"
 image chichi neutral = "cat girl.png" 
@@ -483,11 +483,12 @@ label Donna:
             dn "Sorry about me babbling on like that sweet thing, did you have anything else you wanted to ask me? "
         "Well that’s very rural-core of you, so granola mom-esque. Have you ever seen Breaking Bad? You remind me of that. ":
             dn "Oh sweetie I don’t know what any of those words mean. Did you learn that on that iPhone of yours? I don’t have one of those back where I’m from, we use phones just for calling. "
-        "I’m not sure if the trailer park lifestyle is for me…it seems a bit…trashy to be honest":
+        "The trailer park seems a bit…trashy to be honest":
             show donna upset
             $ donnacount -= 1
-            dn "Oh honey that is not how you talk to a woman like me. Your kind are always calling my trashy but when push comes to shove you know who will win the fight."
-            dn "*Meet me outside after this if you want to see what real trashy is sweetcheeks."
+            dn "Oh honey, that is not how you talk to a woman like me. Your kind are always calling me trashy but when push comes to shove you know who will win the fight."
+            dn "Meet me outside after this if you want to see what REAL trashy is sweetcheeks."
+    show donna neutral
     player_name "Just out of curiosity, if you won the lottery how would you spend it?"
     dn "Oh that’s a good question. I’ve thought about it quite a bit, I actually buy a lotto ticket everytime I buy a pack of cigs hoping to win. I think I would spend it on my children if I’m being honest with you sweetie. I know I could spend it on myself but look at me y’know?"
     dn "I fell off the beaten track a long while ago, there’s not much hope for me left, and I don’t hate my life either, it has its perks."
@@ -794,7 +795,7 @@ label Alice:
             $ alicecount += 1
             a "Omg! So many of my friends are in bands, musical and band nerds basically go together like peas in a pod. I was actually in band for a bit in elementary school but my teacher said my singing was so angelic that I was meant to be in theater! We are definitely meant to be."    
     show alice neutral
-    player_name "If i'm being completely honest, I didn’t plan on coming to this event until the very last minute."
+    player_name "If I'm being completely honest, I didn’t plan on coming to this event until the very last minute."
     a "Really? As soon as I found that speed dating flier I practiced day and night what I was going to say! I can never turn down an opportunity to perform!"
     player_name "Perform?"
     a "You heard that right."
@@ -939,6 +940,7 @@ label Damien:
             show damien happy
             $ damiencount += 1
             dm "Finally, someone who understands my feelings about indie music. No one these days are real connoisseurs of indie. No one understands it. Those are my favorite songs by them as well."
+    show damien neutral
     dm "Well if you’re interested in hearing some REAL good music, you should listen to what I’m making."
     dm "I know what good music is, as you can already probably tell. Here, take a listen, it’s only instrumental right now, we haven’t recorded any vocals yet."
     $ renpy.movie_cutscene("video/barsssss.WebM")
